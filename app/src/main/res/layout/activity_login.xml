@@ -4,20 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F8F8"
     tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="409dp"
         android:layout_height="301dp"
-        app:srcCompat="@drawable/login"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="2dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/login" />
 
-    <View
+    <LinearLayout
         android:id="@+id/view"
-        android:layout_width="413dp"
-        android:layout_height="456dp"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="272dp" />
+        android:layout_width="411dp"
+        android:layout_height="467dp"
+        android:orientation="vertical"
+        android:padding="30dp"
+        android:background="@drawable/view_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/txtLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway"
+            android:textColor="#37474F"
+            android:text="@string/txtLogin"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="47dp"
+            tools:layout_editor_absoluteY="309dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="40dp"
+            android:paddingBottom="100dp">
+
+            <TextView
+                android:id="@+id/txtEmailLogin"
+                style="@style/label_form"
+                android:text="@string/txtEmailLogin" />
+
+            <EditText
+                android:id="@+id/inputEmailLogin"
+                style="@style/input"
+                android:hint="@string/inputEmailLogin"
+                android:inputType="textEmailAddress" />
+
+            <Space
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txtSenhaLogin"
+                style="@style/label_form"
+                android:text="@string/txtSenhaLogin"/>
+
+            <EditText
+                android:id="@+id/inputSenhaLogin"
+                style="@style/input"
+                android:hint="@string/inputSenhaLogin"
+                android:inputType="textPassword" />
+
+            <Space
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:text="@string/btnLogin"
+                style="@style/button_login"/>
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

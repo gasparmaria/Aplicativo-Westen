@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Westen</string>
+
+    <!-- LoginActivity -->
+    <string name="txtLogin">LOGIN</string>
+    <string name="txtEmailLogin">E-mail</string>
+    <string name="inputEmailLogin">Digite seu e-mail</string>
+    <string name="txtSenhaLogin">Senha</string>
+    <string name="inputSenhaLogin">Digite sua senha</string>
+    <string name="btnLogin">Login</string>
 </resources>
