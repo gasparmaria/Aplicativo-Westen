@@ -8,4 +8,28 @@
     <string name="txtSenhaLogin">Senha</string>
     <string name="inputSenhaLogin">Digite sua senha</string>
     <string name="btnLogin">Login</string>
+    <string name="txtAreaAtuacao">Empresa de Desenvolvimento de Software</string>
+    <string name="txtHistoria">História</string>
+    <string name="txtConteudoHistoria">
+        A Westen, empresa fundada em novembro de 2018, abrange todo o estado de São Paulo, com sede na capital. 
+        Desde então leva a melhor experiência e qualidade em sistemas de gerenciamento.\nA excelência na segurança em nossos serviços, com rápida manutenção, deixa o sistema do cliente com
+        mínimas vulnerabilidades a ataques.
+    </string>
+    <string name="txtVisao">Visão</string>
+    <string name="txtConteudoVisao">Liderar, crescer e disseminar a forma e tecnologia de trabalho em todo Sudeste.</string>
+    <string name="txtMissao">Missão</string>
+    <string name="txtConteudoMissao">Criar o futuro, provendo segurança e privacidade a todos.</string>
+    <string name="txtValores">Valores</string>
+    <string name="txtConteudoValores">
+        Projetar serviços com:\n
+        • Respeito\n
+        • Inovação\n
+        • Qualidade\n
+        • Integridade\n
+        • Responsabilidade\n
+        • Excelência
+    </string>
+    <string name="txtAplicativo">Aplicativo</string>
+    <string name="txtVersaoAplicativo">Versão 1.0</string>
+    <string name="txtAdicionar">Adicionar</string>
 </resources>
