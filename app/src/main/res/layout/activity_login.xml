@@ -22,7 +22,7 @@
         android:layout_height="467dp"
         android:orientation="vertical"
         android:padding="30dp"
-        app:background="@drawable/view_login"
+        tools:background="@drawable/view_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
