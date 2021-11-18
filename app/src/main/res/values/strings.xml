@@ -2,12 +2,11 @@
     <string name="app_name">Westen</string>
 
     <!-- LoginActivity -->
-    <string name="txtLogin">LOGIN</string>
+    <string name="txtLogin">Login</string>
     <string name="txtEmailLogin">E-mail</string>
     <string name="inputEmailLogin">Digite seu e-mail</string>
     <string name="txtSenhaLogin">Senha</string>
     <string name="inputSenhaLogin">Digite sua senha</string>
-    <string name="btnLogin">Login</string>
     <string name="txtAreaAtuacao">Empresa de Desenvolvimento de Software</string>
     <string name="txtHistoria">História</string>
     <string name="txtConteudoHistoria">
@@ -33,4 +32,49 @@
     <string name="txtVersaoAplicativo">Versão 1.0</string>
     <string name="txtAdicionar">Adicionar</string>
     <string name="txtNome">Nome</string>
+    <string name="txtDescricao">Descrição</string>
+    <string name="txtEmail">E-mail</string>
+    <string name="txtCNPJ">CNPJ</string>
+    <string name="txtTelefone">Telefone</string>
+    <string name="txtLogradouro">Logradouro</string>
+    <string name="txtCEP">CEP</string>
+    <string name="txtNumero">Número</string>
+    <string name="txtCidade">Cidade</string>
+    <string name="txtEstado">UF</string>
+    <string name="txtCadastrar">Cadastrar</string>
+    <string-array name="estados">
+        <item>UF</item>
+        <item>SP</item>
+        <item>RJ</item>
+        <item>MG</item>
+    </string-array>
+    <string name="txtLogotipo">Logotipo</string>
+    <string name="txtSenha">Senha</string>
+    <string name="txtCargo">Cargo</string>
+    <string name="txtCPF">CPF</string>
+    <string name="txtCliente">Cliente</string>
+    <string name="txtDataInicio">DataInicio</string>
+    <string name="txtDataFinal">DataFinal</string>
+    <string name="txtStatus">Status</string>
+    <string name="txtMembros">Membros</string>
+    <string name="txtServico">Serviço</string>
+    <string name="txtFuncionario">Funcionário</string>
+    <string name="txtConcluidos">Concluídos</string>
+    <string name="txtDesenvolvendo">Desenvolvendo</string>
+    <string name="txtEquipes">Equipes</string>
+    <string name="txtValorEquipes">00</string>
+    <string name="txtValorDesenvolvendo">00</string>
+    <string name="txtValorConcluidos">00</string>
+    <string-array name="clientes">
+        <item>Cliente</item>
+    </string-array>
+    <string-array name="status">
+        <item>Status</item>
+    </string-array>
+    <string-array name="servico">
+        <item>Serviço</item>
+    </string-array>
+    <string-array name="membros">
+        <item>Funcionário</item>
+    </string-array>
 </resources>

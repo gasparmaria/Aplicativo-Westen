@@ -10,24 +10,37 @@
         <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/layout/header.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/card_sobre.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_adicionar.xml" value="0.2234375" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_adicionar_imagem.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_button_voltar.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_cadastrar.xml" value="0.2234375" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_concluidos.xml" value="0.2234375" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_desenvolvendo.xml" value="0.2234375" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_equipes.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_home.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_listar.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_logout.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_perfil.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_projeto.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_projetos.xml" value="0.2234375" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_servico.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_voltar.xml" value="0.2234375" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/imageview_perfil.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/input_azul.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/input_preto.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/layout_edittext.xml" value="0.175" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/layout_spinner.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/line.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/view_login.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/view_menu.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/font/font.xml" value="0.23333333333333334" />
-        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_cliente_cadastro.xml" value="0.2" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_cargo_cadastro.xml" value="0.2" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_cliente_cadastro.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_funcionario_cadastro.xml" value="0.22" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_listar.xml" value="0.22" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_perfil.xml" value="0.25" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_projeto_cadastro.xml" value="0.22" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_servico_cadastro.xml" value="0.16" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_sobre.xml" value="0.25" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_splash.xml" value="0.2" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/header.xml" value="0.33" />

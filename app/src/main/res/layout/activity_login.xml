@@ -29,12 +29,8 @@
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway"
+            style="@style/txtTituloView"
             android:text="@string/txtLogin"
-            android:textColor="#37474F"
-            android:textSize="24sp"
             tools:layout_editor_absoluteX="47dp"
             tools:layout_editor_absoluteY="309dp" />
 
@@ -68,7 +64,7 @@
 
             <Button
                 style="@style/button_login"
-                android:text="@string/btnLogin" />
+                android:text="@string/txtLogin" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
