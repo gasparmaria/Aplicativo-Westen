@@ -6,4 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".ClienteCadastroActivity">
 
+    <include
+        android:id="@+id/clienteCadastro_header"
+        layout="@layout/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/clienteCadastro_menu"
+        app:layout_constraintTop_toBottomOf="@+id/clienteCadastro_header"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/labelForms"
+                android:text="@string/txtNome"/>
+
+            <EditText
+                style="@style/inputs"
+                android:hint="@string/txtNome"
+                android:inputType="text"
+                android:layout_marginBottom="20dp"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include
+        android:id="@+id/clienteCadastro_menu"
+        layout="@layout/menu_inferior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

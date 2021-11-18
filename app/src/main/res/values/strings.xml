@@ -32,4 +32,5 @@
     <string name="txtAplicativo">Aplicativo</string>
     <string name="txtVersaoAplicativo">Versão 1.0</string>
     <string name="txtAdicionar">Adicionar</string>
+    <string name="txtNome">Nome</string>
 </resources>
