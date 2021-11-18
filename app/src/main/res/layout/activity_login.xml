@@ -6,7 +6,7 @@
     android:background="@color/color_background"
     tools:context=".LoginActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -16,23 +16,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:layout_width="411dp"
-        android:layout_height="467dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="270dp"
+        android:background="@drawable/view_login"
         android:orientation="vertical"
         android:padding="30dp"
-        android:background="@drawable/view_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/raleway"
-            android:textColor="#37474F"
             android:text="@string/txtLogin"
+            android:textColor="#37474F"
             android:textSize="24sp"
             tools:layout_editor_absoluteX="47dp"
             tools:layout_editor_absoluteY="309dp" />
@@ -51,30 +52,23 @@
             <EditText
                 style="@style/input"
                 android:hint="@string/inputEmailLogin"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="20dp"/>
 
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
 
             <TextView
                 style="@style/label_form"
-                android:text="@string/txtSenhaLogin"/>
+                android:text="@string/txtSenhaLogin" />
 
             <EditText
                 style="@style/input"
                 android:hint="@string/inputSenhaLogin"
-                android:inputType="textPassword" />
-
-            <Space
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
+                android:inputType="textPassword"
+                android:layout_marginBottom="20dp"/>
 
             <Button
-                android:text="@string/btnLogin"
-                style="@style/button_login"/>
+                style="@style/button_login"
+                android:text="@string/btnLogin" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

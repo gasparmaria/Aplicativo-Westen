@@ -144,4 +144,27 @@
         </item>
     </style>
 
+    <style name="btnAdicionar">
+        <item name="android:fontFamily">
+            @font/raleway
+        </item>
+        <item name="android:background">
+            @drawable/input_azul
+        </item>
+        <item name="android:textSize">
+            12sp
+        </item>
+        <item name="android:textColor">
+            @color/cor_principal
+        </item>
+        <item name="android:textAllCaps">
+            false
+        </item>
+        <item name="backgroundTint">
+            @null
+        </item>
+        <item name="android:textStyle">
+            bold
+        </item>
+    </style>
 </resources>
