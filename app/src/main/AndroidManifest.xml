@@ -12,6 +12,30 @@
         android:theme="@style/Theme.Westen"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".ProjetoListarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProjetoDetalhesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CargoListarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ServicoListarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FuncionarioListarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExemploActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ClienteListarActivity"
+            android:exported="false" />
+        <activity
             android:name=".PerfilActivity"
             android:exported="false" />
         <activity

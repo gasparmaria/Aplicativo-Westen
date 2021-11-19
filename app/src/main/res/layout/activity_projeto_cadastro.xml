@@ -56,10 +56,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
                     android:src="@drawable/dropdown" />
             </RelativeLayout>
 
@@ -117,10 +117,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
                     android:src="@drawable/dropdown" />
 
             </RelativeLayout>
@@ -151,10 +151,10 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
                     android:src="@drawable/dropdown" />
 
             </RelativeLayout>
@@ -167,22 +167,28 @@
                 android:id="@+id/escolher_membros"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/input_preto"
                 android:layout_marginBottom="15dp"
                 android:orientation="horizontal">
 
-                <TextView 
-                    android:text=""
+                <TextView
                     android:id="@+id/txtMembrosSelecionados"
-                    style="labelFor"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_preto"
+                    android:hint="@string/txtSelecioneMEmbros"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="15dp"
+                    android:fontFamily="@font/raleway"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="15dp"
                     android:src="@drawable/dropdown" />
 
             </RelativeLayout>

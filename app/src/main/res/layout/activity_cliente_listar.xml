@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    tools:context=".ClienteListarActivity">
+
+    <include
+        android:id="@+id/clienteCadastro_header"
+        layout="@layout/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/clienteCadastro_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clienteCadastro_header"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:text="@string/txtCliente"
+            style="@style/txtTituloActivity"
+            android:layout_marginBottom="20dp"/>
+        
+        <!-- barra de busca -->
+        <SearchView
+            android:id="@+id/search_cliente"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/input_preto"
+            android:padding="0dp"
+            android:layout_marginBottom="20dp"
+            style="@style/inputs"/>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="2">
+
+                <!-- cabeçalho da lista -->
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="1"
+                        android:text="@string/txtCodigo"
+                        style="@style/listaCabecalho"/>
+
+                    <TextView
+                        android:layout_column="2"
+                        android:text="@string/txtNome"
+                        style="@style/listaCabecalho"/>
+
+                    <TextView
+                        android:layout_column="3"
+                        android:text="@string/txtCNPJ"
+                        style="@style/listaCabecalho"/>
+                </TableRow>
+
+                <View
+                    android:layout_height="1dp"
+                    android:background="@color/black" />
+
+                <!-- lista -->
+                <TableRow>
+
+                    <TextView
+                        android:id="@+id/txtCodigoCliente"
+                        android:layout_column="1"
+                        android:text="1"
+                        style="@style/listaCorpo"/>
+
+                    <TextView
+                        android:id="@+id/txtNomeCliente"
+                        android:layout_column="2"
+                        android:text="Otávio"
+                        style="@style/listaCorpo"/>
+
+                    <TextView
+                        android:id="@+id/txtCNPJCliente"
+                        android:layout_column="3"
+                        android:text="12412421412"
+                        style="@style/listaCorpo"/>
+
+                    <ImageButton
+                        android:id="@+id/btnEditarCliente"
+                        android:src="@drawable/ic_editar"
+                        style="@style/listaIcons"/>
+
+                    <ImageButton
+                        android:id="@+id/btnDeletarCliente"
+                        android:src="@drawable/ic_deletar"
+                        style="@style/listaIcons"/>
+                </TableRow>
+
+                <View
+                    android:layout_height="1dp"
+                    android:background="@color/black" />
+            </TableLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/clienteCadastro_menu"
+        layout="@layout/menu_inferior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

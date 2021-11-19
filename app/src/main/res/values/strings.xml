@@ -65,6 +65,8 @@
     <string name="txtValorEquipes">00</string>
     <string name="txtValorDesenvolvendo">00</string>
     <string name="txtValorConcluidos">00</string>
+    <string name="txtSelecioneMEmbros">Selecione os membros</string>
+    <string name="txtCodigo">#</string>
     <string-array name="clientes">
         <item>Cliente</item>
     </string-array>

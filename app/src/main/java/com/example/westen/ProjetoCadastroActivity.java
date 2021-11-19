@@ -12,7 +12,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 
-@SuppressWarnings({"SyntaxError", "CanBeFinal"})
 public class ProjetoCadastroActivity extends AppCompatActivity {
 
     RelativeLayout escolher_membros;
@@ -21,7 +20,6 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
     String[] nomesMembros = {"Otávio", "Maria", "Marco", "Miguel", "Eliza"};
     TextView txtMembrosSelecionados;
 
-    @SuppressWarnings("SyntaxError")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +29,69 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
         txtMembrosSelecionados = (TextView) findViewById(R.id.txtMembrosSelecionados);
 
         membrosSelecionados = new boolean[nomesMembros.length];
+
+        txtMembrosSelecionados.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                AlertDialog.Builder buider = new AlertDialog.Builder(
+                        ProjetoCadastroActivity.this
+                );
+                buider.setTitle("Selecione os membros");
+
+                buider.setCancelable(false);
+
+                buider.setMultiChoiceItems(nomesMembros, membrosSelecionados, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                        if(b){
+                            membrosList.add(i);
+                            Collections.sort(membrosList);
+                        }
+                        else{
+                            membrosList.remove(i);
+                        }
+                    }
+                });
+
+                buider.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        StringBuilder stringBuilder = new StringBuilder();
+
+                        for(int j=0; j<membrosList.size(); j++){
+                            stringBuilder.append(nomesMembros[membrosList.get(j)]);
+
+                            if(j!=membrosList.size()-1){
+                                stringBuilder.append(", ");
+                            }
+                        }
+                        txtMembrosSelecionados.setText(stringBuilder.toString());
+                    }
+                });
+
+                buider.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                buider.setNeutralButton("Clear All", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        for(int j=0; j<membrosSelecionados.length; j++){
+                            membrosSelecionados[j] = false;
+                            membrosList.clear();
+                            txtMembrosSelecionados.setText("");
+                        }
+                    }
+                });
+
+                buider.show();
+            }
+        });
         
-        escolher_membros.setOnClickListener(view -> {
+        /*escolher_membros.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(
                 ProjetoCadastroActivity.this
             );
@@ -71,6 +130,6 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
                     dialogInterface.dismiss();
                 }
             });
-        });
+        });*/
     }
 }
