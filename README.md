@@ -1,4 +1,4 @@
-# Aplicativo-Westen
+# Aplicativo Westen
 ### Aplicativo de Gerenciamento Empresarial
 >### Descrição
 > Aplicativo para gerenciamento de uma empresa de Desenvolvimento de Software, destinado apenas aos seus funcionários.
