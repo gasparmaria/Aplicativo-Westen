@@ -10,5 +10,11 @@ public class ClienteCadastroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente_cadastro);
+
+
+        Bairro bairro = new Bairro();
+
+        bairro.getBairroNome(inputText);
+        clienteDao(bairro)
     }
 }
