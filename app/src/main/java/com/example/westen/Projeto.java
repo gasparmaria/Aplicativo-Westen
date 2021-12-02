@@ -1,21 +1,19 @@
 package com.example.westen;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Projeto implements Serializable {
 
-    private int ProjetoID,
-                FK_ServicoID,
-                FK_ClienteID;
+    private int ProjetoID;
 
     private String ProjetoStatus,
-                   ProjetoDescricao;
+            ProjetoDescricao,
+            ProjetoServico,
+            ProjetoDataInicio,
+            ProjetoDataFinal,
+            FK_ClienteCNPJ;
 
     private double ProjetoPreco;
-
-    private Date ProjetoDataInicio,
-                 ProjetoDataFinal;
 
     public int getProjetoID() {
         return ProjetoID;
@@ -25,20 +23,12 @@ public class Projeto implements Serializable {
         ProjetoID = projetoID;
     }
 
-    public int getFK_ServicoID() {
-        return FK_ServicoID;
+    public String getFK_ClienteCNPJ() {
+        return FK_ClienteCNPJ;
     }
 
-    public void setFK_ServicoID(int FK_ServicoID) {
-        this.FK_ServicoID = FK_ServicoID;
-    }
-
-    public int getFK_ClienteID() {
-        return FK_ClienteID;
-    }
-
-    public void setFK_ClienteID(int FK_ClienteID) {
-        this.FK_ClienteID = FK_ClienteID;
+    public void setFK_ClienteCNPJ(String FK_ClienteCNPJ) {
+        this.FK_ClienteCNPJ = FK_ClienteCNPJ;
     }
 
     public String getProjetoStatus() {
@@ -57,6 +47,14 @@ public class Projeto implements Serializable {
         ProjetoDescricao = projetoDescricao;
     }
 
+    public String getProjetoServico() {
+        return ProjetoServico;
+    }
+
+    public void setProjetoServico(String projetoServico) {
+        ProjetoServico = projetoServico;
+    }
+
     public double getProjetoPreco() {
         return ProjetoPreco;
     }
@@ -65,19 +63,19 @@ public class Projeto implements Serializable {
         ProjetoPreco = projetoPreco;
     }
 
-    public Date getProjetoDataInicio() {
+    public String getProjetoDataInicio() {
         return ProjetoDataInicio;
     }
 
-    public void setProjetoDataInicio(Date projetoDataInicio) {
+    public void setProjetoDataInicio(String projetoDataInicio) {
         ProjetoDataInicio = projetoDataInicio;
     }
 
-    public Date getProjetoDataFinal() {
+    public String getProjetoDataFinal() {
         return ProjetoDataFinal;
     }
 
-    public void setProjetoDataFinal(Date projetoDataFinal) {
+    public void setProjetoDataFinal(String projetoDataFinal) {
         ProjetoDataFinal = projetoDataFinal;
     }
 }

@@ -44,7 +44,7 @@
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_funcionario_cadastro.xml" value="0.22" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_funcionario_listar.xml" value="0.20729166666666668" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_listar.xml" value="0.22" />
-        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_perfil.xml" value="0.33" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_projeto_cadastro.xml" value="0.33" />
@@ -54,6 +54,7 @@
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_servico_listar.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_sobre.xml" value="0.25" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/activity_splash.xml" value="0.2" />
+        <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/grid_item_projetos.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/header.xml" value="0.33" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/layout_header.xml" value="0.67" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/layout/layout_menu_inferior.xml" value="0.25" />

@@ -5,13 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.westen.Bairro;
-import com.example.westen.Cidade;
 import com.example.westen.Cliente;
 import com.example.westen.Conexao;
-import com.example.westen.Endereco;
-import com.example.westen.Estado;
-import com.example.westen.Pessoa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,46 +21,86 @@ public class ClienteDAO {
         banco = conexao.getWritableDatabase();
     }
 
-    public long inserirCliente(Cliente cliente, Bairro bairro, Cidade cidade, Estado estado, Endereco endereco, Pessoa pessoa){
+    public long insertCliente(Cliente cliente){
+        ContentValues values = new ContentValues();
+        values.put("ClienteCNPJ", cliente.getClienteCNPJ());
+        values.put("ClienteNome", cliente.getClienteNome());
+        values.put("ClienteDescricao", cliente.getClienteDescricao());
+        values.put("ClientePathLogo", cliente.getClientePathLogo());
+        values.put("ClienteNumeroEndereco", cliente.getClienteNumeroEndereco());
+        values.put("ClienteComplementoEndereco", cliente.getClienteComplementoEndereco());
+        values.put("ClienteTelefone", cliente.getClienteTelefone());
+        values.put("ClienteBairro", cliente.getClienteBairro());
+        values.put("ClienteCidade", cliente.getClienteCidade());
+        values.put("ClienteUF", cliente.getClienteUF());
+        values.put("ClienteCEP", cliente.getClienteCEP());
+        values.put("ClienteLogradouro", cliente.getClienteLogradouro());
 
-
-
-        
-        ContentValues valuesCidade = new ContentValues();
-        String selectCidade = "SELECT CidadeID FROM Cidade WHERE CidadeNome = ?";
-        Cursor cursorCidade = banco.rawQuery(selectCidade, new String[]{ cidade.getCidadeNome() });;
-        
-        ContentValues valuesEstado = new ContentValues();
-        String selectEstado = "SELECT EstadoID FROM Estado WHERE EstadoUF = ?";
-        Cursor cursorEstado = banco.rawQuery(selectEstado, new String[]{ estado.getEstadoUF() });
-        
-        ContentValues valuesEndereco = new ContentValues();
-        String selectEndereco = "SELECT Cep FROM Endereco WHERE Cep = ?";
-        Cursor cursorEndereco = banco.rawQuery(selectEndereco, new String[]{ endereco.getCep() });
-        
-        
-
-        if(cursorCidade.getCount() == 0){
-            valuesCidade.put("CidadeNome", cidade.getCidadeNome());
-            banco.insert("Cidade", null, valuesCidade);
-        }
-        if(cursorEstado.getCount() == 0){
-            valuesEstado.put("EstadoNome", estado.getEstadoUF());
-            banco.insert("Estado", null, valuesEstado);
-        }
-        if(cursorEndereco.getCount() == 0){
-            valuesEndereco.put("Cep", endereco.getCep());
-            valuesEndereco.put("Logradouro", endereco.getLogradouro());
-            valuesEndereco.put("FK_BairroID", bairro.getBairroID());
-            banco.insert("Endereco", null, valuesEndereco);
-        }
-        return 2;
+        return banco.insert("tbCliente", null, values);
     }
 
-    public List<Cliente> listarTodosClientes()
+    public List<Cliente> selectCliente()
     {
-        List<Cliente> clientes = new ArrayList<>();
+        List<Cliente> listaClientes = new ArrayList<>();
 
-        Cursor cursor = banco.query("Cliente", new String[])
+        Cursor cursor = banco.query("tbCliente",
+                                    new String[] {
+                                        "ClienteCNPJ",
+                                        "ClienteNome",
+                                        "ClienteDescricao",
+                                        "ClientePathLogo",
+                                        "ClienteNumeroEndereco",
+                                        "ClienteComplementoEndereco",
+                                        "ClienteTelefone",
+                                        "ClienteBairro",
+                                        "ClienteCidade",
+                                        "ClienteUF",
+                                        "ClienteCEP",
+                                        "ClienteLogradouro"
+                                    },
+                                    null,
+                                    null,
+                                    null,
+                                    null,
+                                    null);
+
+        while(cursor.moveToNext()){
+            Cliente cliente = new Cliente();
+
+            cliente.setClienteCNPJ(cursor.getString(0));
+            cliente.setClienteNome(cursor.getString(1));
+            cliente.setClienteDescricao(cursor.getString(2));
+            cliente.setClientePathLogo(cursor.getString(3));
+            cliente.setClienteNumeroEndereco(cursor.getInt(4));
+            cliente.setClienteComplementoEndereco(cursor.getString(5));
+            cliente.setClienteTelefone(cursor.getString(6));
+            cliente.setClienteBairro(cursor.getString(7));
+            cliente.setClienteCidade(cursor.getString(8));
+            cliente.setClienteUF(cursor.getString(9));
+            cliente.setClienteCEP(cursor.getString(10));
+            cliente.setClienteLogradouro(cursor.getString(11));
+
+            listaClientes.add(cliente);
+        }
+
+        return listaClientes;
+    }
+
+    public long updateCliente(Cliente cliente){
+        ContentValues values = new ContentValues();
+        values.put("ClienteCNPJ", cliente.getClienteCNPJ());
+        values.put("ClienteNome", cliente.getClienteNome());
+        values.put("ClienteDescricao", cliente.getClienteDescricao());
+        values.put("ClientePathLogo", cliente.getClientePathLogo());
+        values.put("ClienteNumeroEndereco", cliente.getClienteNumeroEndereco());
+        values.put("ClienteComplementoEndereco", cliente.getClienteComplementoEndereco());
+        values.put("ClienteTelefone", cliente.getClienteTelefone());
+        values.put("ClienteBairro", cliente.getClienteBairro());
+        values.put("ClienteCidade", cliente.getClienteCidade());
+        values.put("ClienteUF", cliente.getClienteUF());
+        values.put("ClienteCEP", cliente.getClienteCEP());
+        values.put("ClienteLogradouro", cliente.getClienteLogradouro());
+
+        return banco.update("tbCliente", values, "ClienteCNPJ = ?", new String[]{ cliente.getClienteCNPJ() });
     }
 }

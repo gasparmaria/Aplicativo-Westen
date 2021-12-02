@@ -46,23 +46,25 @@
                 android:text="@string/txtEmailLogin" />
 
             <EditText
+                android:id="@+id/txtEmailLogin"
                 style="@style/input_login"
                 android:hint="@string/inputEmailLogin"
                 android:inputType="textEmailAddress"
                 android:layout_marginBottom="20dp"/>
-
 
             <TextView
                 style="@style/labelForm_login"
                 android:text="@string/txtSenhaLogin" />
 
             <EditText
+                android:id="@+id/txtSenhaLogin"
                 style="@style/input_login"
                 android:hint="@string/inputSenhaLogin"
                 android:inputType="textPassword"
                 android:layout_marginBottom="20dp"/>
 
             <Button
+                android:id="@+id/btnLogin"
                 style="@style/button_login"
                 android:text="@string/txtLogin" />
         </LinearLayout>

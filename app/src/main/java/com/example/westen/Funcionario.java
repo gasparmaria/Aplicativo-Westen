@@ -4,23 +4,28 @@ import java.io.Serializable;
 
 public class Funcionario implements Serializable {
 
-    private String FuncionarioCpf,
-                   FuncionarioNome,
-                   FuncionarioEmail,
-                   FuncionarioSenha,
-                   FuncionarioPathLogo,
-                   FuncionarioComplementoEndereco,
-                   FuncionarioTelefone;
+    private String FuncionarioCPF,
+            FuncionarioNome,
+            FuncionarioEmail,
+            FuncionarioSenha,
+            FuncionarioPathFoto,
+            FuncionarioCargo,
+            FuncionarioComplementoEndereco,
+            FuncionarioTelefone,
+            FuncionarioBairro,
+            FuncionarioCidade,
+            FuncionarioUF,
+            FuncionarioCEP,
+            FuncionarioLogradouro;
 
-    private int FK_CargoID,
-                FuncionarioNumeroEndereco;
+    private int FuncionarioNumeroEndereco;
 
-    public String getFuncionarioCpf() {
-        return FuncionarioCpf;
+    public String getFuncionarioCPF() {
+        return FuncionarioCPF;
     }
 
-    public void setFuncionarioCpf(String funcionarioCpf) {
-        FuncionarioCpf = funcionarioCpf;
+    public void setFuncionarioCPF(String funcionarioCPF) {
+        FuncionarioCPF = funcionarioCPF;
     }
 
     public String getFuncionarioNome() {
@@ -47,12 +52,20 @@ public class Funcionario implements Serializable {
         FuncionarioSenha = funcionarioSenha;
     }
 
-    public String getFuncionarioPathLogo() {
-        return FuncionarioPathLogo;
+    public String getFuncionarioPathFoto() {
+        return FuncionarioPathFoto;
     }
 
-    public void setFuncionarioPathLogo(String funcionarioPathLogo) {
-        FuncionarioPathLogo = funcionarioPathLogo;
+    public void setFuncionarioPathFoto(String funcionarioPathFoto) {
+        FuncionarioPathFoto = funcionarioPathFoto;
+    }
+
+    public String getFuncionarioCargo() {
+        return FuncionarioCargo;
+    }
+
+    public void setFuncionarioCargo(String funcionarioCargo) {
+        FuncionarioCargo = funcionarioCargo;
     }
 
     public String getFuncionarioComplementoEndereco() {
@@ -71,12 +84,44 @@ public class Funcionario implements Serializable {
         FuncionarioTelefone = funcionarioTelefone;
     }
 
-    public int getFK_CargoID() {
-        return FK_CargoID;
+    public String getFuncionarioBairro() {
+        return FuncionarioBairro;
     }
 
-    public void setFK_CargoID(int FK_CargoID) {
-        this.FK_CargoID = FK_CargoID;
+    public void setFuncionarioBairro(String funcionarioBairro) {
+        FuncionarioBairro = funcionarioBairro;
+    }
+
+    public String getFuncionarioCidade() {
+        return FuncionarioCidade;
+    }
+
+    public void setFuncionarioCidade(String funcionarioCidade) {
+        FuncionarioCidade = funcionarioCidade;
+    }
+
+    public String getFuncionarioUF() {
+        return FuncionarioUF;
+    }
+
+    public void setFuncionarioUF(String funcionarioUF) {
+        FuncionarioUF = funcionarioUF;
+    }
+
+    public String getFuncionarioCEP() {
+        return FuncionarioCEP;
+    }
+
+    public void setFuncionarioCEP(String funcionarioCEP) {
+        FuncionarioCEP = funcionarioCEP;
+    }
+
+    public String getFuncionarioLogradouro() {
+        return FuncionarioLogradouro;
+    }
+
+    public void setFuncionarioLogradouro(String funcionarioLogradouro) {
+        FuncionarioLogradouro = funcionarioLogradouro;
     }
 
     public int getFuncionarioNumeroEndereco() {
