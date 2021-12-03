@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_background"
-    tools:context=".ClienteListarActivity">
+    tools:context=".Activities.ClienteListarActivity">
 
     <include
         android:id="@+id/clienteCadastro_header"
@@ -46,70 +46,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="2">
+                android:orientation="vertical">
 
-                <!-- cabeçalho da lista -->
-                <TableRow>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:layout_column="1"
                         android:text="@string/txtCodigo"
+                        android:layout_weight=".01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         style="@style/listaCabecalho"/>
 
                     <TextView
-                        android:layout_column="2"
                         android:text="@string/txtNome"
+                        android:layout_weight=".5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         style="@style/listaCabecalho"/>
 
                     <TextView
-                        android:layout_column="3"
                         android:text="@string/txtCNPJ"
+                        android:layout_weight=".3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         style="@style/listaCabecalho"/>
-                </TableRow>
-
-                <View
-                    android:layout_height="1dp"
-                    android:background="@color/black" />
-
-                <!-- lista -->
-                <TableRow>
-
-                    <TextView
-                        android:id="@+id/txtCodigoCliente"
-                        android:layout_column="1"
-                        android:text="1"
-                        style="@style/listaCorpo"/>
-
-                    <TextView
-                        android:id="@+id/txtNomeCliente"
-                        android:layout_column="2"
-                        android:text="Otávio"
-                        style="@style/listaCorpo"/>
-
-                    <TextView
-                        android:id="@+id/txtCNPJCliente"
-                        android:layout_column="3"
-                        android:text="12412421412"
-                        style="@style/listaCorpo"/>
 
                     <ImageButton
-                        android:id="@+id/btnEditarCliente"
+                        android:id="@+id/btnClienteEditar"
+                        style="@style/listaIcons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:src="@drawable/ic_editar"
-                        style="@style/listaIcons"/>
+                        android:visibility="invisible" />
+                </LinearLayout>
 
-                    <ImageButton
-                        android:id="@+id/btnDeletarCliente"
-                        android:src="@drawable/ic_deletar"
-                        style="@style/listaIcons"/>
-                </TableRow>
-
-                <View
-                    android:layout_height="1dp"
-                    android:background="@color/black" />
-            </TableLayout>
+               <ListView
+                   android:id="@+id/listviewClientes"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content" />
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 

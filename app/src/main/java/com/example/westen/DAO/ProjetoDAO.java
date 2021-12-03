@@ -75,7 +75,7 @@ public class ProjetoDAO {
         return listaProjetos;
     }
 
-    public long updateProjeto(Projeto projeto, Cliente cliente){
+    public long updateProjeto(Projeto projeto, Cliente cliente) {
         ContentValues values = new ContentValues();
         values.put("ProjetoID", projeto.getProjetoID());
         values.put("ProjetoDataInicio", projeto.getProjetoDataInicio());
@@ -86,6 +86,6 @@ public class ProjetoDAO {
         values.put("ProjetoPreco", projeto.getProjetoPreco());
         values.put("FK_ClienteCNPJ", cliente.getClienteCNPJ());
 
-        return banco.update("tbProjeto", values, "ProjetoID = ?", new String[]{ String.valueOf(projeto.getProjetoID()) });
+        return banco.update("tbProjeto", values, "ProjetoID = ?", new String[]{String.valueOf(projeto.getProjetoID())});
     }
 }

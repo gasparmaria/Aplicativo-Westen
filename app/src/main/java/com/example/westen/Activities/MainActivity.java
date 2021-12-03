@@ -1,14 +1,16 @@
-package com.example.westen;
+package com.example.westen.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class FuncionarioListarActivity extends AppCompatActivity {
+import com.example.westen.R;
+
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_funcionario_listar);
+        setContentView(R.layout.activity_main);
     }
 }

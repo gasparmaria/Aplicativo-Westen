@@ -287,6 +287,9 @@
     </style>
 
     <style name="listaCorpo">
+        <item name="android:textSize">
+            12sp
+        </item>
         <item name="android:padding">
             8dp
         </item>

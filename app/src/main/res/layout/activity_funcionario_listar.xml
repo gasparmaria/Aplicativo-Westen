@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_background"
-    tools:context=".FuncionarioListarActivity">
+    tools:context=".Activities.FuncionarioListarActivity">
 
     <include
-        android:id="@+id/FuncionarioCadastro_header"
+        android:id="@+id/FuncionarioListar_header"
         layout="@layout/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,10 +21,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/FuncionarioCadastro_menu"
+        app:layout_constraintBottom_toTopOf="@+id/FuncionarioListar_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FuncionarioCadastro_header"
+        app:layout_constraintTop_toBottomOf="@+id/FuncionarioListar_header"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
@@ -34,7 +34,7 @@
 
         <!-- barra de busca -->
         <SearchView
-            android:id="@+id/search_funcionario"
+            android:id="@+id/search_Funcionario"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/input_preto"
@@ -46,75 +46,56 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:stretchColumns="2">
+                android:orientation="vertical">
 
-                <!-- cabeçalho da lista -->
-                <TableRow>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:layout_column="1"
                         android:text="@string/txtCodigo"
+                        android:layout_weight=".01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         style="@style/listaCabecalho"/>
 
                     <TextView
-                        android:layout_column="2"
                         android:text="@string/txtNome"
+                        android:layout_weight=".5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         style="@style/listaCabecalho"/>
 
                     <TextView
-                        android:layout_column="3"
-                        android:text="@string/txtCPF"
+                        android:text="@string/txtCargo"
+                        android:layout_weight=".3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         style="@style/listaCabecalho"/>
-                </TableRow>
-
-                <View
-                    android:layout_height="1dp"
-                    android:background="@color/black" />
-
-                <!-- lista -->
-                <TableRow>
-
-                    <TextView
-                        android:id="@+id/txtCodigoFuncionario"
-                        android:layout_column="1"
-                        android:text="1"
-                        style="@style/listaCorpo"/>
-
-                    <TextView
-                        android:id="@+id/txtNomeFuncionario"
-                        android:layout_column="2"
-                        android:text="Otávio"
-                        style="@style/listaCorpo"/>
-
-                    <TextView
-                        android:id="@+id/txtCNPJFuncionario"
-                        android:layout_column="3"
-                        android:text="12412421412"
-                        style="@style/listaCorpo"/>
 
                     <ImageButton
-                        android:id="@+id/btnEditarFuncionario"
+                        android:id="@+id/btnFuncionarioEditar"
+                        style="@style/listaIcons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:src="@drawable/ic_editar"
-                        style="@style/listaIcons"/>
+                        android:visibility="invisible" />
+                </LinearLayout>
 
-                    <ImageButton
-                        android:id="@+id/btnDeletarFuncionario"
-                        android:src="@drawable/ic_deletar"
-                        style="@style/listaIcons"/>
-                </TableRow>
-
-                <View
-                    android:layout_height="1dp"
-                    android:background="@color/black" />
-            </TableLayout>
+                <ListView
+                    android:id="@+id/listviewFuncionarios"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 
     <include
-        android:id="@+id/FuncionarioCadastro_menu"
+        android:id="@+id/FuncionarioListar_menu"
         layout="@layout/menu_inferior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

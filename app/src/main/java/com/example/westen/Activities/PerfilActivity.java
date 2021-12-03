@@ -1,8 +1,10 @@
-package com.example.westen;
+package com.example.westen.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.westen.R;
 
 public class PerfilActivity extends AppCompatActivity {
 

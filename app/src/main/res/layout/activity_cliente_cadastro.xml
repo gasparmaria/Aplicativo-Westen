@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_background"
-    tools:context=".ClienteCadastroActivity">
+    tools:context=".Activities.ClienteCadastroActivity">
 
     <include
         android:id="@+id/clienteCadastro_header"
-        layout="@layout/header"
+        layout="@layout/menu_inferior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +18,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
         android:padding="20dp"
         app:layout_constraintBottom_toTopOf="@+id/clienteCadastro_menu"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,78 +33,78 @@
 
             <TextView
                 style="@style/labelForms"
-                android:text="@string/txtNome"/>
+                android:text="@string/txtNome" />
 
             <EditText
                 android:id="@+id/inputCliente_nome"
                 style="@style/inputs"
-                android:inputType="text"/>
+                android:inputType="text" />
 
             <TextView
                 style="@style/labelForms"
-                android:text="@string/txtDescricao"/>
+                android:text="@string/txtDescricao" />
 
             <EditText
                 android:id="@+id/inputCliente_descricao"
                 style="@style/inputs"
-                android:inputType="text"/>
+                android:inputType="text" />
 
             <TextView
                 style="@style/labelForms"
-                android:text="@string/txtCNPJ"/>
+                android:text="@string/txtCNPJ" />
 
             <EditText
                 android:id="@+id/inputCliente_cnpj"
                 style="@style/inputs"
-                android:inputType="text"/>
+                android:inputType="text" />
 
             <TextView
                 style="@style/labelForms"
-                android:text="@string/txtTelefone"/>
+                android:text="@string/txtTelefone" />
 
             <EditText
                 android:id="@+id/inputCliente_telefone"
                 style="@style/inputs"
-                android:inputType="phone"/>
+                android:inputType="phone" />
 
             <TextView
                 style="@style/labelForms"
-                android:text="@string/txtEmail"/>
+                android:text="@string/txtEmail" />
 
             <EditText
                 android:id="@+id/inputCliente_email"
                 style="@style/inputs"
-                android:inputType="textEmailAddress"/>
+                android:inputType="textEmailAddress" />
 
             <TextView
                 style="@style/labelForms"
-                android:text="@string/txtLogradouro"/>
+                android:text="@string/txtLogradouro" />
 
             <EditText
                 android:id="@+id/inputCliente_logradouro"
                 style="@style/inputs"
-                android:inputType="text"/>
+                android:inputType="text" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginRight="15dp"
                     android:layout_weight=".6"
-                    android:orientation="vertical"
-                    android:layout_marginRight="15dp">
+                    android:orientation="vertical">
 
                     <TextView
                         style="@style/labelForms"
-                        android:text="@string/txtCEP"/>
+                        android:text="@string/txtCEP" />
 
                     <EditText
                         android:id="@+id/inputCliente_cep"
                         style="@style/inputs"
-                        android:inputType="text"/>
+                        android:inputType="text" />
 
                 </LinearLayout>
 
@@ -115,35 +116,35 @@
 
                     <TextView
                         style="@style/labelForms"
-                        android:text="@string/txtNumero"/>
+                        android:text="@string/txtNumero" />
 
                     <EditText
                         android:id="@+id/inputCliente_numero"
                         style="@style/inputs"
-                        android:inputType="text"/>
+                        android:inputType="text" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginRight="15dp"
                     android:layout_weight=".6"
-                    android:orientation="vertical"
-                    android:layout_marginRight="15dp">
+                    android:orientation="vertical">
 
                     <TextView
                         style="@style/labelForms"
-                        android:text="@string/txtCidade"/>
+                        android:text="@string/txtBairro" />
 
                     <EditText
-                        android:id="@+id/inputCliente_cidade"
+                        android:id="@+id/inputCliente_bairro"
                         style="@style/inputs"
-                        android:inputType="textEmailAddress"/>
+                        android:inputType="text" />
 
                 </LinearLayout>
 
@@ -155,7 +156,48 @@
 
                     <TextView
                         style="@style/labelForms"
-                        android:text="@string/txtEstado"/>
+                        android:text="@string/txtComplemento" />
+
+                    <EditText
+                        android:id="@+id/inputCliente_complemento"
+                        style="@style/inputs"
+                        android:inputType="text" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight=".6"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/labelForms"
+                        android:text="@string/txtCidade" />
+
+                    <EditText
+                        android:id="@+id/inputCliente_cidade"
+                        style="@style/inputs"
+                        android:inputType="textEmailAddress" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/labelForms"
+                        android:text="@string/txtEstado" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -164,7 +206,7 @@
                         android:orientation="horizontal">
 
                         <Spinner
-                            android:id="@+id/spinner2"
+                            android:id="@+id/inputCliente_UF"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -191,35 +233,45 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <ImageButton
+                    android:id="@+id/btnAddImagem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
                     android:background="@null"
                     app:srcCompat="@drawable/ic_adicionar_imagem" />
 
                 <TextView
                     style="@style/labelForms"
-                    android:text="@string/txtLogotipo"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginBottom="0dp"
-                    android:layout_marginLeft="5dp"/>
+                    android:text="@string/txtLogotipo" />
+
+                <ImageView
+                    android:id="@+id/imagemCliente"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/editbox_background" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnCadastrarCliente"
                     style="@style/btnAdicionar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="25dp"
                     android:text="@string/txtCadastrar"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
 

@@ -26,7 +26,7 @@ public class ClienteDAO {
         values.put("ClienteCNPJ", cliente.getClienteCNPJ());
         values.put("ClienteNome", cliente.getClienteNome());
         values.put("ClienteDescricao", cliente.getClienteDescricao());
-        values.put("ClientePathLogo", cliente.getClientePathLogo());
+        values.put("ClienteLogo", cliente.getClienteImagem());
         values.put("ClienteNumeroEndereco", cliente.getClienteNumeroEndereco());
         values.put("ClienteComplementoEndereco", cliente.getClienteComplementoEndereco());
         values.put("ClienteTelefone", cliente.getClienteTelefone());
@@ -48,7 +48,7 @@ public class ClienteDAO {
                                         "ClienteCNPJ",
                                         "ClienteNome",
                                         "ClienteDescricao",
-                                        "ClientePathLogo",
+                                        "ClienteLogo",
                                         "ClienteNumeroEndereco",
                                         "ClienteComplementoEndereco",
                                         "ClienteTelefone",
@@ -70,7 +70,7 @@ public class ClienteDAO {
             cliente.setClienteCNPJ(cursor.getString(0));
             cliente.setClienteNome(cursor.getString(1));
             cliente.setClienteDescricao(cursor.getString(2));
-            cliente.setClientePathLogo(cursor.getString(3));
+            cliente.setClienteImagem(cursor.getBlob(3));
             cliente.setClienteNumeroEndereco(cursor.getInt(4));
             cliente.setClienteComplementoEndereco(cursor.getString(5));
             cliente.setClienteTelefone(cursor.getString(6));
@@ -91,7 +91,7 @@ public class ClienteDAO {
         values.put("ClienteCNPJ", cliente.getClienteCNPJ());
         values.put("ClienteNome", cliente.getClienteNome());
         values.put("ClienteDescricao", cliente.getClienteDescricao());
-        values.put("ClientePathLogo", cliente.getClientePathLogo());
+        values.put("ClienteLogo", cliente.getClienteImagem());
         values.put("ClienteNumeroEndereco", cliente.getClienteNumeroEndereco());
         values.put("ClienteComplementoEndereco", cliente.getClienteComplementoEndereco());
         values.put("ClienteTelefone", cliente.getClienteTelefone());

@@ -8,7 +8,6 @@ public class Funcionario implements Serializable {
             FuncionarioNome,
             FuncionarioEmail,
             FuncionarioSenha,
-            FuncionarioPathFoto,
             FuncionarioCargo,
             FuncionarioComplementoEndereco,
             FuncionarioTelefone,
@@ -19,6 +18,29 @@ public class Funcionario implements Serializable {
             FuncionarioLogradouro;
 
     private int FuncionarioNumeroEndereco;
+
+    private byte[] FuncionarioImagem;
+
+    public Funcionario() {
+
+    }
+
+    public Funcionario(String funcionarioCPF, String funcionarioNome, String funcionarioEmail, String funcionarioSenha, String funcionarioCargo, String funcionarioComplementoEndereco, String funcionarioTelefone, String funcionarioBairro, String funcionarioCidade, String funcionarioUF, String funcionarioCEP, String funcionarioLogradouro, int funcionarioNumeroEndereco, byte[] funcionarioImagem) {
+        FuncionarioCPF = funcionarioCPF;
+        FuncionarioNome = funcionarioNome;
+        FuncionarioEmail = funcionarioEmail;
+        FuncionarioSenha = funcionarioSenha;
+        FuncionarioCargo = funcionarioCargo;
+        FuncionarioComplementoEndereco = funcionarioComplementoEndereco;
+        FuncionarioTelefone = funcionarioTelefone;
+        FuncionarioBairro = funcionarioBairro;
+        FuncionarioCidade = funcionarioCidade;
+        FuncionarioUF = funcionarioUF;
+        FuncionarioCEP = funcionarioCEP;
+        FuncionarioLogradouro = funcionarioLogradouro;
+        FuncionarioNumeroEndereco = funcionarioNumeroEndereco;
+        FuncionarioImagem = funcionarioImagem;
+    }
 
     public String getFuncionarioCPF() {
         return FuncionarioCPF;
@@ -50,14 +72,6 @@ public class Funcionario implements Serializable {
 
     public void setFuncionarioSenha(String funcionarioSenha) {
         FuncionarioSenha = funcionarioSenha;
-    }
-
-    public String getFuncionarioPathFoto() {
-        return FuncionarioPathFoto;
-    }
-
-    public void setFuncionarioPathFoto(String funcionarioPathFoto) {
-        FuncionarioPathFoto = funcionarioPathFoto;
     }
 
     public String getFuncionarioCargo() {
@@ -130,5 +144,13 @@ public class Funcionario implements Serializable {
 
     public void setFuncionarioNumeroEndereco(int funcionarioNumeroEndereco) {
         FuncionarioNumeroEndereco = funcionarioNumeroEndereco;
+    }
+
+    public byte[] getFuncionarioImagem() {
+        return FuncionarioImagem;
+    }
+
+    public void setFuncionarioImagem(byte[] funcionarioImagem) {
+        FuncionarioImagem = funcionarioImagem;
     }
 }

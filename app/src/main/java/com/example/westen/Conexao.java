@@ -1,6 +1,7 @@
 package com.example.westen;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -21,8 +22,8 @@ public class Conexao extends SQLiteOpenHelper {
                 "ClienteCNPJ TEXT PRIMARY KEY," +
                 "ClienteNome TEXT NOT NULL," +
                 "ClienteDescricao TEXT NOT NULL," +
-                "ClientePathLogo TEXT UNIQUE," +
-                "ClienteNumeroEndereco INT NOT NULL," +
+                "ClienteLogo BLOB," +
+                "ClienteNumeroEndereco INTEGER NOT NULL," +
                 "ClienteComplementoEndereco TEXT," +
                 "ClienteTelefone TEXT UNIQUE," +
                 "ClienteBairro TEXT NOT NULL," +
@@ -35,7 +36,7 @@ public class Conexao extends SQLiteOpenHelper {
                 "FuncionarioNome TEXT NOT NULL," +
                 "FuncionarioEmail TEXT NOT NULL," +
                 "FuncionarioSenha TEXT NOT NULL," +
-                "FuncionarioPathFoto TEXT," +
+                "FuncionarioFoto BLOB," +
                 "FuncionarioCargo TEXT," +
                 "FuncionarioNumeroEndereco INT NOT NULL," +
                 "FuncionarioComplementoEndereco TEXT," +
@@ -46,7 +47,7 @@ public class Conexao extends SQLiteOpenHelper {
                 "FuncionarioCEP TEXT NOT NULL," +
                 "FuncionarioLogradouro TEXT NOT NULL)");
         db.execSQL("CREATE TABLE tbProjeto(" +
-                "ProjetoID INT PRIMARY KEY AUTOINCREMENT," +
+                "ProjetoID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "ProjetoDataInicio TEXT NOT NULL," +
                 "ProjetoDataFinal TEXT NOT NULL," +
                 "ProjetoStatus TEXT NOT NULL," +
@@ -57,7 +58,7 @@ public class Conexao extends SQLiteOpenHelper {
                 "FOREIGN KEY (FK_ClienteCNPJ) REFERENCES Cliente (ClienteCNPJ))");
         db.execSQL("CREATE TABLE tbFuncionarioProjeto(" +
                 "FK_FuncionarioCPF TEXT," +
-                "FK_ProjetoID INT," +
+                "FK_ProjetoID INTEGER," +
                 "PRIMARY KEY (FK_FuncionarioCPF, FK_ProjetoID)," +
                 "FOREIGN KEY (FK_FuncionarioCPF) REFERENCES Funcionario (FuncionarioCPF)," +
                 "FOREIGN KEY (FK_ProjetoID) REFERENCES Projeto (ProjetoID))");
@@ -65,6 +66,17 @@ public class Conexao extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS tbCliente");
+        db.execSQL("DROP TABLE IF EXISTS tbFuncionario");
+        db.execSQL("DROP TABLE IF EXISTS tbProjeto");
+        db.execSQL("DROP TABLE IF EXISTS tbFuncionarioProjeto");
 
+        onCreate(db);
+    }
+
+    public Cursor getNovaQuery(String sql)
+    {
+        SQLiteDatabase database = getWritableDatabase();
+        return database.rawQuery(sql, null);
     }
 }

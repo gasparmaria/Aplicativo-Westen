@@ -21,13 +21,13 @@ public class FuncionarioDAO {
         banco = conexao.getWritableDatabase();
     }
 
-    public long inserirFuncionario(Funcionario funcionario){
+    public long insertFuncionario(Funcionario funcionario){
         ContentValues values = new ContentValues();
         values.put("FuncionarioCPF", funcionario.getFuncionarioCPF());
         values.put("FuncionarioNome", funcionario.getFuncionarioNome());
         values.put("FuncionarioEmail", funcionario.getFuncionarioEmail());
         values.put("FuncionarioSenha", funcionario.getFuncionarioSenha());
-        values.put("FuncionarioPathFoto", funcionario.getFuncionarioPathFoto());
+        values.put("FuncionarioFoto", funcionario.getFuncionarioImagem());
         values.put("FuncionarioCargo", funcionario.getFuncionarioCargo());
         values.put("FuncionarioNumeroEndereco", funcionario.getFuncionarioNumeroEndereco());
         values.put("FuncionarioComplementoEndereco", funcionario.getFuncionarioComplementoEndereco());
@@ -38,7 +38,7 @@ public class FuncionarioDAO {
         values.put("FuncionarioCEP", funcionario.getFuncionarioCEP());
         values.put("FuncionarioLogradouro", funcionario.getFuncionarioLogradouro());
 
-        return banco.insert("Funcionario", null, values);
+        return banco.insert("tbFuncionario", null, values);
     }
 
     public List<Funcionario> selectFuncionario()
@@ -51,7 +51,7 @@ public class FuncionarioDAO {
                         "FuncionarioNome",
                         "FuncionarioEmail",
                         "FuncionarioSenha",
-                        "FuncionarioPathFoto",
+                        "FuncionarioFoto",
                         "FuncionarioCargo",
                         "FuncionarioNumeroEndereco",
                         "FuncionarioComplementoEndereco",
@@ -75,7 +75,7 @@ public class FuncionarioDAO {
             funcionario.setFuncionarioNome(cursor.getString(1));
             funcionario.setFuncionarioEmail(cursor.getString(2));
             funcionario.setFuncionarioSenha(cursor.getString(3));
-            funcionario.setFuncionarioPathFoto(cursor.getString(4));
+            funcionario.setFuncionarioImagem(cursor.getBlob(4));
             funcionario.setFuncionarioCargo(cursor.getString(5));
             funcionario.setFuncionarioNumeroEndereco(cursor.getInt(6));
             funcionario.setFuncionarioComplementoEndereco(cursor.getString(7));
@@ -98,7 +98,7 @@ public class FuncionarioDAO {
         values.put("FuncionarioNome", funcionario.getFuncionarioNome());
         values.put("FuncionarioEmail", funcionario.getFuncionarioEmail());
         values.put("FuncionarioSenha", funcionario.getFuncionarioSenha());
-        values.put("FuncionarioPathFoto", funcionario.getFuncionarioPathFoto());
+        values.put("FuncionarioFoto", funcionario.getFuncionarioImagem());
         values.put("FuncionarioCargo", funcionario.getFuncionarioCargo());
         values.put("FuncionarioNumeroEndereco", funcionario.getFuncionarioNumeroEndereco());
         values.put("FuncionarioComplementoEndereco", funcionario.getFuncionarioComplementoEndereco());

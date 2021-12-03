@@ -7,7 +7,6 @@ public class Cliente implements Serializable {
     private String  ClienteCNPJ,
             ClienteNome,
             ClienteDescricao,
-            ClientePathLogo,
             ClienteComplementoEndereco,
             ClienteTelefone,
             ClienteBairro,
@@ -16,7 +15,40 @@ public class Cliente implements Serializable {
             ClienteCEP,
             ClienteLogradouro;
     private int ClienteNumeroEndereco;
+    private byte[] ClienteImagem;
 
+    public Cliente(){ }
+
+    public Cliente(String clienteNome, byte[] clienteImagem) {
+        ClienteNome = clienteNome;
+        ClienteImagem = clienteImagem;
+    }
+
+    public Cliente(String clienteCNPJ,
+                   String clienteNome,
+                   String clienteDescricao,
+                   String clienteComplementoEndereco,
+                   String clienteTelefone,
+                   String clienteBairro,
+                   String clienteCidade,
+                   String clienteUF,
+                   String clienteCEP,
+                   String clienteLogradouro,
+                   int clienteNumeroEndereco,
+                   byte[] clienteImagem) {
+            ClienteCNPJ = clienteCNPJ;
+            ClienteNome = clienteNome;
+            ClienteDescricao = clienteDescricao;
+            ClienteComplementoEndereco = clienteComplementoEndereco;
+            ClienteTelefone = clienteTelefone;
+            ClienteBairro = clienteBairro;
+            ClienteCidade = clienteCidade;
+            ClienteUF = clienteUF;
+            ClienteCEP = clienteCEP;
+            ClienteLogradouro = clienteLogradouro;
+            ClienteNumeroEndereco = clienteNumeroEndereco;
+            ClienteImagem = clienteImagem;
+    }
 
     public String getClienteCNPJ() {
         return this.ClienteCNPJ;
@@ -40,14 +72,6 @@ public class Cliente implements Serializable {
 
     public void setClienteDescricao(String ClienteDescricao) {
         this.ClienteDescricao = ClienteDescricao;
-    }
-
-    public String getClientePathLogo() {
-        return this.ClientePathLogo;
-    }
-
-    public void setClientePathLogo(String ClientePathLogo) {
-        this.ClientePathLogo = ClientePathLogo;
     }
 
     public String getClienteComplementoEndereco() {
@@ -114,4 +138,11 @@ public class Cliente implements Serializable {
         this.ClienteNumeroEndereco = ClienteNumeroEndereco;
     }
 
+    public byte[] getClienteImagem() {
+        return ClienteImagem;
+    }
+
+    public void setClienteImagem(byte[] clienteImagem) {
+        ClienteImagem = clienteImagem;
+    }
 }

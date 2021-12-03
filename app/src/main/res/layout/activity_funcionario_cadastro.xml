@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_background"
-    tools:context=".FuncionarioCadastroActivity">
+    tools:context=".Activities.FuncionarioCadastroActivity">
 
     <include
-        android:id="@+id/clienteCadastro_header"
+        android:id="@+id/FuncionarioCadastro_header"
         layout="@layout/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,17 +17,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
         android:padding="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/clienteCadastro_menu"
+        app:layout_constraintBottom_toTopOf="@+id/FuncionarioCadastro_menu"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clienteCadastro_header"
+        app:layout_constraintTop_toBottomOf="@+id/FuncionarioCadastro_header"
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
@@ -41,12 +43,12 @@
 
             <TextView
                 style="@style/labelForms"
-                android:text="@string/txtDescricao" />
+                android:text="@string/txtEmail" />
 
             <EditText
-                android:id="@+id/inputFuncionario_descricao"
+                android:id="@+id/inputFuncionario_email"
                 style="@style/inputs"
-                android:inputType="text" />
+                android:inputType="textEmailAddress" />
 
             <TextView
                 style="@style/labelForms"
@@ -65,15 +67,6 @@
                 android:id="@+id/inputFuncionario_telefone"
                 style="@style/inputs"
                 android:inputType="phone" />
-
-            <TextView
-                style="@style/labelForms"
-                android:text="@string/txtEmail" />
-
-            <EditText
-                android:id="@+id/inputFuncionario_email"
-                style="@style/inputs"
-                android:inputType="textEmailAddress" />
 
             <TextView
                 style="@style/labelForms"
@@ -138,6 +131,47 @@
 
                     <TextView
                         style="@style/labelForms"
+                        android:text="@string/txtBairro" />
+
+                    <EditText
+                        android:id="@+id/inputFuncionario_bairro"
+                        style="@style/inputs"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/labelForms"
+                        android:text="@string/txtComplemento" />
+
+                    <EditText
+                        android:id="@+id/inputFuncionario_complemento"
+                        style="@style/inputs"
+                        android:inputType="text" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight=".6"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/labelForms"
                         android:text="@string/txtCidade" />
 
                     <EditText
@@ -164,7 +198,7 @@
                         android:orientation="horizontal">
 
                         <Spinner
-                            android:id="@+id/spinner2"
+                            android:id="@+id/inputFuncionario_UF"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -188,7 +222,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-
             <TextView
                 style="@style/labelForms"
                 android:text="@string/txtCargo" />
@@ -198,56 +231,41 @@
                 style="@style/inputs"
                 android:inputType="text" />
 
+            <TextView
+                style="@style/labelForms"
+                android:text="@string/txtSenha" />
+
+            <EditText
+                android:id="@+id/inputFuncionario_senha"
+                style="@style/inputs"
+                android:inputType="textPassword" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="15dp"
-                    android:layout_weight=".6"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/labelForms"
-                        android:text="@string/txtSenha" />
-
-                    <EditText
-                        android:id="@+id/inputFuncionario_senha"
-                        style="@style/inputs"
-                        android:inputType="textPassword" />
-
-                </LinearLayout>
-
-                <LinearLayout
+                <ImageButton
+                    android:id="@+id/btnAddImagem"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:background="@null"
+                    app:srcCompat="@drawable/ic_adicionar_imagem" />
+
+                <TextView
+                    style="@style/labelForms"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="@string/txtPerfil" />
+
+                <ImageView
+                    android:id="@+id/imagemFuncionario"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight=".1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            app:srcCompat="@drawable/ic_adicionar_imagem" />
-
-                        <TextView
-                            style="@style/labelForms"
-                            android:text="@string/txtLogotipo"
-                            android:layout_marginBottom="0dp"
-                            android:layout_marginLeft="5dp"/>
-                    </LinearLayout>
-                </LinearLayout>
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/editbox_background" />
             </LinearLayout>
 
             <LinearLayout
@@ -257,18 +275,20 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnCadastrarFuncionario"
                     style="@style/btnAdicionar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="25dp"
                     android:text="@string/txtCadastrar"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
 
     <include
-        android:id="@+id/clienteCadastro_menu"
+        android:id="@+id/FuncionarioCadastro_menu"
         layout="@layout/menu_inferior"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

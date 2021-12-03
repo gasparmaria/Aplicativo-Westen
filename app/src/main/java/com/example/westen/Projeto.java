@@ -15,6 +15,13 @@ public class Projeto implements Serializable {
 
     private double ProjetoPreco;
 
+    public Projeto() {
+    }
+
+    public Projeto(String projetoServico) {
+        ProjetoServico = projetoServico;
+    }
+
     public int getProjetoID() {
         return ProjetoID;
     }

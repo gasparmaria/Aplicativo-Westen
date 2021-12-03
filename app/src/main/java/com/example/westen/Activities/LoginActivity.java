@@ -1,4 +1,4 @@
-package com.example.westen;
+package com.example.westen.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.westen.DAO.FuncionarioDAO;
+import com.example.westen.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -53,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (verificacao = campoNulo(email)) {
             txtEmail.requestFocus();
-            Toast.makeText(this, "Preencha o campo email.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Preencha o campo e-mail.", Toast.LENGTH_SHORT).show();
         } else if (verificacao = campoNulo(senha)) {
             txtSenha.requestFocus();
             Toast.makeText(this, "Preencha o campo senha.", Toast.LENGTH_SHORT).show();

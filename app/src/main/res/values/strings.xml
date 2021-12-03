@@ -68,6 +68,9 @@
     <string name="txtSelecioneMEmbros">Selecione os membros</string>
     <string name="txtCodigo">#</string>
     <string name="txtProjetos">Projetos</string>
+    <string name="txtComplemento">Complemento</string>
+    <string name="txtBairro">Bairro</string>
+    <string name="txtPerfil">Perfil</string>
     <string-array name="clientes">
         <item>Cliente</item>
     </string-array>

@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.westen">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,44 +14,40 @@
         android:theme="@style/Theme.Westen"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".ProjetoListarActivity"
+            android:name=".Activities.ProjetoListarActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ProjetoDetalhesActivity"
+            android:name=".Activities.ProjetoDetalhesActivity"
             android:exported="false" />
         <activity
-            android:name=".FuncionarioListarActivity"
+            android:name=".Activities.FuncionarioListarActivity"
             android:exported="false" />
         <activity
-            android:name=".ExemploActivity"
+            android:name=".Activities.ClienteListarActivity"
             android:exported="false" />
         <activity
-            android:name=".ClienteListarActivity"
+            android:name=".Activities.PerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".PerfilActivity"
+            android:name=".Activities.ProjetoCadastroActivity"
             android:exported="false" />
         <activity
-            android:name=".ProjetoCadastroActivity"
+            android:name=".Activities.FuncionarioCadastroActivity"
             android:exported="false" />
+        <activity android:name=".Activities.ClienteCadastroActivity" />
         <activity
-            android:name=".FuncionarioCadastroActivity"
-            android:exported="false" />
-        <activity android:name=".ClienteCadastroActivity" />
-        <activity
-            android:name=".SplashActivity"
+            android:name=".Activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SobreActivity" />
+        <activity android:name=".Activities.LoginActivity" />
+        <activity android:name=".Activities.SobreActivity" />
     </application>
 
 </manifest>
