@@ -18,7 +18,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:padding="20dp"
         app:layout_constraintBottom_toTopOf="@+id/clienteCadastro_menu"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,8 +27,42 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <TextView
+                style="@style/labelForms"
+                android:text="@string/txtMembros"/>
+
+            <RelativeLayout
+                android:id="@+id/escolher_membros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtMembrosSelecionados"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_preto"
+                    android:hint="@string/txtSelecioneMEmbros"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="15dp"
+                    android:fontFamily="@font/raleway"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/dropdown" />
+
+            </RelativeLayout>
 
             <TextView
                 style="@style/labelForms"
@@ -42,7 +76,7 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/inputCliente_UF"
+                    android:id="@+id/spinnerProjeto_cliente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -103,7 +137,7 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/spinner_status"
+                    android:id="@+id/spinnerProjeto_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -137,7 +171,7 @@
                 android:orientation="horizontal">
 
                 <Spinner
-                    android:id="@+id/spinner_servico"
+                    android:id="@+id/spinnerProjeto_servico"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -159,39 +193,7 @@
 
             </RelativeLayout>
 
-            <TextView
-                style="@style/labelForms"
-                android:text="@string/txtMembros"/>
 
-            <RelativeLayout
-                android:id="@+id/escolher_membros"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txtMembrosSelecionados"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_preto"
-                    android:hint="@string/txtSelecioneMEmbros"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="15dp"
-                    android:fontFamily="@font/raleway"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="15dp"
-                    android:src="@drawable/dropdown" />
-
-            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -200,6 +202,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/btnCadastrarProjeto"
                     style="@style/btnAdicionar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

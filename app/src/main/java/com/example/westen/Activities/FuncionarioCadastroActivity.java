@@ -107,6 +107,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity {
             FuncionarioCargo = txtCargo.getText().toString();
             FuncionarioSenha = txtSenha.getText().toString();
 
+
             Funcionario funcionario = new Funcionario(FuncionarioCPF,
                     FuncionarioNome,
                     FuncionarioEmail,

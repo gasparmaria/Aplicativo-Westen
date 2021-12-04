@@ -9,10 +9,12 @@ import com.example.westen.Adapters.ListViewFuncionarioAdapter;
 import com.example.westen.DAO.FuncionarioDAO;
 import com.example.westen.Funcionario;
 import com.example.westen.R;
+import com.example.westen.databinding.ActivityFuncionarioListarBinding;
 
 import java.util.ArrayList;
 
 public class FuncionarioListarActivity extends AppCompatActivity {
+
 
     ListView listViewFuncionarios;
     ArrayList<Funcionario> listaFuncionarios;

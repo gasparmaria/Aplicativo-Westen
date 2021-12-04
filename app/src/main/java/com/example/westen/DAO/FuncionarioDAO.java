@@ -41,8 +41,7 @@ public class FuncionarioDAO {
         return banco.insert("tbFuncionario", null, values);
     }
 
-    public List<Funcionario> selectFuncionario()
-    {
+    public List<Funcionario> selectFuncionario(){
         List<Funcionario> listaFuncionarios = new ArrayList<>();
 
         Cursor cursor = banco.query("tbFuncionario",
@@ -51,7 +50,7 @@ public class FuncionarioDAO {
                         "FuncionarioNome",
                         "FuncionarioEmail",
                         "FuncionarioSenha",
-                        "FuncionarioFoto",
+//                        "FuncionarioFoto",
                         "FuncionarioCargo",
                         "FuncionarioNumeroEndereco",
                         "FuncionarioComplementoEndereco",
@@ -75,21 +74,62 @@ public class FuncionarioDAO {
             funcionario.setFuncionarioNome(cursor.getString(1));
             funcionario.setFuncionarioEmail(cursor.getString(2));
             funcionario.setFuncionarioSenha(cursor.getString(3));
-            funcionario.setFuncionarioImagem(cursor.getBlob(4));
-            funcionario.setFuncionarioCargo(cursor.getString(5));
-            funcionario.setFuncionarioNumeroEndereco(cursor.getInt(6));
-            funcionario.setFuncionarioComplementoEndereco(cursor.getString(7));
-            funcionario.setFuncionarioTelefone(cursor.getString(8));
-            funcionario.setFuncionarioBairro(cursor.getString(9));
-            funcionario.setFuncionarioCidade(cursor.getString(10));
-            funcionario.setFuncionarioUF(cursor.getString(11));
-            funcionario.setFuncionarioCEP(cursor.getString(12));
-            funcionario.setFuncionarioLogradouro(cursor.getString(13));
+            // funcionario.setFuncionarioImagem(cursor.getBlob(4));
+            funcionario.setFuncionarioCargo(cursor.getString(4));
+            funcionario.setFuncionarioNumeroEndereco(cursor.getInt(5));
+            funcionario.setFuncionarioComplementoEndereco(cursor.getString(6));
+            funcionario.setFuncionarioTelefone(cursor.getString(7));
+            funcionario.setFuncionarioBairro(cursor.getString(8));
+            funcionario.setFuncionarioCidade(cursor.getString(9));
+            funcionario.setFuncionarioUF(cursor.getString(10));
+            funcionario.setFuncionarioCEP(cursor.getString(11));
+            funcionario.setFuncionarioLogradouro(cursor.getString(12));
 
             listaFuncionarios.add(funcionario);
         }
 
         return listaFuncionarios;
+    }
+
+    public String[] selectTodosNomesFuncionarios(){
+        ArrayList<String> listaFuncionariosNomes = new ArrayList<String>();
+
+        Cursor cursor = banco.query("tbFuncionario",
+                new String[] {
+                        "FuncionarioNome"
+                },
+                null,
+                null,
+                null,
+                null,
+                null);
+
+        while (cursor.moveToNext())
+        {
+            listaFuncionariosNomes.add(cursor.getString(0));
+        }
+
+        String[] arrayNomes = new String[listaFuncionariosNomes.size()];
+        arrayNomes = (String[]) listaFuncionariosNomes.toArray(arrayNomes);
+
+        return arrayNomes;
+    }
+
+    public String selectCPFPorNome(String nome){
+        String cpf = null;
+        Cursor cursor = banco.query("tbFuncionario",
+                new String[] {
+                        "FuncionarioCPF"
+                },
+                "FuncionarioNome",
+                new String[]{nome},
+                null,
+                null,
+                null);
+
+        cpf = cursor.getString(0);
+
+        return cpf;
     }
 
     public long updateFuncionario(Funcionario funcionario){

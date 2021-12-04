@@ -52,7 +52,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            app:srcCompat="@drawable/ic_listar"
+            app:srcCompat="@drawable/ic_menu_funcionario"
+            tools:ignore="MissingConstraints" />
+
+        <Space
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:srcCompat="@drawable/ic_menu_projetos"
             tools:ignore="MissingConstraints" />
 
         <Space
@@ -66,19 +79,6 @@
             android:layout_height="wrap_content"
             android:background="@null"
             app:srcCompat="@drawable/ic_perfil"
-            tools:ignore="MissingConstraints" />
-
-        <Space
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"/>
-
-        <ImageButton
-            android:id="@+id/imageButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            app:srcCompat="@drawable/ic_logout"
             tools:ignore="MissingConstraints" />
 
         <Space

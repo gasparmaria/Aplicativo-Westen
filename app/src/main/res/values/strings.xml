@@ -75,12 +75,14 @@
         <item>Cliente</item>
     </string-array>
     <string-array name="status">
-        <item>Status</item>
+        <item>A fazer</item>
+        <item>Em andamento</item>
+        <item>Concluidos</item>
     </string-array>
     <string-array name="servico">
-        <item>Serviço</item>
-    </string-array>
-    <string-array name="membros">
-        <item>Funcionário</item>
+        <item>IoT</item>
+        <item>Mobile</item>
+        <item>Desktop</item>
+        <item>Web</item>
     </string-array>
 </resources>

@@ -3,11 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/drawable/ic_logout.xml" value="0.240625" />
+        <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/drawable/ic_menu_funcionario.xml" value="0.240625" />
+        <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/drawable/ic_menu_projetos.xml" value="0.240625" />
         <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/drawable/input_azul.xml" value="0.240625" />
         <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/drawable/input_preto.xml" value="0.240625" />
         <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/layout/activity_cliente_cadastro.xml" value="0.25" />
         <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/layout/activity_projeto_cadastro.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/layout/activity_projeto_listar.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/layout/header.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/otavi/OneDrive/Documentos/Otavio/Some_Projects/TCM/Westen App/Aplicativo-Westen/app/src/main/res/layout/menu_inferior.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/card_sobre.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_adicionar.xml" value="0.2234375" />
         <entry key="..\:/Users/pc/Desktop/BG 2021/TCM/Aplicativo-Westen/app/src/main/res/drawable/ic_adicionar_imagem.xml" value="0.22552083333333334" />

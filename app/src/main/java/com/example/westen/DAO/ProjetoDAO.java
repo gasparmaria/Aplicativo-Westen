@@ -23,18 +23,18 @@ public class ProjetoDAO {
         banco = conexao.getWritableDatabase();
     }
 
-    public long insertProjeto(Projeto projeto, Cliente cliente){
+    public long insertProjeto(Projeto projeto){
         ContentValues values = new ContentValues();
-        values.put("ProjetoID", projeto.getProjetoID());
+        values.put("ProjetoID", "DEFAULT");
         values.put("ProjetoDataInicio", projeto.getProjetoDataInicio());
         values.put("ProjetoDataFinal", projeto.getProjetoDataFinal());
         values.put("ProjetoStatus", projeto.getProjetoStatus());
         values.put("ProjetoDescricao", projeto.getProjetoDescricao());
         values.put("ProjetoServico", projeto.getProjetoServico());
         values.put("ProjetoPreco", projeto.getProjetoPreco());
-        values.put("FK_ClienteCNPJ", cliente.getClienteCNPJ());
+        values.put("FK_ClienteCNPJ", projeto.getFK_ClienteCNPJ());
 
-        return banco.insert("tbFuncionario", null, values);
+        return banco.insert("tbProjeto", null, values);
     }
 
     public List<Projeto> selectProjeto(){
@@ -73,6 +73,28 @@ public class ProjetoDAO {
         }
 
         return listaProjetos;
+    }
+
+    public int selectUltimoProjetoCadastrado()
+    {
+        int id = 0;
+
+        Cursor cursor = banco.query("tbProjeto",
+                new String[] {
+                        "ProjetoID"
+                },
+                null,
+                null,
+                null,
+                null,
+                "ProjetoID DESC ",
+                String.valueOf(1));
+
+        while(cursor.moveToNext()){
+            id = cursor.getInt(0);
+        }
+
+        return id;
     }
 
     public long updateProjeto(Projeto projeto, Cliente cliente) {

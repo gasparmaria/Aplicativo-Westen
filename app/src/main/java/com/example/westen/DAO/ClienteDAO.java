@@ -5,11 +5,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.example.westen.Cliente;
 import com.example.westen.Conexao;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class ClienteDAO {
 
@@ -37,6 +43,29 @@ public class ClienteDAO {
         values.put("ClienteLogradouro", cliente.getClienteLogradouro());
 
         return banco.insert("tbCliente", null, values);
+    }
+
+    public List<String> selectTodosNomesClientes()
+    {
+        List<String> clienteNomes = new ArrayList<>();
+
+        Cursor cursor = banco.query("tbCliente",
+                new String[] {
+                        "ClienteNome"
+                },
+                null,
+                null,
+                null,
+                null,
+                null);
+
+        while(cursor.moveToNext()){
+            String nome = cursor.getString(0);
+            clienteNomes.add(nome);
+        }
+
+
+        return clienteNomes;
     }
 
     public List<Cliente> selectCliente()
@@ -84,6 +113,25 @@ public class ClienteDAO {
         }
 
         return listaClientes;
+    }
+
+    public String selectCNPJPorNome(String nome)
+    {
+        String cnpj = null;
+        Cursor cursor = banco.query("tbCliente",
+                new String[] {
+                        "ClienteCNPJ"
+                },
+                "ClienteNome",
+                new String[]{nome},
+                null,
+                null,
+                null,
+                String.valueOf(1));
+
+        cnpj = cursor.getString(0);
+
+        return cnpj;
     }
 
     public long updateCliente(Cliente cliente){
