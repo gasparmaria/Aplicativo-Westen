@@ -101,32 +101,39 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
         btnCadastrarProjeto.setOnClickListener(v -> {
             ClienteDAO clienteDAO = new ClienteDAO(getApplicationContext());
 
-            String nomeClienteSelecionado = spinnerCliente.toString();
+            String nomeClienteSelecionado = spinnerCliente.getSelectedItem().toString();
 
             String clienteCNPJ = clienteDAO.selectCNPJPorNome(nomeClienteSelecionado);
 
             Projeto projeto = new Projeto(
-                    spinnerStatus.toString(),
+                    spinnerStatus.getSelectedItem().toString(),
                     inputProjeto_descricao.getText().toString(),
-                    spinnerServico.toString(),
+                    spinnerServico.getSelectedItem().toString(),
                     inputProjeto_dataInicio.getText().toString(),
                     inputProjeto_dataFinal.getText().toString(),
                     clienteCNPJ
             );
 
             projetoDAO = new ProjetoDAO(getApplicationContext());
-            projetoDAO.insertProjeto(projeto);
 
-            FuncionarioProjetoDAO funcionarioprojetoDAO = new FuncionarioProjetoDAO(getApplicationContext());
-            int projetoID = projetoDAO.selectUltimoProjetoCadastrado();
-
-            for (int i = 0; i < membrosList.size() - 1; i++)
+            try
             {
-                String nomeSelecionado = nomesMembros[membrosList.get(i)];
-                FuncionarioProjeto funcionarioProjeto = new FuncionarioProjeto(nomeSelecionado, projetoID);
-                funcionarioprojetoDAO.insertFuncionarioProjeto(funcionarioProjeto);
+                projetoDAO.insertProjeto(projeto);
+                FuncionarioProjetoDAO funcionarioprojetoDAO = new FuncionarioProjetoDAO(getApplicationContext());
+                int projetoID = projetoDAO.selectUltimoProjetoCadastrado();
+
+                for (int i = 0; i < membrosList.size() - 1; i++)
+                {
+                    String nomeSelecionado = nomesMembros[membrosList.get(i)];
+                    FuncionarioProjeto funcionarioProjeto = new FuncionarioProjeto(nomeSelecionado, projetoID);
+                    funcionarioprojetoDAO.insertFuncionarioProjeto(funcionarioProjeto);
+                }
+                Toast.makeText(getApplicationContext(), "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
             }
-            Toast.makeText(getApplicationContext(), "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
+            catch (Exception e)
+            {
+
+            }
         });
 
         carregarSpinnerCliente();

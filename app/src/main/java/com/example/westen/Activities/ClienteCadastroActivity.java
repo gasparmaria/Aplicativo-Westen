@@ -93,7 +93,7 @@ public class ClienteCadastroActivity extends AppCompatActivity {
             ClienteTelefone = txtTelefone.getText().toString();
             ClienteBairro = txtBairro.getText().toString();
             ClienteCidade = txtCidade.getText().toString();
-            ClienteUF = txtUF.toString();
+            ClienteUF = txtUF.getSelectedItem().toString();
             ClienteCEP = txtCEP.getText().toString();
             ClienteLogradouro = txtLogradouro.getText().toString();
 

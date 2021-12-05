@@ -119,18 +119,18 @@ public class ClienteDAO {
     {
         String cnpj = null;
         Cursor cursor = banco.query("tbCliente",
-                new String[] {
-                        "ClienteCNPJ"
-                },
-                "ClienteNome",
+                new String[]{"ClienteCNPJ"},
+                "ClienteNome = ?",
                 new String[]{nome},
                 null,
                 null,
                 null,
-                String.valueOf(1));
-
-        cnpj = cursor.getString(0);
-
+                String.valueOf(1)
+        );
+        while(cursor.moveToNext())
+        {
+            cnpj = cursor.getString(0);
+        }
         return cnpj;
     }
 

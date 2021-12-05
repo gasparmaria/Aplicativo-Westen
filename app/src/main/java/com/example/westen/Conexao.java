@@ -77,6 +77,11 @@ public class Conexao extends SQLiteOpenHelper {
     public Cursor getNovaQuery(String sql)
     {
         SQLiteDatabase database = getWritableDatabase();
-        return database.rawQuery(sql, null);
+        Cursor cursor = database.rawQuery(sql, null);
+        if (cursor.getCount() > 0)
+        {
+            return cursor;
+        }
+        return null;
     }
 }
