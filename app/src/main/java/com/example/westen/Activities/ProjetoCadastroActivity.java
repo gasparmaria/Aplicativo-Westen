@@ -3,6 +3,7 @@ package com.example.westen.Activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -120,8 +121,8 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
             {
                 projetoDAO.insertProjeto(projeto);
                 FuncionarioProjetoDAO funcionarioprojetoDAO = new FuncionarioProjetoDAO(getApplicationContext());
-                int projetoID = projetoDAO.selectUltimoProjetoCadastrado();
 
+                int projetoID = projetoDAO.selectUltimoProjetoCadastrado();
                 for (int i = 0; i < membrosList.size() - 1; i++)
                 {
                     String nomeSelecionado = nomesMembros[membrosList.get(i)];
@@ -129,10 +130,11 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
                     funcionarioprojetoDAO.insertFuncionarioProjeto(funcionarioProjeto);
                 }
                 Toast.makeText(getApplicationContext(), "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getBaseContext(), ProjetoListarActivity.class));
             }
             catch (Exception e)
             {
-
+                Toast.makeText(getApplicationContext(), "ERRO! O Cadastro falhou", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -78,10 +78,6 @@ public class Conexao extends SQLiteOpenHelper {
     {
         SQLiteDatabase database = getWritableDatabase();
         Cursor cursor = database.rawQuery(sql, null);
-        if (cursor.getCount() > 0)
-        {
-            return cursor;
-        }
-        return null;
+        return cursor;
     }
 }

@@ -75,15 +75,13 @@ public class ClienteCadastroActivity extends AppCompatActivity {
         txtComplemento = findViewById(R.id.inputCliente_complemento);
         txtTelefone = findViewById(R.id.inputCliente_telefone);
         txtBairro = findViewById(R.id.inputCliente_bairro);
-        txtCidade = findViewById(R.id.inputCliente_complemento);
+        txtCidade = findViewById(R.id.inputCliente_cidade);
         txtUF = findViewById(R.id.inputCliente_UF);
         txtCEP = findViewById(R.id.inputCliente_cep);
         txtLogradouro = findViewById(R.id.inputCliente_logradouro);
         imageViewCliente = findViewById(R.id.imagemCliente);
 
-        btnAddImagem.setOnClickListener(v -> {
-            visualizarGaleria();
-        });
+        btnAddImagem.setOnClickListener(v -> visualizarGaleria());
 
         btnCadastrarCliente.setOnClickListener(v -> {
             ClienteCNPJ = txtCNPJ.getText().toString();
@@ -168,7 +166,6 @@ public class ClienteCadastroActivity extends AppCompatActivity {
         Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
-        byte[] byteArray = stream.toByteArray();
-        return byteArray;
+        return stream.toByteArray();
     }
 }
