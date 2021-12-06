@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,8 @@ import java.util.List;
 
 public class ProjetoCadastroActivity extends AppCompatActivity {
 
+    Menu menu;
+
     Spinner spinnerCliente, spinnerServico, spinnerStatus;
     Button btnCadastrarProjeto;
     EditText inputProjeto_descricao,
@@ -36,6 +39,7 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
     TextView txtMembrosSelecionados;
 
     ProjetoDAO projetoDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,8 +130,16 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
                 for (int i = 0; i < membrosList.size() - 1; i++)
                 {
                     String nomeSelecionado = nomesMembros[membrosList.get(i)];
+                    // String cpf = funcionarioDAO.selectCPFPorNome(nomeSelecionado);
+
                     FuncionarioProjeto funcionarioProjeto = new FuncionarioProjeto(nomeSelecionado, projetoID);
-                    funcionarioprojetoDAO.insertFuncionarioProjeto(funcionarioProjeto);
+                    try {
+                        funcionarioprojetoDAO.insertFuncionarioProjeto(funcionarioProjeto);
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(getApplicationContext(), "AQUI", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 Toast.makeText(getApplicationContext(), "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getBaseContext(), ProjetoListarActivity.class));
@@ -150,4 +162,27 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCliente.setAdapter(dataAdapter);
     }
+
+
+    public void abrirHome(View view){
+        startActivity(new Intent(getBaseContext(), MainActivity.class));
+        finish();
+    }
+    public void abrirProjeto(View view){
+        startActivity(new Intent(getBaseContext(), ProjetoListarActivity.class));
+        finish();
+    }
+    public void abrirFuncionario(View view){
+        startActivity(new Intent(getBaseContext(), FuncionarioListarActivity.class));
+        finish();
+    }
+    public void abrirCliente(View view){
+        startActivity(new Intent(getBaseContext(), ClienteListarActivity.class));
+        finish();
+    }
+    public void abrirPerfil(View view){
+        startActivity(new Intent(getBaseContext(), PerfilActivity.class));
+        finish();
+    }
+
 }

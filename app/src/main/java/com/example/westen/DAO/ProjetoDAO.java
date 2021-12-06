@@ -25,13 +25,11 @@ public class ProjetoDAO {
 
     public long insertProjeto(Projeto projeto){
         ContentValues values = new ContentValues();
-        values.put("ProjetoID", "DEFAULT");
         values.put("ProjetoDataInicio", projeto.getProjetoDataInicio());
         values.put("ProjetoDataFinal", projeto.getProjetoDataFinal());
         values.put("ProjetoStatus", projeto.getProjetoStatus());
         values.put("ProjetoDescricao", projeto.getProjetoDescricao());
         values.put("ProjetoServico", projeto.getProjetoServico());
-        values.put("ProjetoPreco", projeto.getProjetoPreco());
         values.put("FK_ClienteCNPJ", projeto.getFK_ClienteCNPJ());
 
         return banco.insert("tbProjeto", null, values);
@@ -48,7 +46,6 @@ public class ProjetoDAO {
                         "ProjetoStatus",
                         "ProjetoDescricao",
                         "ProjetoServico",
-                        "ProjetoPreco",
                         "FK_ClienteCNPJ"
                 },
                 null,
@@ -66,8 +63,7 @@ public class ProjetoDAO {
             projeto.setProjetoStatus(cursor.getString(3));
             projeto.setProjetoDescricao(cursor.getString(4));
             projeto.setProjetoServico(cursor.getString(5));
-            projeto.setProjetoPreco(cursor.getDouble(6));
-            projeto.setFK_ClienteCNPJ(cursor.getString(7));
+            projeto.setFK_ClienteCNPJ(cursor.getString(6));
 
             listaProjetos.add(projeto);
         }
@@ -105,7 +101,6 @@ public class ProjetoDAO {
         values.put("ProjetoStatus", projeto.getProjetoStatus());
         values.put("ProjetoDescricao", projeto.getProjetoDescricao());
         values.put("ProjetoServico", projeto.getProjetoServico());
-        values.put("ProjetoPreco", projeto.getProjetoPreco());
         values.put("FK_ClienteCNPJ", cliente.getClienteCNPJ());
 
         return banco.update("tbProjeto", values, "ProjetoID = ?", new String[]{String.valueOf(projeto.getProjetoID())});

@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -113,7 +114,7 @@ public class ClienteCadastroActivity extends AppCompatActivity {
             try{
                 clienteDAO.insertCliente(cliente);
                 Toast.makeText(getApplicationContext(), "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getBaseContext(), ClienteListarActivity.class));
+                startActivity(new Intent(getBaseContext(), ProjetoCadastroActivity.class));
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -167,5 +168,26 @@ public class ClienteCadastroActivity extends AppCompatActivity {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
         return stream.toByteArray();
+    }
+
+    public void abrirHome(View view){
+        startActivity(new Intent(getBaseContext(), MainActivity.class));
+        finish();
+    }
+    public void abrirProjeto(View view){
+        startActivity(new Intent(getBaseContext(), ProjetoListarActivity.class));
+        finish();
+    }
+    public void abrirFuncionario(View view){
+        startActivity(new Intent(getBaseContext(), FuncionarioListarActivity.class));
+        finish();
+    }
+    public void abrirCliente(View view){
+        startActivity(new Intent(getBaseContext(), ClienteListarActivity.class));
+        finish();
+    }
+    public void abrirPerfil(View view){
+        startActivity(new Intent(getBaseContext(), PerfilActivity.class));
+        finish();
     }
 }

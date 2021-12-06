@@ -115,6 +115,27 @@ public class ClienteDAO {
         return listaClientes;
     }
 
+    public Cliente selectClientePorCNPJ(String cnpj){
+        Cliente cliente = new Cliente();
+        Cursor cursor = banco.query("tbCliente",
+                new String[]{"ClienteNome, ClienteLogo, ClienteDescricao"},
+                "ClienteCNPJ = ?",
+                new String[]{cnpj},
+                null,
+                null,
+                null,
+                String.valueOf(1)
+        );
+        while(cursor.moveToNext())
+        {
+            cliente.setClienteNome(cursor.getString(0));
+            cliente.setClienteImagem(cursor.getBlob(1));
+            cliente.setClienteDescricao(cursor.getString(2));
+        }
+
+        return cliente;
+    }
+
     public String selectCNPJPorNome(String nome)
     {
         String cnpj = null;

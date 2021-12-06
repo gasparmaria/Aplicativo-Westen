@@ -47,7 +47,7 @@ public class ListViewFuncionarioAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        ViewHolder holder = new ViewHolder();
+        ListViewFuncionarioAdapter.ViewHolder holder = new ListViewFuncionarioAdapter.ViewHolder();
 
         if(row == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -62,11 +62,11 @@ public class ListViewFuncionarioAdapter extends BaseAdapter {
             holder = (ViewHolder) row.getTag();
         }
 
-        Funcionario Funcionario = listaFuncionarios.get(position);
+        Funcionario funcionario = listaFuncionarios.get(position);
 
         //holder.txtFuncionarioCodigo.setText(String.valueOf(position));
-        holder.txtFuncionarioNome.setText(Funcionario.getFuncionarioNome());
-        holder.txtFuncionarioCargo.setText(Funcionario.getFuncionarioCargo());
+        holder.txtFuncionarioNome.setText(funcionario.getFuncionarioNome());
+        holder.txtFuncionarioCargo.setText(funcionario.getFuncionarioCargo());
 
         return row;
     }

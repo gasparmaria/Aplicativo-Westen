@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -101,7 +102,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity {
             FuncionarioTelefone = txtTelefone.getText().toString();
             FuncionarioBairro = txtBairro.getText().toString();
             FuncionarioCidade = txtCidade.getText().toString();
-            FuncionarioUF = txtUF.toString();
+            FuncionarioUF = txtUF.getSelectedItem().toString();
             FuncionarioCEP = txtCEP.getText().toString();
             FuncionarioLogradouro = txtLogradouro.getText().toString();
             FuncionarioCargo = txtCargo.getText().toString();
@@ -184,5 +185,26 @@ public class FuncionarioCadastroActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
         byte[] byteArray = stream.toByteArray();
         return byteArray;
+    }
+
+    public void abrirHome(View view){
+        startActivity(new Intent(getBaseContext(), MainActivity.class));
+        finish();
+    }
+    public void abrirProjeto(View view){
+        startActivity(new Intent(getBaseContext(), ProjetoListarActivity.class));
+        finish();
+    }
+    public void abrirFuncionario(View view){
+        startActivity(new Intent(getBaseContext(), FuncionarioListarActivity.class));
+        finish();
+    }
+    public void abrirCliente(View view){
+        startActivity(new Intent(getBaseContext(), ClienteListarActivity.class));
+        finish();
+    }
+    public void abrirPerfil(View view){
+        startActivity(new Intent(getBaseContext(), PerfilActivity.class));
+        finish();
     }
 }

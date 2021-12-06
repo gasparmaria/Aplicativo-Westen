@@ -153,4 +153,10 @@ public class Funcionario implements Serializable {
     public void setFuncionarioImagem(byte[] funcionarioImagem) {
         FuncionarioImagem = funcionarioImagem;
     }
+
+    @Override
+    public String toString()
+    {
+        return FuncionarioNome;
+    }
 }

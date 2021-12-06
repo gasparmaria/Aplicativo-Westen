@@ -53,7 +53,6 @@ public class Conexao extends SQLiteOpenHelper {
                 "ProjetoStatus TEXT NOT NULL," +
                 "ProjetoDescricao TEXT UNIQUE," +
                 "ProjetoServico TEXT NOT NULL," +
-                "ProjetoPreco DECIMAL(9,2)," +
                 "FK_ClienteCNPJ TEXT," +
                 "FOREIGN KEY (FK_ClienteCNPJ) REFERENCES Cliente (ClienteCNPJ))");
         db.execSQL("CREATE TABLE tbFuncionarioProjeto(" +

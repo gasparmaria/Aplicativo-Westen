@@ -22,11 +22,12 @@
             android:layout_width="wrap_content"/>
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/itemMenu_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
             app:srcCompat="@drawable/ic_home"
+            android:onClick="abrirHome"
             tools:ignore="MissingConstraints" />
 
         <Space
@@ -35,11 +36,12 @@
             android:layout_width="wrap_content"/>
 
         <ImageButton
-            android:id="@+id/imageButton1"
+            android:id="@+id/itemMenu_projeto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
             app:srcCompat="@drawable/ic_projeto"
+            android:onClick="abrirProjeto"
             tools:ignore="MissingConstraints" />
 
         <Space
@@ -48,11 +50,12 @@
             android:layout_width="wrap_content"/>
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/itemMenu_funcionario"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
             app:srcCompat="@drawable/ic_menu_funcionario"
+            android:onClick="abrirFuncionario"
             tools:ignore="MissingConstraints" />
 
         <Space
@@ -61,11 +64,12 @@
             android:layout_width="wrap_content"/>
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/itemMenu_cliente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
             app:srcCompat="@drawable/ic_menu_projetos"
+            android:onClick="abrirCliente"
             tools:ignore="MissingConstraints" />
 
         <Space
@@ -74,11 +78,12 @@
             android:layout_width="wrap_content"/>
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/itemMenu_perfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
             app:srcCompat="@drawable/ic_perfil"
+            android:onClick="abrirPerfil"
             tools:ignore="MissingConstraints" />
 
         <Space

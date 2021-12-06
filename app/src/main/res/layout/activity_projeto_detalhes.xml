@@ -23,6 +23,11 @@
             android:background="@color/black"
             android:padding="10dp">
 
+            <ImageView
+                android:id="@+id/imageClienteProjeto"
+                android:layout_width="match_parent"
+                android:layout_height="190dp" />
+
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,177 +61,145 @@
 
 
             <TextView
-                style="@style/txtTituloActivity"
                 android:id="@+id/txtEmpresa"
+                style="@style/txtTituloActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Empresa"/>
+                android:text="Empresa" />
 
             <TextView
-                style="@style/txtConteudoActivity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/txtDescricaoEmpresa"
-                android:text="Descrição da empresa"/>
+                style="@style/txtConteudoActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descrição da empresa" />
 
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <TextView
-                style="@style/txtTituloActivity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/txtProjeto"
-                android:text="Projeto"/>
-
-            <TextView
-                style="@style/txtConteudoActivity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtServicoProjeto"
-                android:text="Serviço"
-                android:layout_marginBottom="10dp"/>
-
-            <TextView
-                style="@style/txtConteudoActivity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtDescricaoProjeto"
-                android:lines="4"
-                android:text="Descrição do projeto"/>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <TextView
-                    style="@style/txtTituloActivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lblDataInicio"
-                    android:text="Data de início: "/>
-
-                <TextView
-                    style="@style/txtConteudoActivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtDataInicio"
-                    android:text="00/00/0000"/>
-            </LinearLayout>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <TextView
-                    style="@style/txtTituloActivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lblDataFinal"
-                    android:text="Data final: "/>
-
-                <TextView
-                    style="@style/txtConteudoActivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtDataFinal"
-                    android:text="00/00/0000"/>
-            </LinearLayout>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <TextView
                 style="@style/txtTituloActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Projeto" />
+
+            <TextView
+                android:id="@+id/txtServicoProjeto"
+                style="@style/txtConteudoActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Serviço" />
+
+            <TextView
+                android:id="@+id/txtDescricaoProjeto"
+                style="@style/txtConteudoActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="4"
+                android:text="Descrição do projeto" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lblDataInicio"
+                    style="@style/txtTituloActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data de início: " />
+
+                <TextView
+                    android:id="@+id/txtDataInicio"
+                    style="@style/txtConteudoActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00/00/0000" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lblDataFinal"
+                    style="@style/txtTituloActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data final: " />
+
+                <TextView
+                    android:id="@+id/txtDataFinal"
+                    style="@style/txtConteudoActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00/00/0000" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
                 android:id="@+id/txtEquipe"
-                android:text="Equipe"/>
+                style="@style/txtTituloActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Equipe" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/image_equipe"/>
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/image_equipe"
-                    android:layout_marginLeft="-20dp"/>
+                <ListView
+                    android:id="@+id/listviewFuncionariosProjeto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
-
-                <TextView
-                    style="@style/txtTituloActivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/lblValor"
-                    android:text="Valor: "/>
-
-                <TextView
-                    style="@style/txtConteudoActivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtValor"
-                    android:text="R$0.000,00"/>
-            </LinearLayout>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <TextView
+                android:id="@+id/lblStatus"
                 style="@style/txtTituloActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/lblStatus"
-                android:text="Status"/>
+                android:text="Status" />
 
             <TextView
+                android:id="@+id/txtStatus"
                 style="@style/txtConteudoActivity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtStatus"
-                android:text="Finalizado"/>
+                android:text="Finalizado" />
 
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

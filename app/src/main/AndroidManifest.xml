@@ -17,6 +17,9 @@
             android:name=".Activities.ProjetoListarActivity"
             android:exported="false" />
         <activity
+            android:name=".Activities.Menu"
+            android:exported="false" />
+        <activity
             android:name=".Activities.MainActivity"
             android:exported="false" />
         <activity

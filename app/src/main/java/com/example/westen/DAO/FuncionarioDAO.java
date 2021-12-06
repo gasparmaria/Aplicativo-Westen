@@ -44,28 +44,24 @@ public class FuncionarioDAO {
     public List<Funcionario> selectFuncionario(){
         List<Funcionario> listaFuncionarios = new ArrayList<>();
 
-        Cursor cursor = banco.query("tbFuncionario",
-                new String[] {
-                        "FuncionarioCPF",
-                        "FuncionarioNome",
-                        "FuncionarioEmail",
-                        "FuncionarioSenha",
-//                        "FuncionarioFoto",
-                        "FuncionarioCargo",
-                        "FuncionarioNumeroEndereco",
-                        "FuncionarioComplementoEndereco",
-                        "FuncionarioTelefone",
-                        "FuncionarioBairro",
-                        "FuncionarioCidade",
-                        "FuncionarioUF",
-                        "FuncionarioCEP",
-                        "FuncionarioLogradouro"
-                },
-                null,
-                null,
-                null,
-                null,
-                null);
+        Cursor cursor = banco.rawQuery("SELECT  " +
+                        "FuncionarioCPF, " +
+                        "FuncionarioNome, " +
+                        "FuncionarioEmail, " +
+                        "FuncionarioSenha, " +
+                        "FuncionarioCargo, " +
+                        "FuncionarioNumeroEndereco, " +
+                        "FuncionarioComplementoEndereco, " +
+                        "FuncionarioTelefone, " +
+                        "FuncionarioBairro, " +
+                        "FuncionarioCidade, " +
+                        "FuncionarioUF, " +
+                        "FuncionarioCEP, " +
+                        "FuncionarioLogradouro, " +
+                        "FuncionarioFoto " +
+                "FROM tbFuncionario",
+                null
+        );
 
         while(cursor.moveToNext()){
             Funcionario funcionario = new Funcionario();
@@ -74,7 +70,6 @@ public class FuncionarioDAO {
             funcionario.setFuncionarioNome(cursor.getString(1));
             funcionario.setFuncionarioEmail(cursor.getString(2));
             funcionario.setFuncionarioSenha(cursor.getString(3));
-            // funcionario.setFuncionarioImagem(cursor.getBlob(4));
             funcionario.setFuncionarioCargo(cursor.getString(4));
             funcionario.setFuncionarioNumeroEndereco(cursor.getInt(5));
             funcionario.setFuncionarioComplementoEndereco(cursor.getString(6));
@@ -84,6 +79,7 @@ public class FuncionarioDAO {
             funcionario.setFuncionarioUF(cursor.getString(10));
             funcionario.setFuncionarioCEP(cursor.getString(11));
             funcionario.setFuncionarioLogradouro(cursor.getString(12));
+            funcionario.setFuncionarioImagem(cursor.getBlob(13));
 
             listaFuncionarios.add(funcionario);
         }
@@ -127,9 +123,33 @@ public class FuncionarioDAO {
                 null,
                 null);
 
-        cpf = cursor.getString(0);
+        while (cursor.moveToNext())
+        {
+
+            cpf = cursor.getString(0);
+        }
 
         return cpf;
+    }
+
+    public Funcionario selectFuncionarioPorCPF(String cpf){
+        Funcionario funcionario = new Funcionario();
+        Cursor cursor = banco.query("tbFuncionario",
+                new String[] {
+                        "FuncionarioNome"
+                },
+                "FuncionarioCPF",
+                new String[]{cpf},
+                null,
+                null,
+                null);
+
+        while (cursor.moveToNext())
+        {
+            funcionario.setFuncionarioNome(cursor.getString(0));
+        }
+
+        return funcionario;
     }
 
     public long updateFuncionario(Funcionario funcionario){

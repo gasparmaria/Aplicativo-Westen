@@ -13,10 +13,9 @@ public class Projeto implements Serializable {
             ProjetoDataFinal,
             FK_ClienteCNPJ;
 
-    private double ProjetoPreco;
-
     public Projeto() {
     }
+
 
     public Projeto(String projetoStatus, String projetoDescricao, String projetoServico, String projetoDataInicio, String projetoDataFinal, String FK_ClienteCNPJ) {
         ProjetoStatus = projetoStatus;
@@ -25,6 +24,7 @@ public class Projeto implements Serializable {
         ProjetoDataInicio = projetoDataInicio;
         ProjetoDataFinal = projetoDataFinal;
         this.FK_ClienteCNPJ = FK_ClienteCNPJ;
+
     }
 
     public Projeto(String projetoServico) {
@@ -69,14 +69,6 @@ public class Projeto implements Serializable {
 
     public void setProjetoServico(String projetoServico) {
         ProjetoServico = projetoServico;
-    }
-
-    public double getProjetoPreco() {
-        return ProjetoPreco;
-    }
-
-    public void setProjetoPreco(double projetoPreco) {
-        ProjetoPreco = projetoPreco;
     }
 
     public String getProjetoDataInicio() {
