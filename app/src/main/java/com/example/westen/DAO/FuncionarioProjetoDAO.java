@@ -53,10 +53,8 @@ public class FuncionarioProjetoDAO{
         return listafuncionarioProjeto;
     }
 
-    public long updateFuncionarioProjeto(FuncionarioProjeto funcionarioProjeto){
+    public void deleteFuncionarioProjeto(int projetoID){
         ContentValues values = new ContentValues();
-        values.put("FK_FuncionarioCPF", funcionarioProjeto.getFK_FuncionarioCPF());
-
-        return banco.update("tbFuncionarioProjeto", values, "FK_ProjetoID = ?", new String[]{String.valueOf(funcionarioProjeto.getFK_ProjetoID())});
+        banco.delete("tbFuncionarioProjeto", "FK_ProjetoID = ?", new String[]{String.valueOf(projetoID)});
     }
 }

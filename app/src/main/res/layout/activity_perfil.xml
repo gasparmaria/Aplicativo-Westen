@@ -30,12 +30,14 @@
         app:layout_constraintTop_toBottomOf="@+id/clienteCadastro_header">
 
         <ImageView
+            android:id="@+id/imgPerfil"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:background="@drawable/imageview_perfil" />
 
 
         <TextView
+            android:id="@+id/txtFuncionarioNome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/raleway"
@@ -45,6 +47,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/txtFuncionarioCargo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/raleway"
@@ -58,6 +61,7 @@
             android:layout_height="wrap_content"/>
 
         <Button
+            android:id="@+id/btnPerfilEditar"
             style="@style/btnEditarPerfil"
             android:text="Editar perfil" />
 
@@ -85,46 +89,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    app:srcCompat="@drawable/ic_equipes" />
-
-                <TextView
-                    style="@style/txtSubTituloActivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="0dp"
-                    android:text="@string/txtValorEquipes"
-                    android:textSize="18sp" />
-
-                <TextView
-                    style="@style/txtConteudoActivity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:text="@string/txtEquipes"
-                    android:textAlignment="center"
-                    tools:ignore="RtlCompat" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight=".3"
-                android:background="@drawable/card_sobre"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:padding="8dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
                     android:padding="5dp"
                     app:srcCompat="@drawable/ic_desenvolvendo" />
 
                 <TextView
+                    android:id="@+id/txtFuncionarioDesenvolvendo"
                     style="@style/txtSubTituloActivity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -147,6 +116,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="1dp"
                 android:layout_weight=".3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/card_sobre"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
@@ -160,6 +131,7 @@
                     app:srcCompat="@drawable/ic_concluidos" />
 
                 <TextView
+                    android:id="@+id/txtFuncionarioConcluidos"
                     style="@style/txtSubTituloActivity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -173,6 +145,34 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="@string/txtConcluidos"
+                    android:textAlignment="center"
+                    tools:ignore="RtlCompat" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnSair"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="1dp"
+                android:layout_weight=".3"
+                android:background="@drawable/card_sobre"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:srcCompat="@drawable/ic_sair" />
+
+                <TextView
+                    style="@style/txtConteudoActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/txtLogout"
+                    android:textSize="18sp"
                     android:textAlignment="center"
                     tools:ignore="RtlCompat" />
             </LinearLayout>

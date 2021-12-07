@@ -1,7 +1,9 @@
 package com.example.westen.Activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -22,6 +24,7 @@ import com.example.westen.Conexao;
 import com.example.westen.DAO.ClienteDAO;
 import com.example.westen.DAO.FuncionarioDAO;
 import com.example.westen.DAO.FuncionarioProjetoDAO;
+import com.example.westen.DAO.ProjetoDAO;
 import com.example.westen.Funcionario;
 import com.example.westen.FuncionarioProjeto;
 import com.example.westen.Projeto;
@@ -43,12 +46,15 @@ public class ProjetoDetalhesActivity extends AppCompatActivity {
             txtStatus;
     ImageView imageClienteProjeto;
     ListView listViewFuncionarios;
-    ImageButton btnProjetoEditar;
+    ImageButton btnProjetoEditar,
+                btnProjetoDeletar;
+    AlertDialog alerta;
 
     Cliente cliente;
     Funcionario funcionario;
     FuncionarioProjetoDAO funcionarioProjetoDAO;
     FuncionarioDAO funcionarioDAO;
+    ProjetoDAO projetoDAO;
 
     List<Funcionario> listaFuncionarios = new ArrayList<>();
     List<Cliente> listaClientes = new ArrayList<>();
@@ -70,6 +76,7 @@ public class ProjetoDetalhesActivity extends AppCompatActivity {
         txtStatus = findViewById(R.id.txtStatus);
         imageClienteProjeto = findViewById(R.id.imageClienteProjeto);
         btnProjetoEditar = findViewById(R.id.btnProjetoEditar);
+        btnProjetoDeletar = findViewById(R.id.btnProjetoDeletar);
 
         Intent intent = getIntent();
         Projeto projeto = ((Projeto) intent.getSerializableExtra("Projeto"));
@@ -126,6 +133,27 @@ public class ProjetoDetalhesActivity extends AppCompatActivity {
                 intentAbrirEditar.putExtra("Projeto", (Serializable) projeto);
                 intentAbrirEditar.putExtra("Cliente", (Serializable) cliente);
                 startActivity(intentAbrirEditar);
+            });
+
+            btnProjetoDeletar.setOnClickListener(v ->{
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Excluir");
+                builder.setMessage("Deseja realmente excluir o projeto?");
+                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        projetoDAO = new ProjetoDAO(getApplicationContext());
+                        projetoDAO.deleteProjeto(projeto);
+                        startActivity(new Intent(getBaseContext(), ProjetoListarActivity.class));
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                    }
+                });
+                alerta = builder.create();
+                alerta.show();
             });
         }
     }

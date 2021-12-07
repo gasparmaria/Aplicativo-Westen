@@ -56,8 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:descendantFocusability="blocksDescendants"
                 android:background="@null"
+                android:descendantFocusability="blocksDescendants"
                 app:srcCompat="@drawable/ic_deletar_branco" />
         </RelativeLayout>
 

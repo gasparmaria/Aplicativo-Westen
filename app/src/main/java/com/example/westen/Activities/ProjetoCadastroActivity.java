@@ -52,6 +52,7 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
 
     ProjetoDAO projetoDAO;
     ClienteDAO clienteDAO;
+    FuncionarioProjetoDAO funcionarioProjetoDAO;
     String[] projetos,
              status;
 
@@ -118,7 +119,11 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
             buider.show();
         });
 
-        Intent intent = new Intent();
+        Intent intent = getIntent();
+
+        carregarSpinnerCliente();
+        carregarSpinnerServico();
+        carregarSpinnerStatus();
 
         if(intent != null){
             btnCadastrarProjeto.setText(R.string.txtSalvar);
@@ -141,10 +146,11 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
             int posicaoStatus;
             posicaoStatus = projetoStatus.indexOf(projeto.getProjetoStatus());
 
+
             inputProjeto_descricao.setText(projeto.getProjetoDescricao());
             inputProjeto_dataInicio.setText(projeto.getProjetoDataInicio());
             inputProjeto_dataFinal.setText(projeto.getProjetoDataFinal());
-            //spinnerCliente.setSelection(posicaoNome);
+            spinnerCliente.setSelection(posicaoNome);
             spinnerServico.setSelection(posicaoServico);
             spinnerStatus.setSelection(posicaoStatus);
 
@@ -156,37 +162,38 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
                 ProjetoDataFinal = inputProjeto_dataFinal.getText().toString();
                 FK_ClienteCNPJ = clienteDAO.selectCNPJPorNome(spinnerCliente.getSelectedItem().toString());
 
-                Projeto updateProjeto = new Projeto(ProjetoStatus,
-                                                    ProjetoDescricao,
-                                                    ProjetoServico,
-                                                    ProjetoDataInicio,
-                                                    ProjetoDataFinal);
+                Projeto updateProjeto = new Projeto();
+                updateProjeto.setProjetoDataInicio(ProjetoDataInicio);
+                updateProjeto.setProjetoDataFinal(ProjetoDataFinal);
+                updateProjeto.setProjetoStatus(ProjetoStatus);
+                updateProjeto.setProjetoDescricao(ProjetoDescricao);
+                updateProjeto.setProjetoServico(ProjetoServico);
 
-                Cliente updateCliente = new Cliente(FK_ClienteCNPJ);
+                Cliente updateCliente = new Cliente();
+                updateCliente.setClienteCNPJ(FK_ClienteCNPJ);
 
-                ProjetoDAO projetoDAO = new ProjetoDAO(ProjetoCadastroActivity.this);
+                projetoDAO = new ProjetoDAO(ProjetoCadastroActivity.this);
 
+                funcionarioProjetoDAO = new FuncionarioProjetoDAO(getApplicationContext());
 
-                try {
-                    FuncionarioProjetoDAO funcionarioprojetoDAO = new FuncionarioProjetoDAO(getApplicationContext());
+                int projetoID = projeto.getProjetoID();
 
-                    int projetoID = projeto.getProjetoID();
-                    for (int i = 0; i < membrosList.size(); i++) {
-                        String nomeSelecionado = nomesMembros[membrosList.get(i)];
-                        String cpf = funcionarioDAO.selectCPFPorNome(nomeSelecionado);
+                funcionarioProjetoDAO.deleteFuncionarioProjeto(projetoID);
 
-                        FuncionarioProjeto funcionarioProjeto = new FuncionarioProjeto(cpf, projetoID);
-                        try {
-                            funcionarioprojetoDAO.updateFuncionarioProjeto(funcionarioProjeto);
-                        } catch (Exception e) {
+                for (int i = 0; i < membrosList.size(); i++) {
+                    String nomeSelecionado = nomesMembros[membrosList.get(i)];
+                    String cpf = funcionarioDAO.selectCPFPorNome(nomeSelecionado);
 
-                        }
+                    FuncionarioProjeto funcionarioProjeto = new FuncionarioProjeto(cpf, projetoID);
+                    try {
+                        funcionarioProjetoDAO.insertFuncionarioProjeto(funcionarioProjeto);
+                    } catch (Exception e) {
+
                     }
-                    Toast.makeText(getApplicationContext(), "funcionario projeto funcionando", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getBaseContext(), ProjetoListarActivity.class));
-                } catch (Exception e) {
-
                 }
+                Toast.makeText(getApplicationContext(), "funcionario projeto funcionando", Toast.LENGTH_SHORT).show();
+
+                updateProjeto.setProjetoID(projeto.getProjetoID());
 
                 try{
                     projetoDAO.updateProjeto(updateProjeto, updateCliente);
@@ -240,10 +247,6 @@ public class ProjetoCadastroActivity extends AppCompatActivity {
                 }
             });
         }
-
-        carregarSpinnerCliente();
-        carregarSpinnerServico();
-        carregarSpinnerStatus();
     }
 
     private void carregarSpinnerCliente() {

@@ -115,9 +115,9 @@ public class FuncionarioDAO {
         String cpf = null;
         Cursor cursor = banco.query("tbFuncionario",
                 new String[] {
-                        "FuncionarioCPF"
+                    "FuncionarioCPF"
                 },
-                "FuncionarioNome",
+                "FuncionarioNome = ?",
                 new String[]{nome},
                 null,
                 null,
@@ -150,7 +150,7 @@ public class FuncionarioDAO {
                     "FuncionarioLogradouro, " +
                     "FuncionarioFoto "
                 },
-                "FuncionarioEmail",
+                "FuncionarioEmail = ?",
                 new String[]{email},
                 null,
                 null,
@@ -173,26 +173,6 @@ public class FuncionarioDAO {
             funcionario.setFuncionarioCEP(cursor.getString(11));
             funcionario.setFuncionarioLogradouro(cursor.getString(12));
             funcionario.setFuncionarioImagem(cursor.getBlob(13));
-        }
-
-        return funcionario;
-    }
-
-    public Funcionario selectFuncionarioPorCPF(String cpf){
-        Funcionario funcionario = new Funcionario();
-        Cursor cursor = banco.query("tbFuncionario",
-                new String[] {
-                        "FuncionarioNome"
-                },
-                "FuncionarioCPF",
-                new String[]{cpf},
-                null,
-                null,
-                null);
-
-        while (cursor.moveToNext())
-        {
-            funcionario.setFuncionarioNome(cursor.getString(0));
         }
 
         return funcionario;

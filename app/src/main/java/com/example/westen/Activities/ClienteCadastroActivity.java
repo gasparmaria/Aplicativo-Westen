@@ -30,6 +30,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
+@SuppressWarnings("unused")
 public class ClienteCadastroActivity extends AppCompatActivity {
 
     ImageButton btnAddImagem;
@@ -44,6 +45,7 @@ public class ClienteCadastroActivity extends AppCompatActivity {
             txtLogradouro,
             txtNumeroEndereco,
             txtUF;
+    @SuppressWarnings("unused")
     String ClienteCNPJ,
             ClienteNome,
             ClienteDescricao,
@@ -92,6 +94,7 @@ public class ClienteCadastroActivity extends AppCompatActivity {
             btnCadastrarCliente.setText(R.string.txtSalvar);
 
             Cliente cliente = ((Cliente) intent.getSerializableExtra("Cliente"));
+
             txtCNPJ.setText(cliente.getClienteCNPJ());
             txtNome.setText(cliente.getClienteNome());
             txtDescricao.setText(cliente.getClienteDescricao());

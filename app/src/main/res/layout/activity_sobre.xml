@@ -21,6 +21,7 @@
             android:background="@null"
             app:srcCompat="@drawable/ic_voltar"
             android:contentDescription="TODO"
+            android:onClick="voltarMain"
             tools:ignore="ContentDescription" />
 
         <LinearLayout

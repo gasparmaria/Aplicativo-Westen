@@ -67,11 +67,18 @@
     <string name="txtPerfil">Perfil</string>
     <string name="txtUF">UF</string>
     <string name="txtSalvar">Salvar</string>
+    <string name="txtFuncionarioEmAndamento">Funcionário não possui projetos em andamento.</string>
+    <string name="txtEmAndamento">Em andamento</string>
+    <string name="txtNaoIniciado">Não iniciados</string>
+    <string name="txtConcluido">Concluídos</string>
+    <string name="txtFuncionarioNaoIniciado">Funcionario não possui projetos não iniciados.</string>
+    <string name="txtFuncionarioConcluido">Funcionário não possui projetos concluídos.</string>
+    <string name="txtLogout">Logout</string>
     <string-array name="status">
         <item></item>
-        <item>A fazer</item>
+        <item>Não iniciado</item>
         <item>Em andamento</item>
-        <item>Concluidos</item>
+        <item>Concluido</item>
     </string-array>
     <string-array name="servico">
         <item></item>

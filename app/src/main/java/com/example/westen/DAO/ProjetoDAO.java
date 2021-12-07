@@ -95,7 +95,6 @@ public class ProjetoDAO {
 
     public long updateProjeto(Projeto projeto, Cliente cliente) {
         ContentValues values = new ContentValues();
-        values.put("ProjetoID", projeto.getProjetoID());
         values.put("ProjetoDataInicio", projeto.getProjetoDataInicio());
         values.put("ProjetoDataFinal", projeto.getProjetoDataFinal());
         values.put("ProjetoStatus", projeto.getProjetoStatus());
@@ -104,5 +103,15 @@ public class ProjetoDAO {
         values.put("FK_ClienteCNPJ", cliente.getClienteCNPJ());
 
         return banco.update("tbProjeto", values, "ProjetoID = ?", new String[]{String.valueOf(projeto.getProjetoID())});
+    }
+
+    public void deleteProjeto(Projeto projeto){
+        banco.delete("tbFuncionarioProjeto",
+                "FK_ProjetoID = ?",
+                new String[]{String.valueOf(projeto.getProjetoID())});
+
+        banco.delete("tbProjeto",
+                "ProjetoID = ?",
+                new String[]{String.valueOf(projeto.getProjetoID())});
     }
 }

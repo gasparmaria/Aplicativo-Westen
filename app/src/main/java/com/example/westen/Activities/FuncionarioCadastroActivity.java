@@ -57,7 +57,8 @@ public class FuncionarioCadastroActivity extends AppCompatActivity {
             FuncionarioCidade,
             FuncionarioUF,
             FuncionarioCEP,
-            FuncionarioLogradouro;
+            FuncionarioLogradouro,
+            FuncionarioNumero;
 
     int FuncionarioNumeroEndereco;
 
@@ -207,7 +208,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity {
         }
     }
 
-
+    // manipulação de imagens
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -257,6 +258,39 @@ public class FuncionarioCadastroActivity extends AppCompatActivity {
         return byteArray;
     }
 
+    // saved instance
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        FuncionarioCPF = txtCPF.getText().toString();
+        FuncionarioNome = txtNome.getText().toString();
+        FuncionarioEmail = txtEmail.getText().toString();
+        FuncionarioNumero = txtNumeroEndereco.getText().toString();
+        FuncionarioComplementoEndereco = txtComplemento.getText().toString();
+        FuncionarioTelefone = txtTelefone.getText().toString();
+        FuncionarioBairro = txtBairro.getText().toString();
+        FuncionarioCidade = txtCidade.getText().toString();
+        FuncionarioUF = txtUF.getText().toString();
+        FuncionarioCEP = txtCEP.getText().toString();
+        FuncionarioLogradouro = txtLogradouro.getText().toString();
+        FuncionarioCargo = txtCargo.getText().toString();
+
+        outState.putString("FuncionarioCPF", FuncionarioCPF);
+        outState.putString("FuncionarioNome", FuncionarioNome);
+        outState.putString("FuncionarioEmail", FuncionarioEmail);
+        outState.putString("FuncionarioNumeroEndereco", FuncionarioNumero);
+        outState.putString("FuncionarioComplementoEndereco", FuncionarioComplementoEndereco);
+        outState.putString("FuncionarioTelefone", FuncionarioTelefone);
+        outState.putString("FuncionarioBairro", FuncionarioBairro);
+        outState.putString("FuncionarioCidade", FuncionarioCidade);
+        outState.putString("FuncionarioUF", FuncionarioUF);
+        outState.putString("FuncionarioCEP", FuncionarioCEP);
+        outState.putString("FuncionarioLogradouro", FuncionarioLogradouro);
+        outState.putString("FuncionarioCargo", FuncionarioCargo);
+    }
+
+    // menu
     public void abrirHome(View view){
         startActivity(new Intent(getBaseContext(), MainActivity.class));
         finish();
