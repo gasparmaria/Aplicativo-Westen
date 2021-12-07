@@ -23,12 +23,9 @@ public class Projeto implements Serializable {
         ProjetoServico = projetoServico;
         ProjetoDataInicio = projetoDataInicio;
         ProjetoDataFinal = projetoDataFinal;
-        this.FK_ClienteCNPJ = FK_ClienteCNPJ;
-
     }
 
-    public Projeto(String projetoServico) {
-        ProjetoServico = projetoServico;
+    public Projeto(String projetoStatus, String projetoDescricao, String projetoServico, String projetoDataInicio, String projetoDataFinal) {
     }
 
     public int getProjetoID() {

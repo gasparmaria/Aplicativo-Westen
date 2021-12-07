@@ -42,19 +42,13 @@
     <string name="txtCidade">Cidade</string>
     <string name="txtEstado">UF</string>
     <string name="txtCadastrar">Cadastrar</string>
-    <string-array name="estados">
-        <item>UF</item>
-        <item>SP</item>
-        <item>RJ</item>
-        <item>MG</item>
-    </string-array>
     <string name="txtLogotipo">Logotipo</string>
     <string name="txtSenha">Senha</string>
     <string name="txtCargo">Cargo</string>
     <string name="txtCPF">CPF</string>
     <string name="txtCliente">Cliente</string>
-    <string name="txtDataInicio">DataInicio</string>
-    <string name="txtDataFinal">DataFinal</string>
+    <string name="txtDataInicio">Data de Início</string>
+    <string name="txtDataFinal">Data Final</string>
     <string name="txtStatus">Status</string>
     <string name="txtMembros">Membros</string>
     <string name="txtServico">Serviço</string>
@@ -71,15 +65,16 @@
     <string name="txtComplemento">Complemento</string>
     <string name="txtBairro">Bairro</string>
     <string name="txtPerfil">Perfil</string>
-    <string-array name="clientes">
-        <item>Cliente</item>
-    </string-array>
+    <string name="txtUF">UF</string>
+    <string name="txtSalvar">Salvar</string>
     <string-array name="status">
+        <item></item>
         <item>A fazer</item>
         <item>Em andamento</item>
         <item>Concluidos</item>
     </string-array>
     <string-array name="servico">
+        <item></item>
         <item>IoT</item>
         <item>Mobile</item>
         <item>Desktop</item>

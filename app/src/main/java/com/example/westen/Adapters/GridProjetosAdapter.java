@@ -1,6 +1,7 @@
 package com.example.westen.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -11,12 +12,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.westen.Activities.ClienteCadastroActivity;
+import com.example.westen.Activities.ProjetoCadastroActivity;
 import com.example.westen.Cliente;
 import com.example.westen.Projeto;
 import com.example.westen.R;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class GridProjetosAdapter extends BaseAdapter {

@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.westen.DAO.FuncionarioDAO;
 import com.example.westen.Funcionario;
+import com.example.westen.Projeto;
 import com.example.westen.R;
 
 import java.io.ByteArrayOutputStream;
@@ -42,7 +43,8 @@ public class FuncionarioCadastroActivity extends AppCompatActivity {
             txtCidade,
             txtCEP,
             txtLogradouro,
-            txtNumeroEndereco;
+            txtNumeroEndereco,
+            txtUF;
 
     String FuncionarioCPF,
             FuncionarioNome,
@@ -57,7 +59,6 @@ public class FuncionarioCadastroActivity extends AppCompatActivity {
             FuncionarioCEP,
             FuncionarioLogradouro;
 
-    Spinner txtUF;
     int FuncionarioNumeroEndereco;
 
     Button btnCadastrarFuncionario;
@@ -70,7 +71,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_funcionario_cadastro);
-
+        
         btnAddImagem = findViewById(R.id.btnAddImagem);
         btnCadastrarFuncionario = (Button) findViewById(R.id.btnCadastrarFuncionario);
 
@@ -81,60 +82,129 @@ public class FuncionarioCadastroActivity extends AppCompatActivity {
         txtComplemento = findViewById(R.id.inputFuncionario_complemento);
         txtTelefone = findViewById(R.id.inputFuncionario_telefone);
         txtBairro = findViewById(R.id.inputFuncionario_bairro);
-        txtCidade = findViewById(R.id.inputFuncionario_complemento);
+        txtCidade = findViewById(R.id.inputFuncionario_cidade);
         txtUF = findViewById(R.id.inputFuncionario_UF);
         txtCEP = findViewById(R.id.inputFuncionario_cep);
         txtLogradouro = findViewById(R.id.inputFuncionario_logradouro);
         txtCargo = findViewById(R.id.inputFuncionario_cargo);
         txtSenha = findViewById(R.id.inputFuncionario_senha);
         imageViewFuncionario = findViewById(R.id.imagemFuncionario);
-
+        
         btnAddImagem.setOnClickListener(v -> {
             visualizarGaleria();
         });
+        
+        Intent intent = getIntent();
 
-        btnCadastrarFuncionario.setOnClickListener(v -> {
-            FuncionarioCPF = txtCPF.getText().toString();
-            FuncionarioNome = txtNome.getText().toString();
-            FuncionarioEmail = txtEmail.getText().toString();
-            FuncionarioNumeroEndereco = Integer.valueOf(txtNumeroEndereco.getText().toString());
-            FuncionarioComplementoEndereco = txtComplemento.getText().toString();
-            FuncionarioTelefone = txtTelefone.getText().toString();
-            FuncionarioBairro = txtBairro.getText().toString();
-            FuncionarioCidade = txtCidade.getText().toString();
-            FuncionarioUF = txtUF.getSelectedItem().toString();
-            FuncionarioCEP = txtCEP.getText().toString();
-            FuncionarioLogradouro = txtLogradouro.getText().toString();
-            FuncionarioCargo = txtCargo.getText().toString();
-            FuncionarioSenha = txtSenha.getText().toString();
+        if (intent != null)
+        {
+            btnCadastrarFuncionario.setText(R.string.txtSalvar);
+
+            Funcionario funcionario = ((Funcionario) intent.getSerializableExtra("Funcionario"));
+            txtCPF.setText(funcionario.getFuncionarioCPF());
+            txtNome.setText(funcionario.getFuncionarioNome());
+            txtEmail.setText(funcionario.getFuncionarioEmail());
+            txtNumeroEndereco.setText(String.valueOf(funcionario.getFuncionarioNumeroEndereco()));
+            txtComplemento.setText(funcionario.getFuncionarioComplementoEndereco());
+            txtTelefone.setText(funcionario.getFuncionarioTelefone());
+            txtBairro.setText(funcionario.getFuncionarioBairro());
+            txtCidade.setText(funcionario.getFuncionarioCidade());
+            txtUF.setText(funcionario.getFuncionarioUF());
+            txtCEP.setText(funcionario.getFuncionarioCEP());
+            txtLogradouro.setText(funcionario.getFuncionarioLogradouro());
+            txtCargo.setText(funcionario.getFuncionarioCargo());
+            txtSenha.setText(funcionario.getFuncionarioSenha());
+
+            byte[] imgFuncionarioPerfil = funcionario.getFuncionarioImagem();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imgFuncionarioPerfil, 0, imgFuncionarioPerfil.length);
+            imageViewFuncionario.setImageBitmap(bitmap);
+
+            btnCadastrarFuncionario.setOnClickListener(v -> {
+                FuncionarioCPF = txtCPF.getText().toString();
+                FuncionarioNome = txtNome.getText().toString();
+                FuncionarioEmail = txtEmail.getText().toString();
+                FuncionarioNumeroEndereco = Integer.parseInt(txtNumeroEndereco.getText().toString());
+                FuncionarioComplementoEndereco = txtComplemento.getText().toString();
+                FuncionarioTelefone = txtTelefone.getText().toString();
+                FuncionarioBairro = txtBairro.getText().toString();
+                FuncionarioCidade = txtCidade.getText().toString();
+                FuncionarioUF = txtUF.getText().toString();
+                FuncionarioCEP = txtCEP.getText().toString();
+                FuncionarioLogradouro = txtLogradouro.getText().toString();
+                FuncionarioCargo = txtCargo.getText().toString();
+                FuncionarioSenha = txtSenha.getText().toString();
 
 
-            Funcionario funcionario = new Funcionario(FuncionarioCPF,
-                    FuncionarioNome,
-                    FuncionarioEmail,
-                    FuncionarioSenha,
-                    FuncionarioCargo,
-                    FuncionarioComplementoEndereco,
-                    FuncionarioTelefone,
-                    FuncionarioBairro,
-                    FuncionarioCidade,
-                    FuncionarioUF,
-                    FuncionarioCEP,
-                    FuncionarioLogradouro,
-                    FuncionarioNumeroEndereco,
-                    ImageViewToByte(imageViewFuncionario));
+                Funcionario funcionarioUpdate = new Funcionario(FuncionarioCPF,
+                        FuncionarioNome,
+                        FuncionarioEmail,
+                        FuncionarioSenha,
+                        FuncionarioCargo,
+                        FuncionarioComplementoEndereco,
+                        FuncionarioTelefone,
+                        FuncionarioBairro,
+                        FuncionarioCidade,
+                        FuncionarioUF,
+                        FuncionarioCEP,
+                        FuncionarioLogradouro,
+                        FuncionarioNumeroEndereco,
+                        ImageViewToByte(imageViewFuncionario));
 
-            FuncionarioDAO funcionarioDAO = new FuncionarioDAO(FuncionarioCadastroActivity.this);
+                FuncionarioDAO funcionarioDAO = new FuncionarioDAO(FuncionarioCadastroActivity.this);
 
-            try{
-                funcionarioDAO.insertFuncionario(funcionario);
-                Toast.makeText(getApplicationContext(), "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getBaseContext(), FuncionarioListarActivity.class));
-            }
-            catch (Exception e){
-                e.printStackTrace();
-            }
-        });
+                try{
+                    funcionarioDAO.updateFuncionario(funcionarioUpdate);
+                    Toast.makeText(getApplicationContext(), "Edição efetuada com sucesso", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getBaseContext(), FuncionarioListarActivity.class));
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            });
+        }
+        else {
+            btnCadastrarFuncionario.setOnClickListener(v -> {
+                FuncionarioCPF = txtCPF.getText().toString();
+                FuncionarioNome = txtNome.getText().toString();
+                FuncionarioEmail = txtEmail.getText().toString();
+                FuncionarioNumeroEndereco = Integer.parseInt(txtNumeroEndereco.getText().toString());
+                FuncionarioComplementoEndereco = txtComplemento.getText().toString();
+                FuncionarioTelefone = txtTelefone.getText().toString();
+                FuncionarioBairro = txtBairro.getText().toString();
+                FuncionarioCidade = txtCidade.getText().toString();
+                FuncionarioUF = txtUF.getText().toString();
+                FuncionarioCEP = txtCEP.getText().toString();
+                FuncionarioLogradouro = txtLogradouro.getText().toString();
+                FuncionarioCargo = txtCargo.getText().toString();
+                FuncionarioSenha = txtSenha.getText().toString();
+
+
+                Funcionario funcionario = new Funcionario(FuncionarioCPF,
+                        FuncionarioNome,
+                        FuncionarioEmail,
+                        FuncionarioSenha,
+                        FuncionarioCargo,
+                        FuncionarioComplementoEndereco,
+                        FuncionarioTelefone,
+                        FuncionarioBairro,
+                        FuncionarioCidade,
+                        FuncionarioUF,
+                        FuncionarioCEP,
+                        FuncionarioLogradouro,
+                        FuncionarioNumeroEndereco,
+                        ImageViewToByte(imageViewFuncionario));
+
+                FuncionarioDAO funcionarioDAO = new FuncionarioDAO(FuncionarioCadastroActivity.this);
+
+                try {
+                    funcionarioDAO.insertFuncionario(funcionario);
+                    Toast.makeText(getApplicationContext(), "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getBaseContext(), FuncionarioListarActivity.class));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
     }
 
 

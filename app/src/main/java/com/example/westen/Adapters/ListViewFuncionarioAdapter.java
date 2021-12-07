@@ -1,16 +1,21 @@
 package com.example.westen.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.westen.Activities.FuncionarioCadastroActivity;
 import com.example.westen.Funcionario;
 import com.example.westen.R;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class ListViewFuncionarioAdapter extends BaseAdapter {
@@ -53,7 +58,9 @@ public class ListViewFuncionarioAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(layout, null);
 
+            holder.btnFuncionarioEditar = row.findViewById(R.id.btnClienteEditar);
             //holder.txtFuncionarioCodigo.setText(String.valueOf(position));
+            holder.txtFuncionarioCodigo = (TextView) row.findViewById(R.id.txtCodigo);
             holder.txtFuncionarioNome = (TextView) row.findViewById(R.id.txtNome);
             holder.txtFuncionarioCargo = (TextView) row.findViewById(R.id.txtComplemento);
             row.setTag(holder);
@@ -64,7 +71,13 @@ public class ListViewFuncionarioAdapter extends BaseAdapter {
 
         Funcionario funcionario = listaFuncionarios.get(position);
 
-        //holder.txtFuncionarioCodigo.setText(String.valueOf(position));
+        holder.btnFuncionarioEditar.setOnClickListener(v -> {
+            Intent intentAbrirEditar = new Intent(context, FuncionarioCadastroActivity.class);
+            intentAbrirEditar.putExtra("Funcionario", (Serializable) funcionario);
+            context.startActivity(intentAbrirEditar);
+        });
+
+        holder.txtFuncionarioCodigo.setText(funcionario.getFuncionarioCPF());
         holder.txtFuncionarioNome.setText(funcionario.getFuncionarioNome());
         holder.txtFuncionarioCargo.setText(funcionario.getFuncionarioCargo());
 

@@ -50,6 +50,9 @@ public class Cliente implements Serializable {
             ClienteImagem = clienteImagem;
     }
 
+    public Cliente(String fk_clienteCNPJ) {
+    }
+
     public String getClienteCNPJ() {
         return this.ClienteCNPJ;
     }

@@ -10,11 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import com.example.westen.DAO.FuncionarioDAO;
+import com.example.westen.Funcionario;
 import com.example.westen.R;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String FILE_NAME = "usuarioLogado.json";
     private EditText txtEmail, txtSenha;
     private Button btnLogin;
     private FuncionarioDAO funcionarioDAO;
@@ -29,13 +37,20 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(v ->{
-
             String emailLogin = String.valueOf(txtEmail.getText());
             String senhaLogin = String.valueOf(txtSenha.getText());
 
             validarCampos();
 
+            funcionarioDAO = new FuncionarioDAO(getApplicationContext());
+
             if(funcionarioDAO.verificarLogin(emailLogin, senhaLogin)){
+                Funcionario funcionario = funcionarioDAO.selectFuncionarioPorEmail(emailLogin);
+
+                Gson gson = new Gson();
+                String json = gson.toJson(funcionario);
+                gravarDados(json);
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
@@ -72,5 +87,27 @@ public class LoginActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         String email = txtEmail.getText().toString();
         outState.putString("Email", email);
+    }
+
+    // ARMAZENAR DADOS
+    private void gravarDados(String json) {
+        FileOutputStream fos = null;
+        try {
+            fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
+            fos.write(json.getBytes());
+            Toast.makeText(this, "Usuário logado.", Toast.LENGTH_SHORT).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

@@ -60,8 +60,6 @@ public class ProjetoListarActivity extends AppCompatActivity {
 
                 listaClientes.add(new Cliente(nome, imagem));
                 listaProjetos.add(projeto);
-
-                Toast.makeText(getApplicationContext(), nome, Toast.LENGTH_SHORT).show();
             }
         }
         catch (Exception e) {

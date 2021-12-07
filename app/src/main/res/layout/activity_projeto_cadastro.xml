@@ -46,11 +46,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/input_preto"
+                    android:fontFamily="@font/raleway"
                     android:hint="@string/txtSelecioneMEmbros"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="15dp"
-                    android:fontFamily="@font/raleway"
                     android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="12sp" />
 
                 <ImageView
@@ -81,10 +82,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:background="@null"
-                    android:entries="@array/clientes"
                     android:gravity="center"
-                    android:padding="6dp"
                     android:spinnerMode="dropdown" />
 
                 <ImageView
@@ -104,6 +102,7 @@
             <EditText
                 android:id="@+id/inputProjetos_descricao"
                 style="@style/inputs"
+                android:gravity="top"
                 android:inputType="textMultiLine"
                 android:lines="5"/>
 
@@ -143,9 +142,7 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:background="@null"
-                    android:entries="@array/status"
                     android:gravity="center"
-                    android:padding="6dp"
                     android:spinnerMode="dropdown" />
 
                 <ImageView
@@ -177,9 +174,7 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
                     android:background="@null"
-                    android:entries="@array/servico"
                     android:gravity="center"
-                    android:padding="6dp"
                     android:spinnerMode="dropdown" />
 
                 <ImageView

@@ -9,7 +9,7 @@
 
     <include
         android:id="@+id/clienteCadastro_header"
-        layout="@layout/menu_inferior"
+        layout="@layout/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +30,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <TextView
+                android:text="@string/txtCliente"
+                style="@style/txtTituloActivity"
+                android:layout_marginBottom="20dp"/>
 
             <TextView
                 style="@style/labelForms"
@@ -66,15 +71,6 @@
                 android:id="@+id/inputCliente_telefone"
                 style="@style/inputs"
                 android:inputType="phone" />
-
-            <TextView
-                style="@style/labelForms"
-                android:text="@string/txtEmail" />
-
-            <EditText
-                android:id="@+id/inputCliente_email"
-                style="@style/inputs"
-                android:inputType="textEmailAddress" />
 
             <TextView
                 style="@style/labelForms"
@@ -197,36 +193,12 @@
 
                     <TextView
                         style="@style/labelForms"
-                        android:text="@string/txtEstado" />
+                        android:text="@string/txtUF" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/input_preto"
-                        android:orientation="horizontal">
-
-                        <Spinner
-                            android:id="@+id/inputCliente_UF"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:background="@null"
-                            android:entries="@array/estados"
-                            android:gravity="center"
-                            android:padding="6dp"
-                            android:spinnerMode="dropdown" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_gravity="center"
-                            android:layout_marginRight="8dp"
-                            android:src="@drawable/dropdown" />
-
-                    </RelativeLayout>
+                    <EditText
+                        android:id="@+id/inputCliente_UF"
+                        style="@style/inputs"
+                        android:inputType="text" />
                 </LinearLayout>
             </LinearLayout>
 

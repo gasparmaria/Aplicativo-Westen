@@ -125,11 +125,57 @@ public class FuncionarioDAO {
 
         while (cursor.moveToNext())
         {
-
             cpf = cursor.getString(0);
         }
 
         return cpf;
+    }
+
+    public Funcionario selectFuncionarioPorEmail(String email){
+        Funcionario funcionario = new Funcionario();
+        Cursor cursor = banco.query("tbFuncionario",
+                new String[] {
+                    "FuncionarioCPF, " +
+                    "FuncionarioNome, " +
+                    "FuncionarioEmail, " +
+                    "FuncionarioSenha, " +
+                    "FuncionarioCargo, " +
+                    "FuncionarioNumeroEndereco, " +
+                    "FuncionarioComplementoEndereco, " +
+                    "FuncionarioTelefone, " +
+                    "FuncionarioBairro, " +
+                    "FuncionarioCidade, " +
+                    "FuncionarioUF, " +
+                    "FuncionarioCEP, " +
+                    "FuncionarioLogradouro, " +
+                    "FuncionarioFoto "
+                },
+                "FuncionarioEmail",
+                new String[]{email},
+                null,
+                null,
+                null,
+                String.valueOf(1));
+
+        while (cursor.moveToNext())
+        {
+            funcionario.setFuncionarioCPF(cursor.getString(0));
+            funcionario.setFuncionarioNome(cursor.getString(1));
+            funcionario.setFuncionarioEmail(cursor.getString(2));
+            funcionario.setFuncionarioSenha(cursor.getString(3));
+            funcionario.setFuncionarioCargo(cursor.getString(4));
+            funcionario.setFuncionarioNumeroEndereco(cursor.getInt(5));
+            funcionario.setFuncionarioComplementoEndereco(cursor.getString(6));
+            funcionario.setFuncionarioTelefone(cursor.getString(7));
+            funcionario.setFuncionarioBairro(cursor.getString(8));
+            funcionario.setFuncionarioCidade(cursor.getString(9));
+            funcionario.setFuncionarioUF(cursor.getString(10));
+            funcionario.setFuncionarioCEP(cursor.getString(11));
+            funcionario.setFuncionarioLogradouro(cursor.getString(12));
+            funcionario.setFuncionarioImagem(cursor.getBlob(13));
+        }
+
+        return funcionario;
     }
 
     public Funcionario selectFuncionarioPorCPF(String cpf){

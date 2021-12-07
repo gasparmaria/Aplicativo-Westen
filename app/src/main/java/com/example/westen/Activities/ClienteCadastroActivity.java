@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.example.westen.Cliente;
 import com.example.westen.DAO.ClienteDAO;
+import com.example.westen.DAO.ClienteDAO;
+import com.example.westen.Cliente;
 import com.example.westen.R;
 
 import java.io.ByteArrayOutputStream;
@@ -40,7 +42,8 @@ public class ClienteCadastroActivity extends AppCompatActivity {
             txtCidade,
             txtCEP,
             txtLogradouro,
-            txtNumeroEndereco;
+            txtNumeroEndereco,
+            txtUF;
     String ClienteCNPJ,
             ClienteNome,
             ClienteDescricao,
@@ -52,8 +55,6 @@ public class ClienteCadastroActivity extends AppCompatActivity {
             ClienteUF,
             ClienteCEP,
             ClienteLogradouro;
-
-    Spinner txtUF;
     int ClienteNumeroEndereco;
 
     Button btnCadastrarCliente;
@@ -69,6 +70,7 @@ public class ClienteCadastroActivity extends AppCompatActivity {
 
         btnAddImagem = findViewById(R.id.btnAddImagem);
         btnCadastrarCliente = (Button) findViewById(R.id.btnCadastrarCliente);
+        
         txtCNPJ = findViewById(R.id.inputCliente_cnpj);
         txtNome = findViewById(R.id.inputCliente_nome);
         txtDescricao = findViewById(R.id.inputCliente_descricao);
@@ -84,42 +86,105 @@ public class ClienteCadastroActivity extends AppCompatActivity {
 
         btnAddImagem.setOnClickListener(v -> visualizarGaleria());
 
-        btnCadastrarCliente.setOnClickListener(v -> {
-            ClienteCNPJ = txtCNPJ.getText().toString();
-            ClienteNome = txtNome.getText().toString();
-            ClienteDescricao = txtDescricao.getText().toString();
-            ClienteComplementoEndereco = txtComplemento.getText().toString();
-            ClienteTelefone = txtTelefone.getText().toString();
-            ClienteBairro = txtBairro.getText().toString();
-            ClienteCidade = txtCidade.getText().toString();
-            ClienteUF = txtUF.getSelectedItem().toString();
-            ClienteCEP = txtCEP.getText().toString();
-            ClienteLogradouro = txtLogradouro.getText().toString();
+        Intent intent = getIntent();
 
-            Cliente cliente = new Cliente(ClienteCNPJ,
-                ClienteNome,
-                ClienteDescricao,
-                ClienteComplementoEndereco,
-                ClienteTelefone,
-                ClienteBairro,
-                ClienteCidade,
-                ClienteUF,
-                ClienteCEP,
-                ClienteLogradouro,
-                ClienteNumeroEndereco,
-                ImageViewToByte(imageViewCliente));
+        if(intent != null) {
+            btnCadastrarCliente.setText(R.string.txtSalvar);
 
-            ClienteDAO clienteDAO = new ClienteDAO(ClienteCadastroActivity.this);
+            Cliente cliente = ((Cliente) intent.getSerializableExtra("Cliente"));
+            txtCNPJ.setText(cliente.getClienteCNPJ());
+            txtNome.setText(cliente.getClienteNome());
+            txtDescricao.setText(cliente.getClienteDescricao());
+            txtNumeroEndereco.setText(String.valueOf(cliente.getClienteNumeroEndereco()));
+            txtComplemento.setText(cliente.getClienteComplementoEndereco());
+            txtTelefone.setText(cliente.getClienteTelefone());
+            txtBairro.setText(cliente.getClienteBairro());
+            txtCidade.setText(cliente.getClienteCidade());
+            txtUF.setText(cliente.getClienteUF());
+            txtCEP.setText(cliente.getClienteCEP());
+            txtLogradouro.setText(cliente.getClienteLogradouro());
 
-            try{
-                clienteDAO.insertCliente(cliente);
-                Toast.makeText(getApplicationContext(), "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getBaseContext(), ProjetoCadastroActivity.class));
-            }
-            catch (Exception e){
-                e.printStackTrace();
-            }
-        });
+            byte[] imgClientePerfil = cliente.getClienteImagem();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imgClientePerfil, 0, imgClientePerfil.length);
+            imageViewCliente.setImageBitmap(bitmap);
+
+            btnCadastrarCliente.setOnClickListener(v -> {
+                ClienteCNPJ = txtCNPJ.getText().toString();
+                ClienteNome = txtNome.getText().toString();
+                ClienteDescricao = txtDescricao.getText().toString();
+                ClienteNumeroEndereco = Integer.parseInt(txtNumeroEndereco.getText().toString());
+                ClienteComplementoEndereco = txtComplemento.getText().toString();
+                ClienteTelefone = txtTelefone.getText().toString();
+                ClienteBairro = txtBairro.getText().toString();
+                ClienteCidade = txtCidade.getText().toString();
+                ClienteUF = txtUF.getText().toString();
+                ClienteCEP = txtCEP.getText().toString();
+                ClienteLogradouro = txtLogradouro.getText().toString();
+
+
+                Cliente ClienteUpdate = new Cliente(ClienteCNPJ,
+                        ClienteNome,
+                        ClienteDescricao,
+                        ClienteComplementoEndereco,
+                        ClienteTelefone,
+                        ClienteBairro,
+                        ClienteCidade,
+                        ClienteUF,
+                        ClienteCEP,
+                        ClienteLogradouro,
+                        ClienteNumeroEndereco,
+                        ImageViewToByte(imageViewCliente));
+
+                ClienteDAO ClienteDAO = new ClienteDAO(ClienteCadastroActivity.this);
+
+                try{
+                    ClienteDAO.updateCliente(ClienteUpdate);
+                    Toast.makeText(getApplicationContext(), "Edição efetuada com sucesso", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getBaseContext(), ClienteListarActivity.class));
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+            });
+        }
+        else {
+            btnCadastrarCliente.setOnClickListener(v -> {
+                ClienteCNPJ = txtCNPJ.getText().toString();
+                ClienteNome = txtNome.getText().toString();
+                ClienteDescricao = txtDescricao.getText().toString();
+                ClienteNumeroEndereco = Integer.parseInt(txtNumeroEndereco.getText().toString());
+                ClienteComplementoEndereco = txtComplemento.getText().toString();
+                ClienteTelefone = txtTelefone.getText().toString();
+                ClienteBairro = txtBairro.getText().toString();
+                ClienteCidade = txtCidade.getText().toString();
+                ClienteUF = txtUF.getText().toString();
+                ClienteCEP = txtCEP.getText().toString();
+                ClienteLogradouro = txtLogradouro.getText().toString();
+
+                Cliente cliente = new Cliente(ClienteCNPJ,
+                        ClienteNome,
+                        ClienteDescricao,
+                        ClienteComplementoEndereco,
+                        ClienteTelefone,
+                        ClienteBairro,
+                        ClienteCidade,
+                        ClienteUF,
+                        ClienteCEP,
+                        ClienteLogradouro,
+                        ClienteNumeroEndereco,
+                        ImageViewToByte(imageViewCliente));
+
+                ClienteDAO clienteDAO = new ClienteDAO(ClienteCadastroActivity.this);
+
+                try {
+                    clienteDAO.insertCliente(cliente);
+                    Toast.makeText(getApplicationContext(), "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getBaseContext(), ProjetoCadastroActivity.class));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        }
     }
 
     @Override

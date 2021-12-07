@@ -9,6 +9,8 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -26,6 +28,8 @@ import com.example.westen.Projeto;
 import com.example.westen.R;
 import com.example.westen.databinding.ActivityProjetoDetalhesBinding;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProjetoDetalhesActivity extends AppCompatActivity {
@@ -38,12 +42,19 @@ public class ProjetoDetalhesActivity extends AppCompatActivity {
             txtDataFinal,
             txtStatus;
     ImageView imageClienteProjeto;
+    ListView listViewFuncionarios;
+    ImageButton btnProjetoEditar;
+
     Cliente cliente;
     Funcionario funcionario;
     FuncionarioProjetoDAO funcionarioProjetoDAO;
-    ListView listViewFuncionarios;
-    List<Funcionario> listaFuncionarios;
     FuncionarioDAO funcionarioDAO;
+
+    List<Funcionario> listaFuncionarios = new ArrayList<>();
+    List<Cliente> listaClientes = new ArrayList<>();
+    List<Projeto> listaProjetos = new ArrayList<>();
+
+    Conexao conexao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +69,10 @@ public class ProjetoDetalhesActivity extends AppCompatActivity {
         txtDataFinal = findViewById(R.id.txtDataFinal);
         txtStatus = findViewById(R.id.txtStatus);
         imageClienteProjeto = findViewById(R.id.imageClienteProjeto);
+        btnProjetoEditar = findViewById(R.id.btnProjetoEditar);
 
         Intent intent = getIntent();
         Projeto projeto = ((Projeto) intent.getSerializableExtra("Projeto"));
-        if (projeto != null) {
-            Toast.makeText(getApplicationContext(), projeto.getProjetoServico(), Toast.LENGTH_SHORT).show();
-        }
 
         ClienteDAO clienteDAO = new ClienteDAO(getApplicationContext());
 
@@ -86,20 +95,43 @@ public class ProjetoDetalhesActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeByteArray(imgLogotipo, 0, imgLogotipo.length);
             imageClienteProjeto.setImageBitmap(bitmap);
 
-
-            funcionarioProjetoDAO = new FuncionarioProjetoDAO(getApplicationContext());
-            List<FuncionarioProjeto> funcionarioProjetos = funcionarioProjetoDAO.selectFuncionariosProjeto(projeto.getProjetoID());
-            funcionarioDAO = new FuncionarioDAO(getApplicationContext());
             listViewFuncionarios = (ListView) findViewById(R.id.listviewFuncionariosProjeto);
 
-            for(int i = 0; i <= funcionarioProjetos.size(); i++){
-                String funcionarioCPF = funcionarioProjetos.get(i).getFK_FuncionarioCPF();
-                listaFuncionarios.add(funcionarioDAO.selectFuncionarioPorCPF(funcionarioCPF));
+            conexao = new Conexao(getApplicationContext());
+            try {
+                Cursor cursor = conexao.getReadableDatabase().rawQuery("SELECT tbFuncionario.FuncionarioNome " +
+                        "FROM tbFuncionario " +
+                        "INNER JOIN tbFuncionarioProjeto " +
+                        "ON tbFuncionarioProjeto.FK_FuncionarioCPF = tbFuncionario.FuncionarioNome " +
+                        "WHERE tbFuncionarioProjeto.FK_ProjetoID = ?", new String[]{String.valueOf(projeto.getProjetoID())});
+
+                while (cursor.moveToNext()) {
+                    Funcionario funcionario = new Funcionario();
+
+                    funcionario.setFuncionarioNome(cursor.getString(0));
+
+                    listaFuncionarios.add(funcionario);
+                }
+
+                ArrayAdapter<Funcionario> adapter = new ArrayAdapter<Funcionario>(getApplicationContext(), R.layout.text_list, listaFuncionarios);
+                listViewFuncionarios.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            }
+            catch(Exception e){
+
             }
 
-            ArrayAdapter<Funcionario> adapter = new ArrayAdapter<Funcionario>(getApplicationContext(), android.R.layout.simple_list_item_1, listaFuncionarios);
-            listViewFuncionarios.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
+            btnProjetoEditar.setOnClickListener(v -> {
+                Intent intentAbrirEditar = new Intent(ProjetoDetalhesActivity.this, ProjetoCadastroActivity.class);
+                intentAbrirEditar.putExtra("Projeto", (Serializable) projeto);
+                intentAbrirEditar.putExtra("Cliente", (Serializable) cliente);
+                startActivity(intentAbrirEditar);
+            });
         }
+    }
+
+    public void voltarProjeto(View view){
+        startActivity(new Intent(getBaseContext(), ProjetoListarActivity.class));
+        finish();
     }
 }

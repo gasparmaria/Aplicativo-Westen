@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:clickable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +23,7 @@
             android:layout_weight=".5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dragon Sushi"
+            android:text="nome"
             style="@style/listaCorpo"/>
 
         <TextView
@@ -30,14 +31,16 @@
             android:layout_weight=".3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="97.695.145/0001-96"
+            android:text="complemento"
             style="@style/listaCorpo"/>
 
         <ImageButton
             android:id="@+id/btnClienteEditar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants"
             android:src="@drawable/ic_editar"
+            android:layout_gravity="center_vertical"
             style="@style/listaIcons"/>
     </LinearLayout>
 
