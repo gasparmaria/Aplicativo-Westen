@@ -1,6 +1,7 @@
 package com.example.westen.Activities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,10 +13,14 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,10 +35,15 @@ import androidx.core.app.ActivityCompat;
 import com.example.westen.DAO.FuncionarioDAO;
 import com.example.westen.Funcionario;
 import com.example.westen.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -79,6 +89,8 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
 
     private SensorManager sensorManager;
     private Sensor sensorLuz;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private Button btnLocalizacaoAtual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +99,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorLuz = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         btnAddImagem = findViewById(R.id.btnAddImagem);
         btnCadastrarFuncionario = (Button) findViewById(R.id.btnCadastrarFuncionario);
@@ -106,9 +118,21 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
         txtCargo = findViewById(R.id.inputFuncionario_cargo);
         txtSenha = findViewById(R.id.inputFuncionario_senha);
         imageViewFuncionario = findViewById(R.id.imagemFuncionario);
-        
-        btnAddImagem.setOnClickListener(v -> {
-            visualizarGaleria();
+        btnLocalizacaoAtual = (Button) findViewById(R.id.btnFuncionarioLocalizacaoAtual);
+
+        btnAddImagem.setOnClickListener(v -> visualizarGaleria());
+
+        btnLocalizacaoAtual.setOnClickListener(v -> {
+            if (ActivityCompat.checkSelfPermission(getApplicationContext(),
+                    Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                //PERMISSÃO CEDIDA
+                getLocalizacaoAtual();
+            } else {
+                //PERMISSÃO NEGADA
+                ActivityCompat.requestPermissions(FuncionarioCadastroActivity.this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        44);
+            }
         });
         
         Intent intent = getIntent();
@@ -326,6 +350,31 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
     public void abrirPerfil(View view){
         startActivity(new Intent(getBaseContext(), PerfilActivity.class));
         finish();
+    }
+
+    @SuppressLint("MissingPermission")
+    private void getLocalizacaoAtual() {
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(task -> {
+            //PEGAR A LOCALIZAÇÃO
+            Location location = task.getResult();
+            if (location != null) {
+                try {
+                    Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+                    List<Address> addressList = geocoder.getFromLocation(
+                            location.getLatitude(), location.getLongitude(), 1
+                    );
+                    //EXIBIR TEXTOS
+                    txtLogradouro.setText(Html.fromHtml(String.valueOf(addressList.get(0).getThoroughfare())));
+                    txtNumeroEndereco.setText(Html.fromHtml(String.valueOf(addressList.get(0).getFeatureName())));
+                    txtCEP.setText((Html.fromHtml(String.valueOf(addressList.get(0).getPostalCode()))));
+                    txtCidade.setText(Html.fromHtml(String.valueOf(addressList.get(0).getSubAdminArea())));
+                    txtUF.setText(Html.fromHtml(String.valueOf(addressList.get(0).getAdminArea())));
+                    txtBairro.setText(Html.fromHtml(String.valueOf(addressList.get(0).getSubLocality())));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     //MÉTODOS DO SENSOR
