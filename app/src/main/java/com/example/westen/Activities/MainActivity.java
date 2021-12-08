@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorLuz = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
-
         txtFuncionarioEmAndamento = findViewById(R.id.txtFuncionarioEmAndamento);
         txtFuncionarioNaoIniciado = findViewById(R.id.txtFuncionarioNaoIniciado);
         txtFuncionarioConcluido = findViewById(R.id.txtFuncionarioConcluido);
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     "LIMIT 6 ";
 
         try {
-            Cursor cursor = conexao.getReadableDatabase().rawQuery(selectQuery, new String[]{funcionario.getFuncionarioNome(), "Em andamento"});
+            Cursor cursor = conexao.getReadableDatabase().rawQuery(selectQuery, new String[]{funcionario.getFuncionarioCPF(), "Em andamento"});
 
             if(cursor.getCount() <= 0){
                 txtFuncionarioEmAndamento.setVisibility(View.VISIBLE);
@@ -114,14 +113,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         }
         finally {
-            gridProjetos = (GridView) findViewById(R.id.grid_projetosConcluidos);
+            gridProjetos = findViewById(R.id.grid_projetosEmAndamento);
             GridProjetosAdapter gridAdapter = new GridProjetosAdapter(MainActivity.this, R.layout.grid_item_projetos, listaClientesEmAndamento, listaProjetosEmAndamento);
             gridProjetos.setAdapter(gridAdapter);
             gridAdapter.notifyDataSetChanged();
         }
 
         try {
-            Cursor cursor = conexao.getReadableDatabase().rawQuery(selectQuery, new String[]{funcionario.getFuncionarioNome(), "Não iniciado"});
+            Cursor cursor = conexao.getReadableDatabase().rawQuery(selectQuery, new String[]{funcionario.getFuncionarioCPF(), "Não iniciado"});
 
             if(cursor.getCount() <= 0){
                 txtFuncionarioNaoIniciado.setVisibility(View.VISIBLE);
@@ -150,14 +149,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         }
         finally {
-            gridProjetos = (GridView) findViewById(R.id.grid_projetosEmAndamento);
+            gridProjetos = findViewById(R.id.grid_projetosNaoIniciados);
             GridProjetosAdapter gridAdapter = new GridProjetosAdapter(MainActivity.this, R.layout.grid_item_projetos, listaClientesNaoIniciados, listaProjetosNaoIniciados);
             gridProjetos.setAdapter(gridAdapter);
             gridAdapter.notifyDataSetChanged();
         }
 
         try {
-            Cursor cursor = conexao.getReadableDatabase().rawQuery(selectQuery, new String[]{funcionario.getFuncionarioNome(), "Concluído"});
+            Cursor cursor = conexao.getReadableDatabase().rawQuery(selectQuery, new String[]{funcionario.getFuncionarioCPF(), "Concluído"});
 
             if(cursor.getCount() <= 0){
                 txtFuncionarioConcluido.setVisibility(View.VISIBLE);
@@ -186,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         }
         finally {
-            gridProjetos = (GridView) findViewById(R.id.grid_projetosNaoIniciados);
+            gridProjetos = findViewById(R.id.grid_projetosConcluidos);
             GridProjetosAdapter gridAdapter = new GridProjetosAdapter(MainActivity.this, R.layout.grid_item_projetos, listaClientesConcluidos, listaProjetosConcluidos);
             gridProjetos.setAdapter(gridAdapter);
             gridAdapter.notifyDataSetChanged();
@@ -268,7 +267,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         }
     }
-
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {    }
 

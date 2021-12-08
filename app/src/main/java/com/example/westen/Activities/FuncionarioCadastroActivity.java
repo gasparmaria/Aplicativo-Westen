@@ -86,7 +86,6 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
 
     final int REQUEST_CODE_GALLERY = 123;
 
-
     private SensorManager sensorManager;
     private Sensor sensorLuz;
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -102,7 +101,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         btnAddImagem = findViewById(R.id.btnAddImagem);
-        btnCadastrarFuncionario = (Button) findViewById(R.id.btnCadastrarFuncionario);
+        btnCadastrarFuncionario = findViewById(R.id.btnCadastrarFuncionario);
 
         txtCPF = findViewById(R.id.inputFuncionario_cpf);
         txtNome = findViewById(R.id.inputFuncionario_nome);
@@ -118,7 +117,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
         txtCargo = findViewById(R.id.inputFuncionario_cargo);
         txtSenha = findViewById(R.id.inputFuncionario_senha);
         imageViewFuncionario = findViewById(R.id.imagemFuncionario);
-        btnLocalizacaoAtual = (Button) findViewById(R.id.btnFuncionarioLocalizacaoAtual);
+        btnLocalizacaoAtual = findViewById(R.id.btnFuncionarioLocalizacaoAtual);
 
         btnAddImagem.setOnClickListener(v -> visualizarGaleria());
 
@@ -134,11 +133,11 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
                         44);
             }
         });
-        
+
         Intent intent = getIntent();
 
-        if (intent != null)
-        {
+        // EDITAR FUNCIONARIO
+        if(intent.hasExtra("Funcionario")){
             btnCadastrarFuncionario.setText(R.string.txtSalvar);
 
             Funcionario funcionario = ((Funcionario) intent.getSerializableExtra("Funcionario"));
@@ -203,6 +202,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
                 }
             });
         }
+        // CADASTRAR FUNCIONÁRIO
         else {
             btnCadastrarFuncionario.setOnClickListener(v -> {
                 FuncionarioCPF = txtCPF.getText().toString();
@@ -248,7 +248,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
         }
     }
 
-    // manipulação de imagens
+    // MANIPULAÇÃO DE IMAGENS
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -298,7 +298,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
         return byteArray;
     }
 
-    // saved instance
+    // SAVED INSTANCE
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -330,12 +330,13 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
         outState.putString("FuncionarioCargo", FuncionarioCargo);
     }
 
+    // BOTÃO CADASTRO
     public void abrirCadastro(View view){
         startActivity(new Intent(getBaseContext(), FuncionarioCadastroActivity.class));
         finish();
     }
 
-    // menu
+    // MENU
     public void abrirHome(View view){
         startActivity(new Intent(getBaseContext(), MainActivity.class));
         finish();
@@ -357,6 +358,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
         finish();
     }
 
+    // LOCALIZAÇÃO
     @SuppressLint("MissingPermission")
     private void getLocalizacaoAtual() {
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(task -> {
@@ -382,8 +384,7 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
         });
     }
 
-    //MÉTODOS DO SENSOR
-
+    // SENSOR
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(this);
@@ -409,7 +410,6 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
             }
         }
     }
-
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {    }
 

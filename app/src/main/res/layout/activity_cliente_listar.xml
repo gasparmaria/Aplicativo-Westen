@@ -33,62 +33,52 @@
             android:text="@string/txtCliente"
             style="@style/txtTituloActivity"
             android:layout_marginBottom="20dp"/>
-        
-        <!-- barra de busca -->
-        <SearchView
-            android:id="@+id/search_cliente"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/input_preto"
-            android:padding="0dp"
-            android:layout_marginBottom="20dp"
-            style="@style/inputs"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:text="@string/txtCodigo"
+                    android:layout_weight=".01"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    style="@style/listaCabecalho"/>
 
-                    <TextView
-                        android:text="@string/txtCodigo"
-                        android:layout_weight=".01"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/listaCabecalho"/>
+                <TextView
+                    android:text="@string/txtNome"
+                    android:layout_weight=".5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/listaCabecalho"/>
 
-                    <TextView
-                        android:text="@string/txtNome"
-                        android:layout_weight=".5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/listaCabecalho"/>
+                <TextView
+                    android:text="@string/txtCNPJ"
+                    android:layout_weight=".3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/listaCabecalho"/>
 
-                    <TextView
-                        android:text="@string/txtCNPJ"
-                        android:layout_weight=".3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/listaCabecalho"/>
-
-                    <ImageButton
-                        android:id="@+id/btnClienteEditar"
-                        style="@style/listaIcons"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_editar"
-                        android:visibility="invisible" />
-                </LinearLayout>
-
-               <ListView
-                   android:id="@+id/listviewClientes"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content" />
+                <ImageButton
+                    android:id="@+id/btnClienteEditar"
+                    style="@style/listaIcons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_editar"
+                    android:visibility="invisible" />
             </LinearLayout>
+
+           <ListView
+               android:id="@+id/listviewClientes"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 
     <include

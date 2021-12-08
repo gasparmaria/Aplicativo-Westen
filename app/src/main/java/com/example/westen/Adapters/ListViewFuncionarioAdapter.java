@@ -19,8 +19,8 @@ import java.io.Serializable;
 import java.util.List;
 
 public class ListViewFuncionarioAdapter extends BaseAdapter {
-    private int layout;
-    private Context context;
+    private final int layout;
+    private final Context context;
     List<Funcionario> listaFuncionarios;
 
     public ListViewFuncionarioAdapter(Context context, int layout, List<Funcionario> listaFuncionarios) {
@@ -60,9 +60,9 @@ public class ListViewFuncionarioAdapter extends BaseAdapter {
 
             holder.btnFuncionarioEditar = row.findViewById(R.id.btnClienteEditar);
             //holder.txtFuncionarioCodigo.setText(String.valueOf(position));
-            holder.txtFuncionarioCodigo = (TextView) row.findViewById(R.id.txtCodigo);
-            holder.txtFuncionarioNome = (TextView) row.findViewById(R.id.txtNome);
-            holder.txtFuncionarioCargo = (TextView) row.findViewById(R.id.txtComplemento);
+            holder.txtFuncionarioCodigo = row.findViewById(R.id.txtCodigo);
+            holder.txtFuncionarioNome = row.findViewById(R.id.txtNome);
+            holder.txtFuncionarioCargo = row.findViewById(R.id.txtComplemento);
             row.setTag(holder);
         }
         else{
@@ -73,7 +73,7 @@ public class ListViewFuncionarioAdapter extends BaseAdapter {
 
         holder.btnFuncionarioEditar.setOnClickListener(v -> {
             Intent intentAbrirEditar = new Intent(context, FuncionarioCadastroActivity.class);
-            intentAbrirEditar.putExtra("Funcionario", (Serializable) funcionario);
+            intentAbrirEditar.putExtra("Funcionario", funcionario);
             context.startActivity(intentAbrirEditar);
         });
 

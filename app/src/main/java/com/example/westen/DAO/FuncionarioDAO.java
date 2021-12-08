@@ -13,8 +13,8 @@ import java.util.List;
 
 public class FuncionarioDAO {
 
-    private Conexao conexao;
-    private SQLiteDatabase banco;
+    private final Conexao conexao;
+    private final SQLiteDatabase banco;
 
     public FuncionarioDAO(Context context){
         conexao = new Conexao(context);
@@ -106,7 +106,7 @@ public class FuncionarioDAO {
         }
 
         String[] arrayNomes = new String[listaFuncionariosNomes.size()];
-        arrayNomes = (String[]) listaFuncionariosNomes.toArray(arrayNomes);
+        arrayNomes = listaFuncionariosNomes.toArray(arrayNomes);
 
         return arrayNomes;
     }
@@ -201,11 +201,6 @@ public class FuncionarioDAO {
     public Boolean verificarLogin(String email, String senha){
         Cursor cursor = banco.rawQuery("SELECT * FROM tbFuncionario WHERE FuncionarioEmail = ? AND FuncionarioSenha = ?", new String[] {email, senha});
 
-        if(cursor.getCount() > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return cursor.getCount() > 0;
     }
 }

@@ -24,8 +24,8 @@ import java.io.Serializable;
 import java.util.List;
 
 public class GridProjetosAdapter extends BaseAdapter {
-    private int layout;
-    private Context context;
+    private final int layout;
+    private final Context context;
     List<Cliente> listaClientes;
     List<Projeto> listaProjetos;
 
@@ -63,9 +63,9 @@ public class GridProjetosAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = inflater.inflate(layout, null);
 
-            holder.txtClienteNome = (TextView) row.findViewById(R.id.nomeCliente_ProjetosLista);
-            holder.txtProjetoServico = (TextView) row.findViewById(R.id.nomeServico_ProjetosLista);
-            holder.imgClienteLogotipo = (ImageView) row.findViewById(R.id.imageCliente_ProjetosLista);
+            holder.txtClienteNome = row.findViewById(R.id.nomeCliente_ProjetosLista);
+            holder.txtProjetoServico = row.findViewById(R.id.nomeServico_ProjetosLista);
+            holder.imgClienteLogotipo = row.findViewById(R.id.imageCliente_ProjetosLista);
             row.setTag(holder);
         }
         else

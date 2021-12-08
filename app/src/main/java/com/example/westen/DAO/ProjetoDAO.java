@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.example.westen.Cliente;
 import com.example.westen.Conexao;
@@ -15,8 +16,8 @@ import java.util.List;
 
 public class ProjetoDAO {
 
-    private Conexao conexao;
-    private SQLiteDatabase banco;
+    private final Conexao conexao;
+    private final SQLiteDatabase banco;
 
     public ProjetoDAO(Context context){
         conexao = new Conexao(context);
@@ -33,6 +34,7 @@ public class ProjetoDAO {
         values.put("FK_ClienteCNPJ", projeto.getFK_ClienteCNPJ());
 
         return banco.insert("tbProjeto", null, values);
+
     }
 
     public List<Projeto> selectProjeto(){

@@ -18,11 +18,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.westen.Cliente;
 import com.example.westen.Conexao;
 import com.example.westen.Funcionario;
+import com.example.westen.Projeto;
 import com.example.westen.R;
 import com.google.gson.Gson;
 
@@ -45,6 +48,7 @@ public class PerfilActivity extends AppCompatActivity implements SensorEventList
     Button btnPerfilEditar;
     private SensorManager sensorManager;
     private Sensor sensorLuz;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +60,8 @@ public class PerfilActivity extends AppCompatActivity implements SensorEventList
         imgPerfil = findViewById(R.id.imgPerfil);
         txtFuncionarioNome = findViewById(R.id.txtFuncionarioNome);
         txtFuncionarioCargo = findViewById(R.id.txtFuncionarioCargo);
-        txtFuncionarioDesenvolvendo = findViewById(R.id.txtFuncionarioEmAndamento);
-        txtFuncionarioConcluidos = findViewById(R.id.txtFuncionarioConcluido);
+        txtFuncionarioDesenvolvendo = findViewById(R.id.txtFuncionarioDesenvolvendo);
+        txtFuncionarioConcluidos = findViewById(R.id.txtFuncionarioConcluidos);
         btnPerfilEditar = findViewById(R.id.btnPerfilEditar);
 
         Gson gson = new Gson();
@@ -72,37 +76,37 @@ public class PerfilActivity extends AppCompatActivity implements SensorEventList
         txtFuncionarioCargo.setText(funcionario.getFuncionarioCargo());
 
         Conexao conexao = new Conexao(getApplicationContext());
-        String selectQuery = "SELECT COUNT(ProjetoID) " +
-                            "FROM tbProjeto " +
-                            "INNER JOIN tbFuncionarioProjeto " +
-                                "ON tbFuncionarioProjeto.FK_ProjetoID = tbProjeto.ProjetoID " +
-                            "WHERE tbFuncionarioProjeto.FK_FuncionarioCPF = ? AND tbProjeto.ProjetoStatus = ? " +
-                            "LIMIT 1 ";
+        String selectQuery =
+                "SELECT tbProjeto.* " +
+                        "FROM tbProjeto " +
+                        "INNER JOIN tbFuncionarioProjeto " +
+                        "ON tbFuncionarioProjeto.FK_ProjetoID = tbProjeto.ProjetoID " +
+                        "WHERE tbFuncionarioProjeto.FK_FuncionarioCPF = ? AND tbProjeto.ProjetoStatus = ? ";
 
-        try{
-            Cursor cursor = conexao.getReadableDatabase().rawQuery(selectQuery, new String[]{funcionario.getFuncionarioNome(), "Em andamento"});
+        try {
+            Cursor cursor = conexao.getReadableDatabase().rawQuery(selectQuery, new String[]{funcionario.getFuncionarioCPF(), "Em andamento"});
 
-            while (cursor.moveToNext()) {
-                txtFuncionarioDesenvolvendo.setText(cursor.getString(0));
-            }
+            String count = String.valueOf(cursor.getCount());
+
+            txtFuncionarioDesenvolvendo.setText(count);
         }
         catch (Exception e){
 
         }
 
         try{
-            Cursor cursor = conexao.getReadableDatabase().rawQuery(selectQuery, new String[]{funcionario.getFuncionarioNome(), "Concluido"});
+            Cursor cursor = conexao.getReadableDatabase().rawQuery(selectQuery, new String[]{funcionario.getFuncionarioCPF(), "Concluido"});
 
-            while (cursor.moveToNext()) {
-                txtFuncionarioConcluidos.setText(cursor.getString(0));
-            }
+            String count = String.valueOf(cursor.getCount());
+
+            txtFuncionarioConcluidos.setText(count);
         }
         catch (Exception e){
 
         }
 
         btnPerfilEditar.setOnClickListener(v ->{
-            startActivity(new Intent(getBaseContext(), MainActivity.class));
+            startActivity(new Intent(getBaseContext(), FuncionarioCadastroActivity.class));
             finish();
         });
     }
@@ -130,6 +134,11 @@ public class PerfilActivity extends AppCompatActivity implements SensorEventList
 
     public void abrirCadastro(View view){
         startActivity(new Intent(getBaseContext(), FuncionarioCadastroActivity.class));
+        finish();
+    }
+
+    public void sair(View view){
+        startActivity(new Intent(getBaseContext(), LoginActivity.class));
         finish();
     }
 
@@ -172,17 +181,17 @@ public class PerfilActivity extends AppCompatActivity implements SensorEventList
         if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
             if(permissaoControlarBrilho()){
                 new Timer().schedule(
-                        new TimerTask(){
-                            @Override
-                            public void run(){
-                                int brilho = (int) (event.values[0]);
-                                controlarBrilho(brilho);
-                            }
-                        }, 1500);
+                    new TimerTask(){
+                        @Override
+                        public void run(){
+                            int brilho = (int) (event.values[0]);
+                            controlarBrilho(brilho);
+                        }
+                    }, 1500
+                );
             }
         }
     }
-
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {    }
 

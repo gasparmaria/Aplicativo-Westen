@@ -73,7 +73,8 @@ public class ClienteCadastroActivity extends AppCompatActivity implements Sensor
             ClienteCidade,
             ClienteUF,
             ClienteCEP,
-            ClienteLogradouro;
+            ClienteLogradouro,
+            ClienteNumeroEnderecos;
     int ClienteNumeroEndereco;
 
     Button btnCadastrarCliente, btnLocalizacaoAtual;
@@ -92,7 +93,7 @@ public class ClienteCadastroActivity extends AppCompatActivity implements Sensor
         setContentView(R.layout.activity_cliente_cadastro);
 
         btnAddImagem = findViewById(R.id.btnAddImagem);
-        btnCadastrarCliente = (Button) findViewById(R.id.btnCadastrarCliente);
+        btnCadastrarCliente = findViewById(R.id.btnCadastrarCliente);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorLuz = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
@@ -110,7 +111,7 @@ public class ClienteCadastroActivity extends AppCompatActivity implements Sensor
         txtCEP = findViewById(R.id.inputCliente_cep);
         txtLogradouro = findViewById(R.id.inputCliente_logradouro);
         imageViewCliente = findViewById(R.id.imagemCliente);
-        btnLocalizacaoAtual = (Button) findViewById(R.id.btnClienteLocalizacaoAtual);
+        btnLocalizacaoAtual = findViewById(R.id.btnClienteLocalizacaoAtual);
 
         btnAddImagem.setOnClickListener(v -> visualizarGaleria());
 
@@ -129,7 +130,8 @@ public class ClienteCadastroActivity extends AppCompatActivity implements Sensor
 
         Intent intent = getIntent();
 
-        if (intent != null) {
+        // EDITAR CLIENTE
+        if (intent.hasExtra("Cliente")) {
             btnCadastrarCliente.setText(R.string.txtSalvar);
 
             Cliente cliente = ((Cliente) intent.getSerializableExtra("Cliente"));
@@ -187,7 +189,9 @@ public class ClienteCadastroActivity extends AppCompatActivity implements Sensor
                     e.printStackTrace();
                 }
             });
-        } else {
+        }
+        // CADASTRAR
+        else {
             btnCadastrarCliente.setOnClickListener(v -> {
                 ClienteCNPJ = txtCNPJ.getText().toString();
                 ClienteNome = txtNome.getText().toString();
@@ -227,6 +231,7 @@ public class ClienteCadastroActivity extends AppCompatActivity implements Sensor
         }
     }
 
+    // MANIPULAÇÃO DE IMAGENS
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -273,6 +278,37 @@ public class ClienteCadastroActivity extends AppCompatActivity implements Sensor
         return stream.toByteArray();
     }
 
+    // SAVED INSTANCE
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        ClienteCNPJ = txtCNPJ.getText().toString();
+        ClienteNome = txtNome.getText().toString();
+        ClienteDescricao = txtDescricao.getText().toString();
+        ClienteNumeroEnderecos = txtNumeroEndereco.getText().toString();
+        ClienteComplementoEndereco = txtComplemento.getText().toString();
+        ClienteTelefone = txtTelefone.getText().toString();
+        ClienteBairro = txtBairro.getText().toString();
+        ClienteCidade = txtCidade.getText().toString();
+        ClienteUF = txtUF.getText().toString();
+        ClienteCEP = txtCEP.getText().toString();
+        ClienteLogradouro = txtLogradouro.getText().toString();
+
+        outState.putString("ClienteCNPJ", ClienteCNPJ);
+        outState.putString("ClienteNome", ClienteNome);
+        outState.putString("ClienteDescricao", ClienteDescricao);
+        outState.putString("ClienteNumeroEnderecos", ClienteNumeroEnderecos);
+        outState.putString("ClienteComplementoEndereco", ClienteComplementoEndereco);
+        outState.putString("ClienteTelefone", ClienteTelefone);
+        outState.putString("ClienteBairro", ClienteBairro);
+        outState.putString("ClienteCidade", ClienteCidade);
+        outState.putString("ClienteUF", ClienteUF);
+        outState.putString("ClienteCEP", ClienteCEP);
+        outState.putString("ClienteLogradouro", ClienteLogradouro);
+    }
+
+    // MENU
     public void abrirCadastro(View view){
         startActivity(new Intent(getBaseContext(), ClienteCadastroActivity.class));
         finish();
@@ -303,6 +339,7 @@ public class ClienteCadastroActivity extends AppCompatActivity implements Sensor
         finish();
     }
 
+    // LOCALIZAÇÃO
     @SuppressLint("MissingPermission")
     private void getLocalizacaoAtual() {
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(task -> {
@@ -328,8 +365,7 @@ public class ClienteCadastroActivity extends AppCompatActivity implements Sensor
         });
     }
     
-    //MÉTODOS DO SENSOR
-
+    // SENSOR
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(this);
@@ -355,7 +391,6 @@ public class ClienteCadastroActivity extends AppCompatActivity implements Sensor
             }
         }
     }
-
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {    }
 

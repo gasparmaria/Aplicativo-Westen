@@ -71,9 +71,10 @@
     <string name="txtEmAndamento">Em andamento</string>
     <string name="txtNaoIniciado">Não iniciados</string>
     <string name="txtConcluido">Concluídos</string>
-    <string name="txtFuncionarioNaoIniciado">Funcionario não possui projetos não iniciados.</string>
+    <string name="txtFuncionarioNaoIniciado">Funcionário não possui projetos não iniciados.</string>
     <string name="txtFuncionarioConcluido">Funcionário não possui projetos concluídos.</string>
     <string name="txtLogout">Logout</string>
+    <string name="txtLocalizacao">Usar localização atual</string>
     <string-array name="status">
         <item></item>
         <item>Não iniciado</item>

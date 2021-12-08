@@ -17,8 +17,8 @@ import java.io.Serializable;
 import java.util.List;
 
 public class ListViewClienteAdapter extends BaseAdapter {
-    private int layout;
-    private Context context;
+    private final int layout;
+    private final Context context;
     List<Cliente> listaClientes;
 
     public ListViewClienteAdapter(Context context, int layout, List<Cliente> listaClientes) {
@@ -58,8 +58,8 @@ public class ListViewClienteAdapter extends BaseAdapter {
 
             holder.btnClienteEditar = row.findViewById(R.id.btnClienteEditar);
             //holder.txtClienteCodigo.setText(String.valueOf(position));
-            holder.txtClienteNome = (TextView) row.findViewById(R.id.txtNome);
-            holder.txtClienteCNPJ = (TextView) row.findViewById(R.id.txtComplemento);
+            holder.txtClienteNome = row.findViewById(R.id.txtNome);
+            holder.txtClienteCNPJ = row.findViewById(R.id.txtComplemento);
             row.setTag(holder);
         }
         else {
@@ -70,7 +70,7 @@ public class ListViewClienteAdapter extends BaseAdapter {
 
         holder.btnClienteEditar.setOnClickListener(v -> {
             Intent intentAbrirEditar = new Intent(context, ClienteCadastroActivity.class);
-            intentAbrirEditar.putExtra("Cliente", (Serializable) cliente);
+            intentAbrirEditar.putExtra("Cliente", cliente);
             context.startActivity(intentAbrirEditar);
         });
 

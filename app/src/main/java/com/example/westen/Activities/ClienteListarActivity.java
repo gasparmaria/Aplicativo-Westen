@@ -45,18 +45,19 @@ public class ClienteListarActivity extends AppCompatActivity implements SensorEv
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorLuz = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
-
-        listViewClientes = (ListView) findViewById(R.id.listviewClientes);
+        listViewClientes = findViewById(R.id.listviewClientes);
 
         ListViewClienteAdapter adapter = new ListViewClienteAdapter(this, R.layout.listview_item, listaClientes);
         listViewClientes.setAdapter(adapter);
     }
 
+    // CADASTRO
     public void abrirCadastro(View view){
         startActivity(new Intent(getBaseContext(), ClienteCadastroActivity.class));
         finish();
     }
 
+    // MENU
     public void abrirHome(View view){
         startActivity(new Intent(getBaseContext(), MainActivity.class));
         finish();
@@ -78,8 +79,7 @@ public class ClienteListarActivity extends AppCompatActivity implements SensorEv
         finish();
     }
 
-    //MÉTODOS DO SENSOR
-
+    // SENSOR
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(this);
@@ -105,7 +105,6 @@ public class ClienteListarActivity extends AppCompatActivity implements SensorEv
             }
         }
     }
-
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {    }
 

@@ -52,11 +52,10 @@
                     android:id="@+id/btnFuncionarioLocalizacaoAtual"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Usar localização atual"
-                    android:background="@drawable/input_preto"
-                    android:backgroundTint="@null"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/raleway"
+                    android:text="@string/txtLocalizacao"
+                    style="@style/btnLocalizacao"
+                    android:textAllCaps="true"
+                    android:drawableLeft="@drawable/ic_localizacao"
                     android:textSize="10sp"/>
 
             </LinearLayout>

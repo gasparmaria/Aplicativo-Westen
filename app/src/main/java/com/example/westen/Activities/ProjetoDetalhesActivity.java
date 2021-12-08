@@ -115,14 +115,14 @@ public class ProjetoDetalhesActivity extends AppCompatActivity implements Sensor
             Bitmap bitmap = BitmapFactory.decodeByteArray(imgLogotipo, 0, imgLogotipo.length);
             imageClienteProjeto.setImageBitmap(bitmap);
 
-            listViewFuncionarios = (ListView) findViewById(R.id.listviewFuncionariosProjeto);
+            listViewFuncionarios = findViewById(R.id.listviewFuncionariosProjeto);
 
             conexao = new Conexao(getApplicationContext());
             try {
                 Cursor cursor = conexao.getReadableDatabase().rawQuery("SELECT tbFuncionario.FuncionarioNome " +
                         "FROM tbFuncionario " +
                         "INNER JOIN tbFuncionarioProjeto " +
-                        "ON tbFuncionarioProjeto.FK_FuncionarioCPF = tbFuncionario.FuncionarioNome " +
+                        "ON tbFuncionarioProjeto.FK_FuncionarioCPF = tbFuncionario.FuncionarioCPF " +
                         "WHERE tbFuncionarioProjeto.FK_ProjetoID = ?", new String[]{String.valueOf(projeto.getProjetoID())});
 
                 while (cursor.moveToNext()) {
@@ -143,8 +143,8 @@ public class ProjetoDetalhesActivity extends AppCompatActivity implements Sensor
 
             btnProjetoEditar.setOnClickListener(v -> {
                 Intent intentAbrirEditar = new Intent(ProjetoDetalhesActivity.this, ProjetoCadastroActivity.class);
-                intentAbrirEditar.putExtra("Projeto", (Serializable) projeto);
-                intentAbrirEditar.putExtra("Cliente", (Serializable) cliente);
+                intentAbrirEditar.putExtra("Projeto", projeto);
+                intentAbrirEditar.putExtra("Cliente", cliente);
                 startActivity(intentAbrirEditar);
             });
 

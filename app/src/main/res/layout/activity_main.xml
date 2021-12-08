@@ -49,6 +49,7 @@
                 android:id="@+id/txtFuncionarioEmAndamento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/color_hint"
                 android:text="@string/txtFuncionarioEmAndamento"
                 android:visibility="gone"/>
 
@@ -72,6 +73,7 @@
                 android:id="@+id/txtFuncionarioNaoIniciado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/color_hint"
                 android:text="@string/txtFuncionarioNaoIniciado"
                 android:visibility="gone"/>
 
@@ -95,6 +97,7 @@
                 android:id="@+id/txtFuncionarioConcluido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/color_hint"
                 android:text="@string/txtFuncionarioConcluido"
                 android:visibility="gone"/>
 

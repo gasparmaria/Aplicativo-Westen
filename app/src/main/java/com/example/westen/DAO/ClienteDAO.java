@@ -19,8 +19,8 @@ import java.util.ListIterator;
 
 public class ClienteDAO {
 
-    private Conexao conexao;
-    private SQLiteDatabase banco;
+    private final Conexao conexao;
+    private final SQLiteDatabase banco;
 
     public ClienteDAO(Context context){
         conexao = new Conexao(context);
@@ -63,7 +63,6 @@ public class ClienteDAO {
             String nome = cursor.getString(0);
             clienteNomes.add(nome);
         }
-
 
         return clienteNomes;
     }

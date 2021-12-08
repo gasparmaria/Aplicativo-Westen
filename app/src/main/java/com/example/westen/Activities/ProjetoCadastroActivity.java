@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -52,7 +53,8 @@ public class ProjetoCadastroActivity extends AppCompatActivity implements Sensor
             ProjetoServico,
             ProjetoDataInicio,
             ProjetoDataFinal,
-            FK_ClienteCNPJ;
+            FK_ClienteCNPJ,
+            ProjetoCliente;
 
     ProjetoDAO projetoDAO;
     ClienteDAO clienteDAO;
@@ -71,20 +73,19 @@ public class ProjetoCadastroActivity extends AppCompatActivity implements Sensor
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorLuz = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
-
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO(getApplicationContext());
         String[] nomesMembros = funcionarioDAO.selectTodosNomesFuncionarios();
-        txtMembrosSelecionados = (TextView) findViewById(R.id.txtMembrosSelecionados);
+        txtMembrosSelecionados = findViewById(R.id.txtMembrosSelecionados);
         ArrayList<Integer> membrosList = new ArrayList<>();
         boolean[] membrosSelecionados = new boolean[nomesMembros.length];
 
-        inputProjeto_descricao = (EditText) findViewById(R.id.inputProjetos_descricao);
-        inputProjeto_dataInicio = (EditText) findViewById(R.id.inputProjetos_dataInicio);
-        inputProjeto_dataFinal = (EditText) findViewById(R.id.inputProjetos_dataFinal);
-        spinnerCliente = (Spinner) findViewById(R.id.spinnerProjeto_cliente);
-        spinnerServico = (Spinner) findViewById(R.id.spinnerProjeto_servico);
-        spinnerStatus = (Spinner) findViewById(R.id.spinnerProjeto_status);
-        btnCadastrarProjeto = (Button) findViewById(R.id.btnCadastrarProjeto);
+        inputProjeto_descricao = findViewById(R.id.inputProjetos_descricao);
+        inputProjeto_dataInicio = findViewById(R.id.inputProjetos_dataInicio);
+        inputProjeto_dataFinal = findViewById(R.id.inputProjetos_dataFinal);
+        spinnerCliente = findViewById(R.id.spinnerProjeto_cliente);
+        spinnerServico = findViewById(R.id.spinnerProjeto_servico);
+        spinnerStatus = findViewById(R.id.spinnerProjeto_status);
+        btnCadastrarProjeto = findViewById(R.id.btnCadastrarProjeto);
 
         txtMembrosSelecionados.setOnClickListener(view -> {
             AlertDialog.Builder buider = new AlertDialog.Builder(
@@ -130,13 +131,13 @@ public class ProjetoCadastroActivity extends AppCompatActivity implements Sensor
             buider.show();
         });
 
-        Intent intent = getIntent();
-
         carregarSpinnerCliente();
         carregarSpinnerServico();
         carregarSpinnerStatus();
 
-        if(intent != null){
+        Intent intent = getIntent();
+
+        if(intent.hasExtra("Projeto")){
             btnCadastrarProjeto.setText(R.string.txtSalvar);
 
             Projeto projeto = ((Projeto) intent.getSerializableExtra("Projeto"));
@@ -156,7 +157,6 @@ public class ProjetoCadastroActivity extends AppCompatActivity implements Sensor
             List<String> projetoStatus = new ArrayList<String>(Arrays.asList(status));
             int posicaoStatus;
             posicaoStatus = projetoStatus.indexOf(projeto.getProjetoStatus());
-
 
             inputProjeto_descricao.setText(projeto.getProjetoDescricao());
             inputProjeto_dataInicio.setText(projeto.getProjetoDataInicio());
@@ -202,7 +202,6 @@ public class ProjetoCadastroActivity extends AppCompatActivity implements Sensor
 
                     }
                 }
-                Toast.makeText(getApplicationContext(), "funcionario projeto funcionando", Toast.LENGTH_SHORT).show();
 
                 updateProjeto.setProjetoID(projeto.getProjetoID());
 
@@ -233,6 +232,7 @@ public class ProjetoCadastroActivity extends AppCompatActivity implements Sensor
                         clienteCNPJ
                 );
 
+                projeto.setFK_ClienteCNPJ(clienteCNPJ);
                 projetoDAO = new ProjetoDAO(getApplicationContext());
 
                 try {
@@ -248,7 +248,7 @@ public class ProjetoCadastroActivity extends AppCompatActivity implements Sensor
                         try {
                             funcionarioprojetoDAO.insertFuncionarioProjeto(funcionarioProjeto);
                         } catch (Exception e) {
-
+                            Toast.makeText(getApplicationContext(), "catch", Toast.LENGTH_SHORT).show();
                         }
                     }
                     Toast.makeText(getApplicationContext(), "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
@@ -260,6 +260,7 @@ public class ProjetoCadastroActivity extends AppCompatActivity implements Sensor
         }
     }
 
+    // SPINNER
     private void carregarSpinnerCliente() {
         ClienteDAO clienteDAO = new ClienteDAO(getApplicationContext());
         List<String> clientesNomes = clienteDAO.selectTodosNomesClientes();
@@ -286,12 +287,33 @@ public class ProjetoCadastroActivity extends AppCompatActivity implements Sensor
         spinnerStatus.setAdapter(dataAdapter);
     }
 
+    // SAVED INSTANCE
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        ProjetoStatus = spinnerStatus.getSelectedItem().toString();
+        ProjetoDescricao = inputProjeto_descricao.getText().toString();
+        ProjetoServico = spinnerServico.getSelectedItem().toString();
+        ProjetoDataInicio = inputProjeto_dataInicio.getText().toString();
+        ProjetoDataFinal = inputProjeto_dataFinal.getText().toString();
+        ProjetoCliente = spinnerCliente.getSelectedItem().toString();
+
+        outState.putString("ProjetoStatus", ProjetoStatus);
+        outState.putString("ProjetoDescricao", ProjetoDescricao);
+        outState.putString("ProjetoServico", ProjetoServico);
+        outState.putString("ProjetoDataInicio", ProjetoDataInicio);
+        outState.putString("ProjetoDataFinal", ProjetoDataFinal);
+        outState.putString("ProjetoCliente", ProjetoCliente);
+    }
+
+    // CADASTRO
     public void abrirCadastro(View view){
         startActivity(new Intent(getBaseContext(), ProjetoCadastroActivity.class));
         finish();
     }
 
-    // menu
+    // MENU
     public void abrirHome(View view){
         startActivity(new Intent(getBaseContext(), MainActivity.class));
         finish();
@@ -313,8 +335,7 @@ public class ProjetoCadastroActivity extends AppCompatActivity implements Sensor
         finish();
     }
 
-    //MÉTODOS DO SENSOR
-
+    // SENSOR
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(this);
@@ -330,17 +351,16 @@ public class ProjetoCadastroActivity extends AppCompatActivity implements Sensor
         if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
             if(permissaoControlarBrilho()){
                 new Timer().schedule(
-                        new TimerTask(){
-                            @Override
-                            public void run(){
-                                int brilho = (int) (event.values[0]);
-                                controlarBrilho(brilho);
-                            }
-                        }, 1500);
+                    new TimerTask(){
+                        @Override
+                        public void run(){
+                            int brilho = (int) (event.values[0]);
+                            controlarBrilho(brilho);
+                        }
+                    }, 1500);
             }
         }
     }
-
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {    }
 

@@ -211,6 +211,30 @@
         </item>
     </style>
 
+    <style name="btnLocalizacao">
+        <item name="android:fontFamily">
+            @font/raleway
+        </item>
+        <item name="android:background">
+            @color/color_background
+        </item>
+        <item name="android:textSize">
+            12sp
+        </item>
+        <item name="android:textColor">
+            @color/cor_principal
+        </item>
+        <item name="android:textAllCaps">
+            false
+        </item>
+        <item name="backgroundTint">
+            @null
+        </item>
+        <item name="android:textStyle">
+            bold
+        </item>
+    </style>
+
     <style name="inputs">
         <item name="android:fontFamily">
             @font/raleway

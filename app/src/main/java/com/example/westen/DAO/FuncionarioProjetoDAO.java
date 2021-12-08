@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.example.westen.Cliente;
 import com.example.westen.Conexao;
@@ -14,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioProjetoDAO{
-    private Conexao conexao;
-    private SQLiteDatabase banco;
+    private final Conexao conexao;
+    private final SQLiteDatabase banco;
 
     public FuncionarioProjetoDAO(Context context){
         conexao = new Conexao(context);

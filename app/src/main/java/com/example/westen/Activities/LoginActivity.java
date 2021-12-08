@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
     private FuncionarioDAO funcionarioDAO;
     private SensorManager sensorManager;
     private Sensor sensorLuz;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,6 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorLuz = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
-
 
         txtEmail = findViewById(R.id.txtEmailLogin);
         txtSenha = findViewById(R.id.txtSenhaLogin);
@@ -126,8 +126,7 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
         }
     }
 
-    //MÉTODOS DO SENSOR
-
+    // SENSOR
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(this);
@@ -153,7 +152,6 @@ public class LoginActivity extends AppCompatActivity implements SensorEventListe
             }
         }
     }
-
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {    }
 

@@ -46,18 +46,18 @@ public class FuncionarioListarActivity extends AppCompatActivity implements Sens
         funcionarioDAO = new FuncionarioDAO(getApplicationContext());
         listaFuncionarios = funcionarioDAO.selectFuncionario();
 
-        listViewFuncionarios = (ListView) findViewById(R.id.listviewFuncionarios);
+        listViewFuncionarios = findViewById(R.id.listviewFuncionarios);
 
         ListViewFuncionarioAdapter adapter = new ListViewFuncionarioAdapter(this, R.layout.listview_item, listaFuncionarios);
         listViewFuncionarios.setAdapter(adapter);
     }
 
+    // menu
     public void abrirCadastro(View view){
         startActivity(new Intent(getBaseContext(), FuncionarioCadastroActivity.class));
         finish();
     }
 
-    // menu
     public void abrirHome(View view){
         startActivity(new Intent(getBaseContext(), MainActivity.class));
         finish();

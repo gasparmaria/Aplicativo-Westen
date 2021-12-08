@@ -81,17 +81,16 @@ public class ProjetoListarActivity extends AppCompatActivity implements SensorEv
 
         }
         finally {
-            gridProjetos = (GridView) findViewById(R.id.grid_projetos);
+            gridProjetos = findViewById(R.id.grid_projetos);
             GridProjetosAdapter gridAdapter = new GridProjetosAdapter(ProjetoListarActivity.this, R.layout.grid_item_projetos, listaClientes, listaProjetos);
             gridProjetos.setAdapter(gridAdapter);
             gridAdapter.notifyDataSetChanged();
         }
 
-
         gridProjetos.setOnItemClickListener((lista, item, position, id) -> {
             Projeto Projeto = (Projeto) gridProjetos.getItemAtPosition(position);
             Intent intentAbrirDetalhes = new Intent(ProjetoListarActivity.this, ProjetoDetalhesActivity.class);
-            intentAbrirDetalhes.putExtra("Projeto", (Serializable) Projeto);
+            intentAbrirDetalhes.putExtra("Projeto", Projeto);
             startActivity(intentAbrirDetalhes);
         });
     }
@@ -151,7 +150,6 @@ public class ProjetoListarActivity extends AppCompatActivity implements SensorEv
             }
         }
     }
-
 
     public void onAccuracyChanged(Sensor sensor, int accuracy) {    }
 
