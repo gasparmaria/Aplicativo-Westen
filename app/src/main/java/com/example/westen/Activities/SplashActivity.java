@@ -1,12 +1,11 @@
 package com.example.westen.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.westen.Funcionario;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.westen.R;
 
 public class SplashActivity extends AppCompatActivity {
@@ -17,7 +16,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(getBaseContext(), LoginActivity.class));
+            startActivity(new Intent(getBaseContext(), ClienteCadastroActivity.class));
             finish();
         }, 5000);
     }
