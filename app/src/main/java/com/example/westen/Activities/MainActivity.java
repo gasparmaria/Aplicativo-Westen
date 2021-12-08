@@ -214,6 +214,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return null;
     }
 
+    public void abrirCadastro(View view){
+        startActivity(new Intent(getBaseContext(), ProjetoCadastroActivity.class));
+        finish();
+    }
+
     // menu
     public void abrirHome(View view){
         startActivity(new Intent(getBaseContext(), MainActivity.class));

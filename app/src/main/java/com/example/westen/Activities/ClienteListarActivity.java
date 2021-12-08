@@ -52,6 +52,11 @@ public class ClienteListarActivity extends AppCompatActivity implements SensorEv
         listViewClientes.setAdapter(adapter);
     }
 
+    public void abrirCadastro(View view){
+        startActivity(new Intent(getBaseContext(), ClienteCadastroActivity.class));
+        finish();
+    }
+
     public void abrirHome(View view){
         startActivity(new Intent(getBaseContext(), MainActivity.class));
         finish();

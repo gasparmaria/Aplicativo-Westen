@@ -39,6 +39,7 @@
                     android:layout_height="33dp"
                     android:drawableEnd="@drawable/ic_adicionar"
                     android:text="@string/txtAdicionar"
+                    android:onClick="abrirCadastro"
                     tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 

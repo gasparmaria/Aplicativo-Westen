@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
 import android.widget.GridView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -93,6 +94,34 @@ public class ProjetoListarActivity extends AppCompatActivity implements SensorEv
             intentAbrirDetalhes.putExtra("Projeto", (Serializable) Projeto);
             startActivity(intentAbrirDetalhes);
         });
+    }
+
+
+    public void abrirCadastro(View view){
+        startActivity(new Intent(getBaseContext(), ProjetoCadastroActivity.class));
+        finish();
+    }
+
+    // menu
+    public void abrirHome(View view){
+        startActivity(new Intent(getBaseContext(), MainActivity.class));
+        finish();
+    }
+    public void abrirProjeto(View view){
+        startActivity(new Intent(getBaseContext(), ProjetoListarActivity.class));
+        finish();
+    }
+    public void abrirFuncionario(View view){
+        startActivity(new Intent(getBaseContext(), FuncionarioListarActivity.class));
+        finish();
+    }
+    public void abrirCliente(View view){
+        startActivity(new Intent(getBaseContext(), ClienteListarActivity.class));
+        finish();
+    }
+    public void abrirPerfil(View view){
+        startActivity(new Intent(getBaseContext(), PerfilActivity.class));
+        finish();
     }
 
     //MÉTODOS DO SENSOR

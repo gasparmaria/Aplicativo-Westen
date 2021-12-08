@@ -330,6 +330,11 @@ public class FuncionarioCadastroActivity extends AppCompatActivity implements Se
         outState.putString("FuncionarioCargo", FuncionarioCargo);
     }
 
+    public void abrirCadastro(View view){
+        startActivity(new Intent(getBaseContext(), FuncionarioCadastroActivity.class));
+        finish();
+    }
+
     // menu
     public void abrirHome(View view){
         startActivity(new Intent(getBaseContext(), MainActivity.class));

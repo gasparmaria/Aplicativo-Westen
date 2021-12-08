@@ -53,7 +53,6 @@ public class PerfilActivity extends AppCompatActivity implements SensorEventList
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorLuz = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
-
         imgPerfil = findViewById(R.id.imgPerfil);
         txtFuncionarioNome = findViewById(R.id.txtFuncionarioNome);
         txtFuncionarioCargo = findViewById(R.id.txtFuncionarioCargo);
@@ -127,6 +126,11 @@ public class PerfilActivity extends AppCompatActivity implements SensorEventList
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void abrirCadastro(View view){
+        startActivity(new Intent(getBaseContext(), FuncionarioCadastroActivity.class));
+        finish();
     }
 
     // menu
