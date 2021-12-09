@@ -45,7 +45,7 @@ public class ListViewFuncionarioAdapter extends BaseAdapter {
     }
 
     private class ViewHolder{
-        TextView txtFuncionarioCodigo, txtFuncionarioNome, txtFuncionarioCargo;
+        TextView txtFuncionarioNome, txtFuncionarioCargo;
         ImageButton btnFuncionarioEditar;
     }
 
@@ -59,8 +59,6 @@ public class ListViewFuncionarioAdapter extends BaseAdapter {
             row = inflater.inflate(layout, null);
 
             holder.btnFuncionarioEditar = row.findViewById(R.id.btnClienteEditar);
-            //holder.txtFuncionarioCodigo.setText(String.valueOf(position));
-            holder.txtFuncionarioCodigo = row.findViewById(R.id.txtCodigo);
             holder.txtFuncionarioNome = row.findViewById(R.id.txtNome);
             holder.txtFuncionarioCargo = row.findViewById(R.id.txtComplemento);
             row.setTag(holder);
@@ -77,9 +75,8 @@ public class ListViewFuncionarioAdapter extends BaseAdapter {
             context.startActivity(intentAbrirEditar);
         });
 
-        holder.txtFuncionarioCodigo.setText(funcionario.getFuncionarioCPF());
         holder.txtFuncionarioNome.setText(funcionario.getFuncionarioNome());
-        holder.txtFuncionarioCargo.setText(funcionario.getFuncionarioCargo());
+        holder.txtFuncionarioCargo.setText(funcionario.getFuncionarioCPF());
 
         return row;
     }

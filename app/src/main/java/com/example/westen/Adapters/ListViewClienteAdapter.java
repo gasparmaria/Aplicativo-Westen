@@ -43,7 +43,7 @@ public class ListViewClienteAdapter extends BaseAdapter {
     }
 
     private class ViewHolder{
-        TextView txtClienteCodigo, txtClienteNome, txtClienteCNPJ;
+        TextView txtClienteNome, txtClienteCNPJ;
         ImageButton btnClienteEditar;
     }
 
@@ -57,7 +57,6 @@ public class ListViewClienteAdapter extends BaseAdapter {
             row = inflater.inflate(layout, null);
 
             holder.btnClienteEditar = row.findViewById(R.id.btnClienteEditar);
-            //holder.txtClienteCodigo.setText(String.valueOf(position));
             holder.txtClienteNome = row.findViewById(R.id.txtNome);
             holder.txtClienteCNPJ = row.findViewById(R.id.txtComplemento);
             row.setTag(holder);
@@ -74,7 +73,6 @@ public class ListViewClienteAdapter extends BaseAdapter {
             context.startActivity(intentAbrirEditar);
         });
 
-        //holder.txtClienteCodigo.setText(String.valueOf(position));
         holder.txtClienteNome.setText(cliente.getClienteNome());
         holder.txtClienteCNPJ.setText(cliente.getClienteCNPJ());
 

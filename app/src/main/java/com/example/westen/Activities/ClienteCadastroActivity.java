@@ -223,7 +223,7 @@ public class ClienteCadastroActivity extends AppCompatActivity implements Sensor
                 try {
                     clienteDAO.insertCliente(cliente);
                     Toast.makeText(getApplicationContext(), "Cadastro efetuado com sucesso", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getBaseContext(), ProjetoCadastroActivity.class));
+                    startActivity(new Intent(getBaseContext(), ClienteListarActivity.class));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

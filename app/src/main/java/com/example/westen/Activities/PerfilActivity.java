@@ -106,8 +106,9 @@ public class PerfilActivity extends AppCompatActivity implements SensorEventList
         }
 
         btnPerfilEditar.setOnClickListener(v ->{
-            startActivity(new Intent(getBaseContext(), FuncionarioCadastroActivity.class));
-            finish();
+            Intent intentAbrirEditar = new Intent(getApplicationContext(), FuncionarioCadastroActivity.class);
+            intentAbrirEditar.putExtra("Funcionario", funcionario);
+            startActivity(intentAbrirEditar);
         });
     }
 
