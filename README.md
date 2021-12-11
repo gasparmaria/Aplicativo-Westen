@@ -9,3 +9,8 @@
 > Através do aplicativo os funcionários da empresa poderão visualizar os projetos que estão incluídos, assim como cadastrá-los. 
 
 Desenvolvido pelos alunos Gabriel Soares Evangelista, Guilherme Ferreira da Silva, Gustavo Basilio Cancian, Henrique Roncon Pereira, Maria Eduarda Gaspar Lima e Otávio de Paula Ferreira.
+
+
+
+https://user-images.githubusercontent.com/72797625/145679790-40efe1f4-b522-49af-853c-171f1adacfd0.mp4
+
